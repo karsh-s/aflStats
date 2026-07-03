@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Margin — Calibrated AFL predictions &amp; player stats</title>
+  <meta name="description" content="Margin is a calibrated AFL model: win probabilities for every game and projected stats for every player, turned into honest probabilities, value and same-game multis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+  <!-- ============================ Header ============================ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" id="top"><span class="nav__spark">✦</span> Margin</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#problem">Why</a>
+      <a href="#engine">Features</a>
+      <a href="#cases">Results</a>
+      <a href="#compare">Compare</a>
+      <a href="#about">About</a>
+    </nav>
+    <a href="http://localhost:8504" class="btn btn--accent nav__cta">Launch app</a>
+    <button class="nav__burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <a href="#problem">Why</a><a href="#engine">Features</a><a href="#cases">Results</a>
+    <a href="#compare">Compare</a><a href="#about">About</a>
+    <a href="http://localhost:8504" class="btn btn--accent">Launch app</a>
+  </div>
+
+  <main>
+    <!-- ============================ Hero ============================ -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__left">
+          <p class="hero__eyebrow reveal">Calibrated AFL model · Melbourne · 2015–2026</p>
+          <h1 class="hero__title reveal">Predictions you can actually <em>trust</em>, for every AFL game.</h1>
+          <p class="hero__lede reveal">Win probabilities, player props, and value picks — backtested against reality, calibrated, honest.</p>
+          <div class="hero__cta reveal">
+            <a href="#engine" class="btn btn--accent">+ Explore the model</a>
+            <a href="http://localhost:8504" class="btn btn--ghost">Launch app →</a>
+          </div>
+        </div>
+        <div class="hero__right" aria-hidden="true">
+          <svg class="orbit__svg" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+            <!-- Tilted perspective rings -->
+            <ellipse cx="280" cy="280" rx="248" ry="77" stroke="rgba(251,251,251,0.18)" stroke-width="1.3" fill="none" transform="rotate(-22 280 280)"/>
+            <ellipse cx="280" cy="280" rx="170" ry="53" stroke="rgba(251,251,251,0.18)" stroke-width="1.3" fill="none" transform="rotate(-22 280 280)"/>
+            <ellipse cx="280" cy="280" rx="98" ry="30" stroke="rgba(251,251,251,0.18)" stroke-width="1.3" fill="none" transform="rotate(-22 280 280)"/>
+            <!-- Centre spark -->
+            <text x="280" y="291" text-anchor="middle" font-size="26" fill="#6f9ceb" font-family="Space Grotesk, sans-serif">✦</text>
+            <!-- Outer ring node: upper-right (θ=-50° in ring frame) -->
+            <circle cx="406" cy="164" r="5" fill="#6f9ceb"/>
+            <line x1="412" y1="164" x2="430" y2="164" stroke="rgba(251,251,251,0.25)" stroke-width="1"/>
+            <text x="434" y="169" font-size="13.5" fill="rgba(251,251,251,0.6)" font-family="Inter, sans-serif">Win probability</text>
+            <!-- Mid ring node: right (θ=-15° in ring frame) -->
+            <circle cx="428" cy="204" r="5" fill="#6f9ceb"/>
+            <line x1="434" y1="204" x2="452" y2="204" stroke="rgba(251,251,251,0.25)" stroke-width="1"/>
+            <text x="456" y="209" font-size="13.5" fill="rgba(251,251,251,0.6)" font-family="Inter, sans-serif">Player props</text>
+            <!-- Inner ring node: lower-right (θ=35° in ring frame) -->
+            <circle cx="362" cy="265" r="5" fill="#6f9ceb"/>
+            <line x1="368" y1="265" x2="386" y2="265" stroke="rgba(251,251,251,0.25)" stroke-width="1"/>
+            <text x="390" y="270" font-size="13.5" fill="rgba(251,251,251,0.6)" font-family="Inter, sans-serif">Value &amp; edge</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ Problem ============================ -->
+    <section class="problem" id="problem">
+      <div class="section-head reveal">
+        <span class="kicker">The problem</span>
+        <h2>Most footy tips are just vibes.</h2>
+      </div>
+      <ol class="pain">
+        <li class="pain__item reveal"><span class="pain__no">01</span><p>Tips driven by gut feel and last week's result — not the numbers.</p></li>
+        <li class="pain__item reveal"><span class="pain__no">02</span><p>Player props you can only guess at, and only on round-number lines.</p></li>
+        <li class="pain__item reveal"><span class="pain__no">03</span><p>No idea whether "70% confident" actually means anything.</p></li>
+        <li class="pain__item reveal"><span class="pain__no">04</span><p>Bookmaker odds with hidden vig baked in, and no sense of real value.</p></li>
+        <li class="pain__item reveal"><span class="pain__no">05</span><p>Multis built on hope, with no read on how likely they are to land.</p></li>
+      </ol>
+    </section>
+
+    <!-- ============================ Manifesto band ============================ -->
+    <section class="band reveal">
+      <h2>Sounds familiar? Here's what Margin does differently.</h2>
+      <a href="#engine" class="band__link">See the approach →</a>
+    </section>
+
+    <!-- ============================ Cases / metrics carousel ============================ -->
+    <section class="cases" id="cases">
+      <div class="section-head reveal">
+        <span class="kicker">Proven on 44,850 player-games</span>
+        <h2>Backtested, not bragged about.</h2>
+      </div>
+      <div class="cases__row" id="casesRow">
+        <article class="case reveal"><span class="case__num" data-count="67" data-suffix="%">0</span><h3>Tip accuracy</h3><p>Walk-forward across seasons — edges out a strong Elo baseline.</p><span class="case__tag">Match model</span></article>
+        <article class="case reveal"><span class="case__num" data-count="15" data-suffix="" data-prefix="0.0">0</span><h3>Calibration error</h3><p>ECE on disposals — when it says 70%, it means ~70%.</p><span class="case__tag">Honest</span></article>
+        <article class="case reveal"><span class="case__num" data-count="44850">0</span><h3>Player-games</h3><p>Box scores enriched with venue and match-day weather.</p><span class="case__tag">Data</span></article>
+        <article class="case reveal"><span class="case__num" data-count="100" data-suffix="%">0</span><h3>Lines covered</h3><p>Every integer milestone — 16+, 17+, 18+, not just the round numbers.</p><span class="case__tag">Props</span></article>
+        <article class="case reveal"><span class="case__num" data-count="4">0</span><h3>SGM targets</h3><p>Safest same-game multi auto-built for 2×, 3×, 5× and 10×.</p><span class="case__tag">Multis</span></article>
+        <article class="case reveal"><span class="case__num" data-count="6">0</span><h3>AU books priced</h3><p>De-vigged odds incl. SportsBet, with edge and Kelly staking.</p><span class="case__tag">Value</span></article>
+      </div>
+    </section>
+
+    <!-- ============================ Marquee ============================ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Adelaide</span><span>·</span><span>Brisbane</span><span>·</span><span>Carlton</span><span>·</span><span>Collingwood</span><span>·</span><span>Essendon</span><span>·</span><span>Fremantle</span><span>·</span><span>Geelong</span><span>·</span><span>Gold Coast</span><span>·</span><span>GWS</span><span>·</span><span>Hawthorn</span><span>·</span><span>Melbourne</span><span>·</span><span>North Melbourne</span><span>·</span><span>Port Adelaide</span><span>·</span><span>Richmond</span><span>·</span><span>St Kilda</span><span>·</span><span>Sydney</span><span>·</span><span>West Coast</span><span>·</span><span>Western Bulldogs</span><span>·</span>
+        <span>Adelaide</span><span>·</span><span>Brisbane</span><span>·</span><span>Carlton</span><span>·</span><span>Collingwood</span><span>·</span><span>Essendon</span><span>·</span><span>Fremantle</span><span>·</span><span>Geelong</span><span>·</span><span>Gold Coast</span><span>·</span><span>GWS</span><span>·</span><span>Hawthorn</span><span>·</span>
+      </div>
+    </div>
+
+    <!-- ============================ Engine / services ============================ -->
+    <section class="engine" id="engine">
+      <div class="section-head reveal">
+        <span class="kicker">The Margin engine</span>
+        <h2>Three models, one read on the game.</h2>
+      </div>
+      <div class="pillars">
+        <article class="pillar reveal">
+          <span class="pillar__ic">◆</span>
+          <h3>Match predictions</h3>
+          <p>Team Elo with home-ground advantage and margin-of-victory, layered with recent form, head-to-head and the match-day weather — output as a calibrated win probability.</p>
+          <a href="http://localhost:8504" class="pillar__link">See this round →</a>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__ic">●</span>
+          <h3>Player props</h3>
+          <p>Recency-weighted projections adjusted for opponent, venue and weather, wrapped in a count distribution — so you get P(over/under) for every integer line a book posts.</p>
+          <a href="http://localhost:8504" class="pillar__link">Browse props →</a>
+        </article>
+        <article class="pillar reveal">
+          <span class="pillar__ic">▲</span>
+          <h3>Value &amp; multis</h3>
+          <p>Model probabilities versus de-vigged odds — surfaced as edge, expected value and a fractional-Kelly stake, plus the safest same-game multi for any target.</p>
+          <a href="http://localhost:8504" class="pillar__link">Find value →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================ Testimonials ============================ -->
+    <section class="quotes" id="quotes">
+      <div class="section-head reveal"><span class="kicker">What it feels like</span><h2>Less guessing. More knowing.</h2></div>
+      <div class="quote-track reveal" id="quoteTrack">
+        <figure class="quote is-active"><blockquote>"I stopped tipping on gut feel. Seeing a real probability — and knowing it's been tested — changed how I look at every game."</blockquote><figcaption>Weekly tipper</figcaption></figure>
+        <figure class="quote"><blockquote>"The prop ladders are the killer feature. Every line, with a number next to it, instead of staring at a betting app guessing."</blockquote><figcaption>Fantasy coach</figcaption></figure>
+        <figure class="quote"><blockquote>"It flags when an 'edge' is just noise. That honesty is worth more than any hot tip."</blockquote><figcaption>Data-minded punter</figcaption></figure>
+      </div>
+      <div class="quote-dots" id="quoteDots"></div>
+    </section>
+
+    <!-- ============================ Comparison ============================ -->
+    <section class="compare" id="compare">
+      <div class="section-head reveal"><span class="kicker">The difference</span><h2>Gut feel vs. the Margin model.</h2></div>
+      <div class="compare__grid">
+        <div class="compare__col compare__col--old reveal">
+          <h3>Tipping on vibes</h3>
+          <ul>
+            <li>Picks the team that won last week</li>
+            <li>Props are a shrug and a round number</li>
+            <li>"Pretty confident" with no number behind it</li>
+            <li>Takes the book's price at face value</li>
+            <li>Multis stacked on hope</li>
+          </ul>
+        </div>
+        <div class="compare__col compare__col--new reveal">
+          <h3>The Margin model</h3>
+          <ul>
+            <li>Calibrated win probability for every game</li>
+            <li>P(hit) for every player on every line</li>
+            <li>70% means ~70% — proven walk-forward</li>
+            <li>De-vigged odds with real edge and EV</li>
+            <li>Safest multi for your target, ranked by joint probability</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ About ============================ -->
+    <section class="about" id="about">
+      <div class="about__text reveal">
+        <span class="kicker">About</span>
+        <h2>Built in Melbourne. Leak-free, calibrated, honest.</h2>
+        <p>Every prediction only ever uses games that had already been played — no hindsight, no curve-fitting to the result. The model is re-tested against reality each round, and it's the first to tell you when an edge is just small-sample noise.</p>
+      </div>
+      <div class="about__stats reveal">
+        <div class="stat"><span class="stat__n" data-count="11">0</span><span class="stat__l">Seasons of data</span></div>
+        <div class="stat"><span class="stat__n" data-count="1021">0</span><span class="stat__l">Players rated</span></div>
+        <div class="stat"><span class="stat__n" data-count="9">0</span><span class="stat__l">Markets modelled</span></div>
+      </div>
+    </section>
+
+    <!-- ============================ CTA ============================ -->
+    <section class="cta reveal">
+      <h2>See it on this week's games.</h2>
+      <a href="http://localhost:8504" class="btn btn--accent btn--lg">Launch the app →</a>
+    </section>
+  </main>
+
+  <!-- ============================ Footer ============================ -->
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="#top" class="nav__logo"><span class="nav__spark">✦</span> Margin</a>
+      <nav class="footer__nav">
+        <a href="#engine">Features</a><a href="#cases">Results</a><a href="#compare">Compare</a>
+        <a href="http://localhost:8504">Launch app</a>
+      </nav>
+    </div>
+    <div class="footer__base">
+      <span>© <span id="year">2026</span> Margin · Built in Melbourne</span>
+      <span>Predictions are estimates, not guarantees. 18+. Gamble responsibly — gamblinghelponline.org.au</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

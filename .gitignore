@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/cache/
+data/raw/
+data/processed/
+data/models/
+.DS_Store
+.claude/settings.local.json
+afl-index/.workspace/

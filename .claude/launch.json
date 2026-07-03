@@ -1,0 +1,39 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "afl-webapp",
+      "runtimeExecutable": ".venv/bin/streamlit",
+      "runtimeArgs": [
+        "run",
+        "app/streamlit_app.py",
+        "--server.headless",
+        "true",
+        "--server.port",
+        "8504",
+        "--browser.gatherUsageStats",
+        "false"
+      ],
+      "port": 8504
+    },
+    {
+      "name": "site",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8505", "--directory", "site"],
+      "port": 8505
+    },
+    {
+      "name": "afl-index",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "afl-index",
+      "port": 8080
+    },
+    {
+      "name": "afl-api",
+      "runtimeExecutable": ".venv/bin/uvicorn",
+      "runtimeArgs": ["api.main:app", "--reload", "--port", "8001"],
+      "port": 8001
+    }
+  ]
+}
