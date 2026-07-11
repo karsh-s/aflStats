@@ -343,6 +343,146 @@ def game_sgm_legs(event_id: str):
     return [_row(r) for r in legs.to_dict("records")]
 
 
+def _multi_reasons(legs: list[dict], home: str, away: str,
+                   exp_margin: float | None, ps, team_of: dict) -> list[str]:
+    """Human-readable tactical reasoning for why these legs were targeted."""
+    from afl.model import game_roles, pace_pressure
+    reasons: list[str] = []
+
+    try:
+        if "role_leaks" not in _analysis_cache:
+            _analysis_cache["role_leaks"] = _analysis.role_leaks()
+        rl = _analysis_cache["role_leaks"]
+    except Exception:
+        rl = None
+    leak_by_team: dict = {}
+    if rl and rl.get("available"):
+        for t in rl["teams"]:
+            leak_by_team[t["team"]] = {r["role"]: r["vs_league"] for r in t["roles"]}
+
+    role_tbl = game_roles.get_table(ps)
+    pace_tbl = pace_pressure.get_table(ps)
+
+    if exp_margin is not None and abs(exp_margin) >= 12:
+        fav = home if exp_margin > 0 else away
+        reasons.append(
+            f"Game script: model projects {fav} by ~{abs(exp_margin):.0f} pts — "
+            f"a side in control accumulates more uncontested ball")
+
+    seen_opp: set = set()
+    seen_leak: set = set()
+    for leg in legs:
+        p = leg.get("player_scraped") or leg.get("player")
+        team = team_of.get(p)
+        if team is None:
+            continue
+        opp = away if team == home else home
+
+        # Opponent style (once per opposing team)
+        if pace_tbl is not None and opp not in seen_opp:
+            zp = pace_tbl.z_pace.get(opp, 0.0)
+            zt = pace_tbl.z_press.get(opp, 0.0)
+            if zp >= 0.6:
+                reasons.append(
+                    f"{opp} concede well above league-average disposals over "
+                    f"their last 10 — lifts every {team} ball-winner")
+            if zt <= -0.8:
+                reasons.append(
+                    f"{opp} apply the least tackle pressure in the league — "
+                    f"uncontested accumulators run free")
+            seen_opp.add(opp)
+
+        # Role leak (once per opponent x role)
+        role = role_tbl.current_role.get(p) if role_tbl else None
+        if role:
+            leak = leak_by_team.get(opp, {}).get(role)
+            if leak is not None and leak >= 0.8 and (opp, role) not in seen_leak:
+                names = ", ".join(
+                    str(l.get("player")) for l in legs
+                    if role_tbl.current_role.get(
+                        l.get("player_scraped") or l.get("player")) == role
+                    and team_of.get(l.get("player_scraped") or l.get("player")) == team)
+                reasons.append(
+                    f"{opp} leak +{leak:.1f} disposals/game to {role}s "
+                    f"(worst-{'1' if leak >= 2 else 'few'} in the league) — {names}")
+                seen_leak.add((opp, role))
+
+        # Model-vs-market gap on the specific line
+        prob, odds = leg.get("prob"), leg.get("odds")
+        if prob and odds and prob - 1.0 / odds >= 0.10:
+            reasons.append(
+                f"{leg.get('player')} {leg.get('milestone')}: model {prob:.0%} "
+                f"vs market {1/odds:.0%} — his recent output clears this line "
+                f"more often than it is priced")
+
+    # Dedupe, keep order, cap
+    out, seen = [], set()
+    for r in reasons:
+        if r not in seen:
+            out.append(r)
+            seen.add(r)
+    return out[:5]
+
+
+@app.get("/api/game/{event_id}/multis")
+def game_target_multis(event_id: str, targets: str = "2,3,5,10",
+                       floor: float = 0.30):
+    """Safest multi per target multiplier — exact DP, unlimited legs, all
+    stat lines. Maximises joint probability (per-leg risk-discounted) subject
+    to combined odds >= target; with odds pinned at the target this is also
+    the greatest-edge combination.
+
+    ``floor``: minimum model probability per leg. Raising it (e.g. 0.70)
+    forces high-edge players onto their SAFER lines and fills the multiplier
+    with more legs — spreads model risk at a small joint-probability cost."""
+    from afl.odds import sgm as _sgm
+    ev = sh.upcoming_events()
+    if ev.empty:
+        raise HTTPException(404, "No upcoming events")
+    row = ev[ev["id"] == event_id]
+    if row.empty:
+        raise HTTPException(404, f"Event {event_id} not found")
+    row = row.iloc[0]
+    home, away = row["home_team"], row["away_team"]
+    venue, when = sh.fixture_venues(2026).get((home, away), ("", None))
+
+    try:
+        legs = sh.priced_legs(event_id, home, away, venue, when)
+    except Exception as e:
+        raise HTTPException(500, str(e))
+    if legs.empty:
+        return []
+
+    ps = sh.player_stats()
+    team_of = ps.sort_values("date").groupby("player")["team"].last().to_dict()
+    exp_margin = sh._expected_margin(home, away, venue, when)
+
+    out = []
+    for t in targets.split(","):
+        try:
+            target = float(t)
+        except ValueError:
+            continue
+        res = _sgm.safest_multi(legs, target, prob_floor=floor)
+        if res is None:
+            out.append({"target": target, "result": None})
+            continue
+        out.append({
+            "target": target,
+            "result": {
+                "legs": [_row(l) for l in res["legs"]],
+                "combined_odds": round(res["combined_odds"], 3),
+                "joint_prob": round(res["joint_prob"], 4),
+                "implied_prob": round(res["implied_prob"], 4),
+                "edge": round(res["edge"], 4),
+                "n_legs": res["n_legs"],
+                "reasons": _multi_reasons(res["legs"], home, away,
+                                          exp_margin, ps, team_of),
+            },
+        })
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Consistency helpers
 # ---------------------------------------------------------------------------
@@ -771,19 +911,54 @@ def _build_by_risk_py(legs: list[dict], min_prob: float, target: float,
     return _build_multi_py(filtered, target, max_legs, min_odds, min_hit5)
 
 
+def _safest_multi_py(legs: list[dict], target: float,
+                     min_hit5: float = 0.0,
+                     prob_floor: float = 0.30) -> dict | None:
+    """Exact safest multi for a target multiplier (no leg cap).
+
+    Wraps sgm.safest_multi: maximise joint probability (with the per-leg risk
+    discount deciding whether extra legs pay for themselves) subject to
+    combined odds >= target, over ALL priced stat lines.
+    ``prob_floor=0.70`` is SAFE mode: high-edge players on their safer lines,
+    more legs to build the multiplier.
+    """
+    from afl.odds import sgm as _sgm
+    if min_hit5 > 0:
+        legs = [l for l in legs if (l.get("hit_last_5") or 0.0) >= min_hit5]
+    if len(legs) < 2:
+        return None
+    df = pd.DataFrame(legs)
+    if "player_scraped" not in df.columns:
+        df["player_scraped"] = df["player"]
+    res = _sgm.safest_multi(df, float(target), prob_floor=prob_floor)
+    if res is None:
+        return None
+    return {"legs": res["legs"],
+            "combined_odds": round(res["combined_odds"], 3),
+            "joint_prob": round(res["joint_prob"], 4),
+            "edge": round(res["edge"], 4)}
+
+
 # Thresholds per tier:
 #   risk_low:  model prob ≥ 0.68 AND last-5 hit rate ≥ 60%  (3/5 recent games)
 #   risk_med:  model prob ≥ 0.53 AND last-5 hit rate ≥ 40%  (2/5 recent games)
 #   risk_high: model prob ≥ 0.30 AND last-5 hit rate ≥ 20%  (1/5 recent games)
-#   targets:   last-5 hit rate ≥ 40% for ×2–×5; ≥ 20% for ×10
+#   targets:   exact DP (safest possible combo, unlimited legs, all stat lines);
+#              last-5 hit rate ≥ 40% for ×2–×5; ≥ 20% for ×10
 _MULTI_SPECS = [
     ("risk_low",  "LOW Risk ~2.5×",  lambda legs: _build_by_risk_py(legs, 0.68, 2.5,  1.15, 5,  0.60)),
     ("risk_med",  "MED Risk ~5×",    lambda legs: _build_by_risk_py(legs, 0.53, 5.0,  1.25, 7,  0.40)),
     ("risk_high", "HIGH Risk ~12×",  lambda legs: _build_by_risk_py(legs, 0.30, 12.0, 1.50, 10, 0.20)),
-    ("target_2",  "Target ~2×",      lambda legs: _build_multi_py(legs, 2,  8, min_hit5=0.40)),
-    ("target_3",  "Target ~3×",      lambda legs: _build_multi_py(legs, 3,  8, min_hit5=0.40)),
-    ("target_5",  "Target ~5×",      lambda legs: _build_multi_py(legs, 5,  8, min_hit5=0.40)),
-    ("target_10", "Target ~10×",     lambda legs: _build_multi_py(legs, 10, 8, min_hit5=0.20)),
+    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40)),
+    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40)),
+    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40)),
+    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.20)),
+    # SAFE variants: every leg >= 70% model probability — high-edge players on
+    # their safer lines, multiplier built from more legs.
+    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.20, prob_floor=0.70)),
 ]
 
 
@@ -864,17 +1039,18 @@ def place_bets(payload: dict):
 @app.post("/api/tracker/auto-place")
 def auto_place():
     """Place $5 on every multi for every upcoming game that hasn't been placed yet.
-    Safe to call repeatedly — skips games that already have bets."""
+    Safe to call repeatedly — skips (game, bet-type) combos that already have a
+    bet, so newly-added bet types get placed without re-placing existing ones."""
     current = get_current_multis()  # reuse existing logic
     data = _load_tracker()
-    placed_event_ids = {b["event_id"] for b in data["bets"]}
+    placed = {(b["event_id"], b["multi_type"]) for b in data["bets"]}
     now = _dt.utcnow().isoformat()
     new_bets: list[dict] = []
 
     for game in current:
-        if game["event_id"] in placed_event_ids:
-            continue  # already placed for this game
         for multi in game["multis"]:
+            if (game["event_id"], multi["multi_type"]) in placed:
+                continue  # this bet type already placed for this game
             legs_with_opp = []
             for leg in multi["legs"]:
                 opp = game["away"] if leg.get("team") == game["home"] else game["home"]
@@ -1127,6 +1303,14 @@ def analysis_style_matchups():
     if "style_matchups" not in _analysis_cache:
         _analysis_cache["style_matchups"] = _analysis.style_matchups()
     return _analysis_cache["style_matchups"]
+
+
+@app.get("/api/analysis/role-leaks")
+def analysis_role_leaks():
+    """Disposals conceded per ON-FIELD role (per-game classified), by team."""
+    if "role_leaks" not in _analysis_cache:
+        _analysis_cache["role_leaks"] = _analysis.role_leaks()
+    return _analysis_cache["role_leaks"]
 
 
 @app.get("/api/analysis/position-concession")

@@ -336,6 +336,14 @@ def project_from_history(prior: pd.DataFrame, stat: str, *, opponent: str,
         decay = min(decay if decay is not None else 1.0, role_change.DRIFT_DECAY)
         anchor_scale = role_change.ANCHOR_DAMP
 
+    # Role instability: taggers/utility players whose job changes weekly.
+    # Recency decay overreacts to their assignment-driven spikes — use the
+    # flat window instead (see game_roles for the backtest).
+    from . import game_roles as _gr
+    inst = _gr.role_instability(prior) if _gr.USE_ROLE_INSTABILITY else 0.0
+    if inst >= _gr.ROLE_INSTABILITY_THRESH:
+        decay = None
+
     vals = prior[stat].to_numpy(dtype=float)
     n = len(vals)
     base_mean, sd = projection_stats(
@@ -364,7 +372,8 @@ def project_from_history(prior: pd.DataFrame, stat: str, *, opponent: str,
 
     comp = {"base": round(base_mean, 2), "anchor_delta": round(anchor_delta, 2),
             "opponent": 0.0, "venue": 0.0, "weather": 0.0,
-            "role_drift": round(drift, 3)}
+            "role_drift": round(drift, 3),
+            "role_instability": round(inst, 2)}
     mean = base_mean
 
     if use_splits and n >= 3:
@@ -395,6 +404,16 @@ def project_from_history(prior: pd.DataFrame, stat: str, *, opponent: str,
             comp["weather"] = round(wadj * weather_weight, 2)
 
         mean = max(0.05, base_mean + comp["opponent"] + comp["venue"] + comp["weather"])
+
+    # Role-form: when the player's current on-field role (classified per game
+    # from box-score signatures) differs from the role across the form window,
+    # pull the projection toward their historical output in the current role.
+    from . import game_roles
+    if game_roles.USE_ROLE_FORM and "game_role" in prior.columns:
+        rf = game_roles.role_form_delta(prior, stat, mean)
+        if rf:
+            mean = max(0.05, mean + rf)
+            comp["role_form"] = round(rf, 2)
 
     comp["projection"] = round(mean, 2)
     return mean, sd, n, comp

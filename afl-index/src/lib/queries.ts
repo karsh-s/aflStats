@@ -48,6 +48,16 @@ export function useGameSGM(eventId: string | null) {
   });
 }
 
+export function useGameTargetMultis(eventId: string | null, floor = 0.3) {
+  return useQuery({
+    queryKey: ["target-multis", eventId, floor],
+    queryFn: () => api.gameTargetMultis(eventId!, floor),
+    enabled: !!eventId,
+    staleTime: FIVE_MIN,
+    retry: 1,
+  });
+}
+
 export function useGameBestLines(eventId: string | null) {
   return useQuery({
     queryKey: ["best-lines", eventId],
@@ -118,6 +128,10 @@ export function useTeamStyles() {
 export function useStyleMatchups() {
   return useQuery({ queryKey: ["analysis-style-matchups"], queryFn: api.analysis.styleMatchups, staleTime: Infinity });
 }
+export function useRoleLeaks() {
+  return useQuery({ queryKey: ["analysis-role-leaks"], queryFn: api.analysis.roleLeaks, staleTime: 5 * 60 * 1000 });
+}
+
 export function usePositionConcession() {
   return useQuery({ queryKey: ["analysis-position-concession"], queryFn: api.analysis.positionConcession, staleTime: 5 * 60 * 1000 });
 }

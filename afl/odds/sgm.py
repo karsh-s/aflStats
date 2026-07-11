@@ -49,17 +49,24 @@ _VOL_PATH = Path(__file__).parent.parent.parent / "api" / "data" / "player_volat
 _VOL_CACHE: dict | None = None
 
 def _load_volatility() -> dict:
+    """Return {player: entry}. Handles both the flat legacy format and the
+    current {"updated": ..., "players": [...]} list format."""
     global _VOL_CACHE
     if _VOL_CACHE is None:
         try:
-            _VOL_CACHE = json.loads(_VOL_PATH.read_text())
+            raw = json.loads(_VOL_PATH.read_text())
+            if isinstance(raw.get("players"), list):
+                _VOL_CACHE = {p.get("player"): p for p in raw["players"]}
+            else:
+                _VOL_CACHE = raw
         except Exception:
             _VOL_CACHE = {}
     return _VOL_CACHE
 
 def is_volatile(player_scraped: str) -> bool:
     """True if the player's disposal CV > 0.35 — exclude from parlays."""
-    return _load_volatility().get(player_scraped, {}).get("parlay_flag", False)
+    entry = _load_volatility().get(player_scraped)
+    return bool(entry and entry.get("parlay_flag", False))
 
 
 def attach_model_probs(legs: pd.DataFrame, player_stats: pd.DataFrame, elos: dict,
@@ -97,16 +104,51 @@ def attach_model_probs(legs: pd.DataFrame, player_stats: pd.DataFrame, elos: dic
     return pd.DataFrame(out)
 
 
-def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int = 7,
-                 prob_floor: float = 0.30, prob_cap: float = 0.94,
-                 odds_floor: float = 1.18, res: float = 0.025,
+# Per-leg risk discount used ONLY for ranking combos inside safest_multi.
+# Each leg multiplies the ranking score by this factor on top of its model
+# probability, pricing in what the independence assumption misses: per-leg
+# model error compounds, and any player can miss through injury/role surprise.
+# An extra leg must therefore improve the true joint probability by more than
+# ~1.5% to be worth adding — this is the cost/benefit weight on leg count.
+LEG_RISK_DISCOUNT = 0.985
+
+# Market-blend shrinkage, also ranking-only. The model's probability is partly
+# opinion; the book's implied probability is partly information. The bigger
+# the model-vs-book gap on a leg, the more likely some of that gap is model
+# error — so legs are RANKED by a geometric blend of the two. This stops the
+# optimiser betting the whole multi on one bold model call when a diversified
+# combo with milder claims scores nearly the same true joint probability.
+# 0.0 = trust the model fully, 1.0 = trust the book fully.
+# 0.50 = consensus probability: maximise the chance of the multi succeeding
+# under the best available estimate (model + market equally), rather than
+# chasing the lines where the model most disagrees with the book (edge).
+MARKET_BLEND = 0.50
+
+
+def _rank_logp(leg: dict) -> float:
+    """Log of the ranking probability: model prob shrunk toward book-implied."""
+    p_model = leg["prob"]
+    p_book = 1.0 / leg["odds"]
+    return (1.0 - MARKET_BLEND) * math.log(p_model) + MARKET_BLEND * math.log(p_book)
+
+
+def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int | None = None,
+                 prob_floor: float = 0.30, prob_cap: float = 0.97,
+                 odds_floor: float = 1.05, res: float = 0.025,
                  max_per_stat: int | None = None) -> dict | None:
     """Return the safest leg combination with combined odds >= ``target``.
 
+    Exact grouped knapsack over bucketed log-odds: maximise the (leg-count
+    discounted) joint probability subject to the combined odds clearing the
+    target. With combined odds pinned at the target, maximising joint
+    probability is the same as maximising edge (joint P minus book-implied P).
+
     ``legs`` must carry ``player_scraped``, ``odds`` and ``prob``. Returns a dict
-    with the chosen legs, combined odds and joint probability, or None.
-    ``max_per_stat`` caps how many legs may share a stat (e.g. 2) to force
-    diversification and cut the in-game correlation between same-stat legs.
+    with the chosen legs, combined odds, joint probability and edge, or None.
+    ``max_legs=None`` means unlimited — the LEG_RISK_DISCOUNT decides when an
+    extra leg stops paying for itself. ``max_per_stat`` caps how many legs may
+    share a stat (e.g. 2) to force diversification and cut the in-game
+    correlation between same-stat legs.
     """
     if legs.empty:
         return None
@@ -118,7 +160,8 @@ def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int = 7,
         return None
 
     T = math.log(target)
-    # dp: bucket(log-odds in [0,T)) -> (best sum_log_prob, legs list)
+    leg_cost = math.log(LEG_RISK_DISCOUNT)
+    # dp: bucket(log-odds in [0,T)) -> (best discounted sum_log_prob, legs list)
     dp: dict[int, tuple[float, list]] = {0: (0.0, [])}
     reached: tuple[float, list] | None = None
 
@@ -126,7 +169,7 @@ def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int = 7,
         options = grp.to_dict("records")
         new_dp = dict(dp)
         for b, (slp, llist) in dp.items():
-            if len(llist) >= max_legs:
+            if max_legs is not None and len(llist) >= max_legs:
                 continue
             cur = b * res
             for leg in options:
@@ -134,7 +177,7 @@ def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int = 7,
                         1 for x in llist if x["stat"] == leg["stat"]) >= max_per_stat:
                     continue
                 no = cur + math.log(leg["odds"])
-                nlp = slp + math.log(leg["prob"])
+                nlp = slp + _rank_logp(leg) + leg_cost
                 nlist = llist + [leg]
                 if no >= T:
                     if len(nlist) >= 2 and (reached is None or nlp > reached[0]):
@@ -147,14 +190,16 @@ def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int = 7,
 
     if reached is None:
         return None
-    slp, llist = reached
+    _, llist = reached
     odds = float(np.prod([leg["odds"] for leg in llist]))
+    joint = float(np.prod([leg["prob"] for leg in llist]))   # true, undiscounted
     return {
         "target": target,
         "legs": sorted(llist, key=lambda leg: leg["prob"], reverse=True),
         "combined_odds": odds,
-        "joint_prob": math.exp(slp),
+        "joint_prob": joint,
         "implied_prob": 1.0 / odds,
+        "edge": joint - 1.0 / odds,
         "n_legs": len(llist),
     }
 
