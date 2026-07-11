@@ -29,6 +29,7 @@ const STAKE = 5;
 const MULTI_ORDER: MultiType[] = [
   "risk_low", "risk_med", "risk_high",
   "target_2", "target_3", "target_5", "target_10",
+  "target_2_safe", "target_3_safe", "target_5_safe", "target_10_safe",
 ];
 
 const MULTI_META: Record<MultiType, { label: string; short: string; badgeCls: string; headerCls: string }> = {
@@ -39,6 +40,10 @@ const MULTI_META: Record<MultiType, { label: string; short: string; badgeCls: st
   target_3:  { label: "TARGET ~3×",  short: "3×",    badgeCls: "bg-ink text-paper",        headerCls: "border-ink text-ink" },
   target_5:  { label: "TARGET ~5×",  short: "5×",    badgeCls: "bg-ink text-paper",        headerCls: "border-ink text-ink" },
   target_10: { label: "TARGET ~10×", short: "10×",   badgeCls: "bg-ink text-paper",        headerCls: "border-ink text-ink" },
+  target_2_safe:  { label: "TARGET ~2× SAFE",  short: "2×S",  badgeCls: "bg-green-800 text-white", headerCls: "border-green-800 text-green-800" },
+  target_3_safe:  { label: "TARGET ~3× SAFE",  short: "3×S",  badgeCls: "bg-green-800 text-white", headerCls: "border-green-800 text-green-800" },
+  target_5_safe:  { label: "TARGET ~5× SAFE",  short: "5×S",  badgeCls: "bg-green-800 text-white", headerCls: "border-green-800 text-green-800" },
+  target_10_safe: { label: "TARGET ~10× SAFE", short: "10×S", badgeCls: "bg-green-800 text-white", headerCls: "border-green-800 text-green-800" },
 };
 
 // ── Live score helpers ─────────────────────────────────────────────────────

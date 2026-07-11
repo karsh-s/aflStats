@@ -36,7 +36,10 @@ RATED = player_elo.RATED_STATS
 # ---------------------------------------------------------------------------
 @st.cache_resource(show_spinner="Loading player box scores…")
 def player_stats() -> pd.DataFrame:
-    return pipeline.load_player_stats_enriched()
+    from afl.model import game_roles
+    # game_role (per-game on-field role classified from the box-score
+    # signature) powers the role-form projection adjustment + role analysis.
+    return game_roles.classify_games(pipeline.load_player_stats_enriched())
 
 
 @st.cache_resource(show_spinner="Fitting player ratings…")

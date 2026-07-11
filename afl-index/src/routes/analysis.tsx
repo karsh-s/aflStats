@@ -7,7 +7,7 @@ import {
 import { PageShell, SectionHeading } from "@/components/page-shell";
 import { ApiLoading } from "@/components/api-status";
 import { TEAM_LOGOS, TEAM_CODE_BY_NAME, type TeamCode } from "@/lib/afl-data";
-import { useTeamStyles, useStyleMatchups, usePositionConcession } from "@/lib/queries";
+import { useTeamStyles, useStyleMatchups, usePositionConcession, useRoleLeaks } from "@/lib/queries";
 import type { TeamStyle, NotableFinding } from "@/lib/api";
 
 export const Route = createFileRoute("/analysis")({
@@ -300,6 +300,109 @@ function StyleMatchupsSection() {
   );
 }
 
+// ── Section: Role Leaks (per-game classified roles) ──────────────────────────
+
+function RoleLeaksSection() {
+  const { data, isLoading } = useRoleLeaks();
+  const [highlight, setHighlight] = useState<string | null>(null);
+
+  if (isLoading) return <div className="text-sm text-muted-foreground">Loading role data…</div>;
+  if (!data?.available) return null;
+
+  return (
+    <div className="space-y-4">
+      <SectionHeading title="Role Leak Heatmap" meta="2026 · roles classified per game from box scores" />
+      <p className="text-sm text-muted-foreground max-w-2xl">
+        Unlike the static positions above, each player-game is classified by where the player{" "}
+        <em>actually played that night</em> (a midfielder swung to half-back counts as a Defender
+        for that game). <strong className="text-ink">Red = the team leaks more disposals to that
+        role than league average</strong>, blue = shuts it down.
+      </p>
+
+      <div className="overflow-x-auto">
+        <table className="text-xs border-collapse min-w-full">
+          <thead>
+            <tr>
+              <th className="text-left py-2 pr-4 font-mono text-muted-foreground text-[10px] uppercase sticky left-0 bg-paper z-10 min-w-[140px]">Team</th>
+              {data.roles.map((role) => (
+                <th key={role} className="py-2 px-2 text-center min-w-[90px]">
+                  <div className="text-[10px] font-bold">{role}</div>
+                  <div className="text-[9px] text-muted-foreground font-normal">
+                    lg avg {data.league_avg[role] ?? "—"}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.teams.map((team) => {
+              const dim = highlight !== null && highlight !== team.team;
+              const logo = getLogo(team.team);
+              return (
+                <tr
+                  key={team.team}
+                  onClick={() => setHighlight(highlight === team.team ? null : team.team)}
+                  className={`cursor-pointer border-t border-ink/5 transition-opacity ${dim ? "opacity-30" : ""}`}
+                >
+                  <td className="py-1.5 pr-4 sticky left-0 bg-paper z-10">
+                    <span className="flex items-center gap-2 font-bold">
+                      {logo && <img src={logo} alt="" className="h-4 w-4" />}
+                      {team.team}
+                    </span>
+                  </td>
+                  {data.roles.map((role) => {
+                    const r = team.roles.find((x) => x.role === role);
+                    if (!r) return <td key={role} className="text-center text-muted-foreground">—</td>;
+                    return (
+                      <td key={role} className={`py-1.5 px-2 text-center font-mono ${dispColor(r.vs_league)}`}>
+                        {r.avg_disposals}
+                        <span className="text-[9px] opacity-70"> ({r.vs_league > 0 ? "+" : ""}{r.vs_league})</span>
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Biggest leaks + player exploits */}
+      <div className="grid gap-6 md:grid-cols-2">
+        <div>
+          <h4 className="mb-2 font-mono text-[11px] font-bold uppercase text-muted-foreground">
+            Biggest role leaks
+          </h4>
+          <div className="space-y-1">
+            {data.notable.filter((n) => n.vs_league > 0).slice(0, 8).map((n, i) => (
+              <div key={i} className="flex items-center justify-between border-b border-ink/5 py-1 text-xs">
+                <span><span className="font-bold">{n.team}</span> → {n.role}</span>
+                <span className="font-mono text-red-600">+{n.vs_league} disp/game</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h4 className="mb-2 font-mono text-[11px] font-bold uppercase text-muted-foreground">
+            Biggest individual exploits conceded
+          </h4>
+          <div className="space-y-1">
+            {data.exploits.slice(0, 8).map((e, i) => (
+              <div key={i} className="flex items-center justify-between border-b border-ink/5 py-1 text-xs">
+                <span>
+                  <span className="font-bold">{e.player}</span>
+                  <span className="text-muted-foreground"> ({e.role}) vs {e.vs_team}</span>
+                </span>
+                <span className="font-mono">{e.disposals} <span className="text-red-600">(+{e.over} over avg)</span></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Section 3: Position Concession ───────────────────────────────────────────
 
 function PositionConcessionSection() {
@@ -464,6 +567,8 @@ function Analysis() {
         <StyleMatchupsSection />
 
         <PositionConcessionSection />
+
+        <RoleLeaksSection />
       </div>
     </PageShell>
   );

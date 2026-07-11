@@ -267,3 +267,83 @@ def position_concession() -> dict[str, Any]:
         "notable":      notable[:30],
         "positions":    POS_ORDER,
     }
+
+
+# ── Role leaks: per-game classified roles vs disposals conceded ───────────────
+
+def role_leaks() -> dict[str, Any]:
+    """Which teams leak disposals to which ON-FIELD roles the most.
+
+    Uses per-game role classification from box-score signatures (see
+    afl.model.game_roles) rather than static position labels, so a midfielder
+    playing half-back counts as a Defender for THAT game. 2026 season only
+    (the per-game signature stats are 2026-only).
+    """
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from afl.model import game_roles
+
+    ps = pd.read_pickle(ROOT / "data" / "raw" / "player_stats_enriched.pkl")
+    g = game_roles.classify_games(ps)
+
+    league = g.groupby("game_role")["disposals"].mean()
+
+    teams_out = []
+    for team in sorted(g["opponent"].dropna().unique()):
+        conceded = g[g["opponent"] == team]
+        roles_out = []
+        for role in game_roles.ROLES:
+            sub = conceded[conceded["game_role"] == role]
+            if len(sub) < 10:
+                continue
+            avg = float(sub["disposals"].mean())
+            delta = avg - float(league[role])
+            roles_out.append({
+                "role": role,
+                "avg_disposals": round(avg, 1),
+                "vs_league": round(delta, 2),
+                "n_player_games": int(len(sub)),
+            })
+        teams_out.append({"team": str(team), "roles": roles_out})
+
+    # Notable leaks, sorted by magnitude
+    notable = []
+    for t in teams_out:
+        for r in t["roles"]:
+            if abs(r["vs_league"]) >= 0.8:
+                notable.append({
+                    "team": t["team"], "role": r["role"],
+                    "vs_league": r["vs_league"],
+                    "avg_disposals": r["avg_disposals"],
+                    "direction": "leaks more" if r["vs_league"] > 0 else "concedes fewer",
+                })
+    notable.sort(key=lambda x: -x["vs_league"])
+
+    # Player exploits: biggest single-game overperformances conceded — a
+    # player beating his own season average by the most against that team.
+    g2 = g.copy()
+    g2["season_avg"] = g2.groupby("player")["disposals"].transform("mean")
+    g2["over"] = g2["disposals"] - g2["season_avg"]
+    counts = g2.groupby("player")["date"].transform("nunique")
+    exploits = (g2[counts >= 6].nlargest(15, "over")
+                [["player", "opponent", "game_role", "disposals",
+                  "season_avg", "over", "date"]])
+    exploits_out = [{
+        "player": str(r["player"]),
+        "vs_team": str(r["opponent"]),
+        "role": str(r["game_role"]),
+        "disposals": int(r["disposals"]),
+        "season_avg": round(float(r["season_avg"]), 1),
+        "over": round(float(r["over"]), 1),
+        "date": str(r["date"])[:10],
+    } for _, r in exploits.iterrows()]
+
+    return {
+        "available": True,
+        "teams": teams_out,
+        "league_avg": {role: round(float(league[role]), 1)
+                       for role in game_roles.ROLES if role in league.index},
+        "notable": notable[:30],
+        "exploits": exploits_out,
+        "roles": game_roles.ROLES,
+    }

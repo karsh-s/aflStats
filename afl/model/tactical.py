@@ -104,6 +104,6 @@ def apply_tactical(mean: float, comp: dict, *, player: str, stat: str,
 
 def invalidate_all_caches() -> None:
     """Invalidate every tactical module's table cache (call after data refresh)."""
-    from . import pace_pressure, tagging, game_script, absence
-    for mod in (pace_pressure, tagging, game_script, absence):
+    from . import pace_pressure, tagging, game_script, absence, game_roles
+    for mod in (pace_pressure, tagging, game_script, absence, game_roles):
         mod.invalidate_cache()

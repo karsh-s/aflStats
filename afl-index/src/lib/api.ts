@@ -47,6 +47,19 @@ export interface APISGMLeg {
   prob: number;
 }
 
+export interface APITargetMulti {
+  target: number;
+  result: {
+    legs: APISGMLeg[];
+    combined_odds: number;
+    joint_prob: number;
+    implied_prob: number;
+    edge: number;
+    n_legs: number;
+    reasons: string[];
+  } | null;
+}
+
 export interface APIValueBet {
   game: string;
   event_id: string;
@@ -85,7 +98,8 @@ async function post<T>(path: string, body?: unknown): Promise<T> {
 
 export type MultiType =
   | "risk_low" | "risk_med" | "risk_high"
-  | "target_2" | "target_3" | "target_5" | "target_10";
+  | "target_2" | "target_3" | "target_5" | "target_10"
+  | "target_2_safe" | "target_3_safe" | "target_5_safe" | "target_10_safe";
 
 export interface TrackerLeg {
   player: string;
@@ -243,11 +257,27 @@ export interface PositionConcession {
   positions?: string[];
 }
 
+export interface RoleLeakTeam {
+  team: string;
+  roles: { role: string; avg_disposals: number; vs_league: number; n_player_games: number }[];
+}
+
+export interface RoleLeaks {
+  available: boolean;
+  teams: RoleLeakTeam[];
+  league_avg: Record<string, number>;
+  notable: { team: string; role: string; vs_league: number; avg_disposals: number; direction: string }[];
+  exploits: { player: string; vs_team: string; role: string; disposals: number; season_avg: number; over: number; date: string }[];
+  roles: string[];
+}
+
 export const api = {
   events: () => get<APIEvent[]>("/api/events"),
   gameProps: (id: string) => get<APIProp[]>(`/api/game/${id}/props`),
   gameBestLines: (id: string) => get<APIBestLine[]>(`/api/game/${id}/best-lines`),
   gameSGM: (id: string) => get<APISGMLeg[]>(`/api/game/${id}/sgm`),
+  gameTargetMultis: (id: string, floor = 0.3) =>
+    get<APITargetMulti[]>(`/api/game/${id}/multis?floor=${floor}`),
   value: (minEdge = 0.04) => get<APIValueBet[]>(`/api/value?min_edge=${minEdge}`),
   health: () => get<{ status: string }>("/api/health"),
   live: {
@@ -264,6 +294,7 @@ export const api = {
     teamStyles:          () => get<TeamStyle[]>("/api/analysis/team-styles"),
     styleMatchups:       () => get<StyleMatchups>("/api/analysis/style-matchups"),
     positionConcession:  () => get<PositionConcession>("/api/analysis/position-concession"),
+    roleLeaks:           () => get<RoleLeaks>("/api/analysis/role-leaks"),
     refresh:             () => post<{ ok: boolean }>("/api/analysis/refresh"),
   },
   tracker: {

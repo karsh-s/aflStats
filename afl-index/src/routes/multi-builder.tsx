@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { PageShell, SectionHeading } from "@/components/page-shell";
 import { ApiLoading, ApiOfflineBanner } from "@/components/api-status";
-import { useEvents, useGameSGM } from "@/lib/queries";
-import type { APIEvent, APISGMLeg } from "@/lib/api";
+import { useEvents, useGameSGM, useGameTargetMultis } from "@/lib/queries";
+import type { APIEvent, APISGMLeg, APITargetMulti } from "@/lib/api";
 
 export const Route = createFileRoute("/multi-builder")({
   head: () => ({
@@ -76,9 +76,7 @@ function buildMulti(
 
 // ── Multi card ─────────────────────────────────────────────────────────────
 
-function MultiCard({ target, legs }: { target: number; legs: APISGMLeg[] }) {
-  const result = useMemo(() => buildMulti(legs, target), [legs, target]);
-
+function MultiCard({ target, result }: { target: number; result: APITargetMulti["result"] }) {
   if (!result) {
     return (
       <div className="border border-border p-4 text-xs text-muted-foreground">
@@ -105,12 +103,18 @@ function MultiCard({ target, legs }: { target: number; legs: APISGMLeg[] }) {
         <div className="flex gap-4 font-mono text-xs">
           <span>
             <span className="text-muted-foreground">Odds </span>
-            <span className="font-bold">{result.combinedOdds.toFixed(2)}×</span>
+            <span className="font-bold">{result.combined_odds.toFixed(2)}×</span>
           </span>
           <span>
             <span className="text-muted-foreground">Hit P </span>
             <span className="font-bold text-accent">
-              {(result.jointProb * 100).toFixed(1)}%
+              {(result.joint_prob * 100).toFixed(1)}%
+            </span>
+          </span>
+          <span>
+            <span className="text-muted-foreground">Edge </span>
+            <span className={`font-bold ${result.edge >= 0 ? "text-green-600" : "text-red-600"}`}>
+              {result.edge >= 0 ? "+" : ""}{(result.edge * 100).toFixed(1)}%
             </span>
           </span>
         </div>
@@ -137,15 +141,26 @@ function MultiCard({ target, legs }: { target: number; legs: APISGMLeg[] }) {
           ))}
         </tbody>
       </table>
+      {result.reasons?.length > 0 && (
+        <div className="border-t border-dashed border-border px-4 py-2.5">
+          <div className="mb-1 font-mono text-[9px] font-bold uppercase tracking-widest text-muted-foreground">
+            Why these legs
+          </div>
+          <ul className="space-y-1">
+            {result.reasons.map((r, i) => (
+              <li key={i} className="text-[11px] leading-snug text-ink/80">
+                <span className="mr-1.5 text-accent">▸</span>{r}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       {allSameStat && (
         <div className="border-t border-dashed border-border px-4 py-2 text-[10px] text-muted-foreground">
           All legs are {result.legs[0].stat} — correlated. Actual hit-rate will be lower than the
           independent estimate.
         </div>
       )}
-      <div className="border-t border-dashed border-border px-4 py-2 text-[10px] text-muted-foreground">
-        {rm.desc}
-      </div>
     </div>
   );
 }
@@ -384,7 +399,6 @@ function ManualBuilder({ legs }: { legs: APISGMLeg[] }) {
 
 // ── Page ───────────────────────────────────────────────────────────────────
 
-const TARGETS = [2, 3, 5, 10] as const;
 
 function MultiPage() {
   const { data: events, isLoading: evLoading, isError: evError } = useEvents();
@@ -392,7 +406,11 @@ function MultiPage() {
   const [mode, setMode] = useState<"risk" | "target" | "manual">("risk");
 
   const eventId = selectedGame || (events?.[0]?.id ?? null);
+  const [safeMode, setSafeMode] = useState(false);
   const { data: legs, isLoading: legsLoading } = useGameSGM(eventId);
+  const { data: targetMultis, isLoading: multisLoading } = useGameTargetMultis(
+    eventId, safeMode ? 0.7 : 0.3,
+  );
 
   // Each tier targets a different odds range and probability floor.
   // minOdds floor prevents the algorithm from stacking 1.03 certainties that add nothing.
@@ -462,14 +480,21 @@ function MultiPage() {
         )}
 
         {/* By target odds */}
-        {legs && legs.length > 0 && mode === "target" && (
+        {mode === "target" && (
           <div className="space-y-4">
-            <p className="text-xs text-muted-foreground max-w-prose">
-              Safest combination to reach each target multiplier — highest model-probability legs
-              that combine to approximately the target. Risk badge shows the weakest leg.
-            </p>
-            {TARGETS.map((t) => (
-              <MultiCard key={t} target={t} legs={legs} />
+            <button
+              onClick={() => setSafeMode(!safeMode)}
+              className={`border px-3 py-1.5 font-mono text-[11px] font-bold uppercase transition-colors ${
+                safeMode
+                  ? "border-ink bg-ink text-paper"
+                  : "border-border text-muted-foreground hover:border-ink hover:text-ink"
+              }`}
+            >
+              {safeMode ? "✓ " : ""}Safe legs only (every leg ≥70%)
+            </button>
+            {multisLoading && <ApiLoading label="Optimising safest multis…" />}
+            {targetMultis?.map((tm) => (
+              <MultiCard key={tm.target} target={tm.target} result={tm.result} />
             ))}
           </div>
         )}
