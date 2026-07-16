@@ -139,6 +139,9 @@ def startup_event():
     _live.set_on_games_finished(_on_live_games_finished)
     _live.start()
     threading.Thread(target=_auto_check_loop, daemon=True, name="auto-check").start()
+    # AFL official API: live per-leg disposal tracking + automatic settlement
+    from api import afl_live as _afl_live
+    _afl_live.start()
 
 
 # ---------------------------------------------------------------------------
@@ -1160,6 +1163,60 @@ def _run_check_results() -> dict:
 def check_results():
     """Check results for all pending bets where game_date < now."""
     return _run_check_results()
+
+
+@app.get("/api/tracker/live-progress")
+def tracker_live_progress():
+    """Per-leg live values for pending bets in games currently being played.
+
+    Sourced from the AFL official API poller (api.afl_live). Returns
+    {bet_id: {"game": ..., "status": ..., "legs": [{player, stat, line,
+    current, hit}], "legs_hit": n, "legs_total": m}}.
+    """
+    from api import afl_live as _afl_live
+    import json as _json
+    if not _afl_live.LIVE_STATS_FILE.exists():
+        return {}
+    try:
+        live = _json.loads(_afl_live.LIVE_STATS_FILE.read_text())
+    except Exception:
+        return {}
+    if not live:
+        return {}
+    by_pair = {frozenset((v["home"], v["away"])): v for v in live.values()}
+    data = _load_tracker()
+    out = {}
+    for bet in data.get("bets", []):
+        if bet.get("status") != "pending":
+            continue
+        try:
+            pair = frozenset(s.strip() for s in bet["game"].split(" v "))
+        except Exception:
+            continue
+        snap = by_pair.get(pair)
+        if snap is None:
+            continue
+        legs_out, hit_n = [], 0
+        for leg in bet.get("legs", []):
+            key = canonical_name(leg.get("player_scraped") or leg.get("player", ""))
+            cur = (snap["players"].get(key) or {}).get(leg.get("stat"))
+            hit = cur is not None and float(cur) > float(leg.get("line", 0))
+            hit_n += bool(hit)
+            legs_out.append({"player": leg.get("player"), "stat": leg.get("stat"),
+                             "milestone": leg.get("milestone"),
+                             "line": leg.get("line"), "current": cur,
+                             "hit": bool(hit)})
+        out[bet["id"]] = {"game": bet["game"], "status": snap.get("status"),
+                          "updated": snap.get("updated"), "legs": legs_out,
+                          "legs_hit": hit_n, "legs_total": len(legs_out)}
+    return out
+
+
+@app.post("/api/tracker/afl-sync")
+def tracker_afl_sync():
+    """Manually trigger one AFL API poll/settlement cycle."""
+    from api import afl_live as _afl_live
+    return _afl_live.run_once()
 
 
 # ---------------------------------------------------------------------------

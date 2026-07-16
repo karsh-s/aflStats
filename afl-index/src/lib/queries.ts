@@ -188,3 +188,13 @@ export function useCheckResults() {
     onSuccess: () => qc.invalidateQueries({ queryKey: ["tracker-bets"] }),
   });
 }
+
+export function useTrackerLiveProgress() {
+  return useQuery({
+    queryKey: ["tracker-live-progress"],
+    queryFn: api.tracker.liveProgress,
+    refetchInterval: 60_000,   // live leg values during games
+    staleTime: 30_000,
+    retry: 1,
+  });
+}

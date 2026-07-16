@@ -15489,8 +15489,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15509,8 +15509,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15529,8 +15529,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15549,8 +15549,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15569,16 +15569,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         }
       ],
       "combined_odds": 2.155,
       "stake": 5.0,
       "potential_return": 10.77,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:56.815279",
+      "pnl": 5.77
     },
     {
       "id": "43170d25-71bc-4dae-be31-766aff2c7521",
@@ -15606,8 +15606,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15626,8 +15626,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15646,8 +15646,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15666,8 +15666,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15686,8 +15686,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15706,8 +15706,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15726,16 +15726,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 11.0
         }
       ],
       "combined_odds": 5.889,
       "stake": 5.0,
       "potential_return": 29.45,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.815297",
+      "pnl": -5.0
     },
     {
       "id": "73a15d37-d0e7-469c-9e3b-07fe78228612",
@@ -15763,8 +15763,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15783,8 +15783,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15803,8 +15803,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15823,8 +15823,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15843,8 +15843,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15863,16 +15863,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 15.594,
       "stake": 5.0,
       "potential_return": 77.97,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:56.815312",
+      "pnl": 72.97
     },
     {
       "id": "e7bcb0fc-5f58-4178-94ef-d300cf64ae72",
@@ -15900,8 +15900,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15920,16 +15920,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 2.001,
       "stake": 5.0,
       "potential_return": 10.0,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:56.815317",
+      "pnl": 5.0
     },
     {
       "id": "3e844ac1-0836-4d59-8110-e24279b3c828",
@@ -15957,8 +15957,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -15977,16 +15977,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 3.019,
       "stake": 5.0,
       "potential_return": 15.1,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.815323",
+      "pnl": -5.0
     },
     {
       "id": "bbd02160-fc0b-4519-ac4d-743b269c0295",
@@ -16014,8 +16014,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16034,16 +16034,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.4,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 5.062,
       "stake": 5.0,
       "potential_return": 25.31,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.815328",
+      "pnl": -5.0
     },
     {
       "id": "dcf15058-aa8d-4049-901c-f1adafe5c89d",
@@ -16071,8 +16071,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16091,8 +16091,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16111,16 +16111,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.4,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 10.102,
       "stake": 5.0,
       "potential_return": 50.51,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.815335",
+      "pnl": -5.0
     },
     {
       "id": "4d1366cc-7377-454f-99a3-78a5ad848799",
@@ -16148,8 +16148,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16168,16 +16168,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 2.022,
       "stake": 5.0,
       "potential_return": 10.11,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:56.815340",
+      "pnl": 5.11
     },
     {
       "id": "062f1558-4f70-4317-af5b-bdbc3ef0a0ad",
@@ -16205,8 +16205,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16225,8 +16225,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16245,8 +16245,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16265,16 +16265,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 2.955,
       "stake": 5.0,
       "potential_return": 14.78,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:56.815350",
+      "pnl": 9.78
     },
     {
       "id": "2f498b36-e729-431b-8131-1605ff4f43c0",
@@ -16302,8 +16302,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16322,8 +16322,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16342,8 +16342,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16362,8 +16362,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16382,16 +16382,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 4.997,
       "stake": 5.0,
       "potential_return": 24.98,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:56.815361",
+      "pnl": 19.98
     },
     {
       "id": "537e98ee-1102-457b-b69d-2b83cac53729",
@@ -16419,8 +16419,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 11.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16439,8 +16439,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16459,8 +16459,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16479,8 +16479,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16499,8 +16499,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16519,8 +16519,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "84b6de9f7b35130c08d2d350415a02e4",
@@ -16539,16 +16539,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Fremantle",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 9.997,
       "stake": 5.0,
       "potential_return": 49.98,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.815376",
+      "pnl": -5.0
     },
     {
       "id": "0b06ec36-7693-4545-9782-23bd16cdb1e0",
@@ -16576,8 +16576,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16596,8 +16596,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16616,8 +16616,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16636,8 +16636,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16656,16 +16656,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 2.287,
       "stake": 5.0,
       "potential_return": 11.43,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927672",
+      "pnl": -5.0
     },
     {
       "id": "f4edd29b-101a-4f7d-9fe4-dbc6d820215d",
@@ -16693,8 +16693,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16713,8 +16713,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16733,8 +16733,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16753,8 +16753,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 10.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16773,8 +16773,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16793,8 +16793,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16813,16 +16813,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         }
       ],
       "combined_odds": 5.94,
       "stake": 5.0,
       "potential_return": 29.7,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927692",
+      "pnl": -5.0
     },
     {
       "id": "f4a3734d-5ed8-47eb-b27e-69d849b7590e",
@@ -16850,8 +16850,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16870,8 +16870,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16890,8 +16890,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16910,8 +16910,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16930,8 +16930,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -16950,16 +16950,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         }
       ],
       "combined_odds": 17.502,
       "stake": 5.0,
       "potential_return": 87.51,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927705",
+      "pnl": -5.0
     },
     {
       "id": "3d1efcae-0f5b-4283-bd0f-283e7274fc88",
@@ -16987,8 +16987,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17007,16 +17007,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 2.009,
       "stake": 5.0,
       "potential_return": 10.04,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927710",
+      "pnl": -5.0
     },
     {
       "id": "e34fa32e-c3da-46a4-9f79-ec9b0796cc48",
@@ -17044,8 +17044,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17064,16 +17064,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.3,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 3.03,
       "stake": 5.0,
       "potential_return": 15.15,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927715",
+      "pnl": -5.0
     },
     {
       "id": "e5c60ae2-1453-478a-a4b7-767cc14bcf29",
@@ -17101,8 +17101,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17121,8 +17121,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17141,16 +17141,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.3,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 5.059,
       "stake": 5.0,
       "potential_return": 25.3,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927722",
+      "pnl": -5.0
     },
     {
       "id": "a8d6a084-fbcb-498c-a9aa-ddb41dc557a7",
@@ -17178,8 +17178,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17198,8 +17198,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.3,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17218,16 +17218,16 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.5,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 9.906,
       "stake": 5.0,
       "potential_return": 49.53,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927729",
+      "pnl": -5.0
     },
     {
       "id": "256d6b2f-e767-4b78-9432-bd825d40de76",
@@ -17255,8 +17255,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17275,16 +17275,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         }
       ],
       "combined_odds": 2.009,
       "stake": 5.0,
       "potential_return": 10.04,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927734",
+      "pnl": -5.0
     },
     {
       "id": "179e09b2-84cc-4e0f-b4e3-fdc620b1777c",
@@ -17312,8 +17312,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17332,8 +17332,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17352,16 +17352,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 3.021,
       "stake": 5.0,
       "potential_return": 15.11,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927741",
+      "pnl": -5.0
     },
     {
       "id": "289ce127-89c3-47d5-856a-3933594cc29a",
@@ -17389,8 +17389,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17409,8 +17409,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17429,8 +17429,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17449,16 +17449,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 4.927,
       "stake": 5.0,
       "potential_return": 24.63,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927750",
+      "pnl": -5.0
     },
     {
       "id": "d99f0e96-3cfd-4e65-8db7-91145d7f1c2b",
@@ -17486,8 +17486,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17506,8 +17506,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17526,8 +17526,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 22.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17546,8 +17546,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17566,8 +17566,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 28.0
         },
         {
           "event_id": "cc95f6dde494fb94b9b04f2291f8fb80",
@@ -17586,16 +17586,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Collingwood",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 9.808,
       "stake": 5.0,
       "potential_return": 49.04,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.927762",
+      "pnl": -5.0
     },
     {
       "id": "b813d30a-879a-4814-b244-4ae98dd3f91c",
@@ -17623,8 +17623,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17643,8 +17643,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.875,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17663,8 +17663,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 26.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17683,8 +17683,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17703,16 +17703,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         }
       ],
       "combined_odds": 2.192,
       "stake": 5.0,
       "potential_return": 10.96,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.092574",
+      "pnl": 5.96
     },
     {
       "id": "3ee9635d-fd31-4475-b843-27b9c5a908ca",
@@ -17740,8 +17740,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17760,8 +17760,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.875,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17780,8 +17780,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 26.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17800,8 +17800,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17820,8 +17820,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.7,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17840,8 +17840,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 15.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17860,16 +17860,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 5.2,
       "stake": 5.0,
       "potential_return": 26.0,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.092587",
+      "pnl": -5.0
     },
     {
       "id": "2dc8399d-85e5-4a6a-b5db-5fb9a16900e9",
@@ -17897,8 +17897,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17917,8 +17917,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.625,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17937,8 +17937,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17957,8 +17957,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17977,8 +17977,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -17997,16 +17997,16 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 26.0
         }
       ],
       "combined_odds": 16.322,
       "stake": 5.0,
       "potential_return": 81.61,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.092596",
+      "pnl": -5.0
     },
     {
       "id": "321a526e-9c93-4715-88e3-22fc933bd102",
@@ -18034,8 +18034,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.875,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18054,16 +18054,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         }
       ],
       "combined_odds": 2.022,
       "stake": 5.0,
       "potential_return": 10.11,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.092600",
+      "pnl": 5.11
     },
     {
       "id": "498e4d62-045f-4784-997c-661ae75639b6",
@@ -18091,8 +18091,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.75,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18111,16 +18111,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         }
       ],
       "combined_odds": 3.146,
       "stake": 5.0,
       "potential_return": 15.73,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.092604",
+      "pnl": 10.73
     },
     {
       "id": "449904c4-8dec-485d-8934-a67720ece962",
@@ -18148,8 +18148,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18168,16 +18168,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         }
       ],
       "combined_odds": 5.038,
       "stake": 5.0,
       "potential_return": 25.19,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.092609",
+      "pnl": 20.19
     },
     {
       "id": "6f5ff9f1-cf26-42be-86a0-951bfe81973d",
@@ -18205,8 +18205,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.625,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18225,8 +18225,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18245,16 +18245,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.2,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 32.0
         }
       ],
       "combined_odds": 9.79,
       "stake": 5.0,
       "potential_return": 48.95,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.092614",
+      "pnl": -5.0
     },
     {
       "id": "9c63e1da-6632-45f1-9475-962c58d99b8f",
@@ -18282,8 +18282,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.875,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18302,16 +18302,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         }
       ],
       "combined_odds": 2.022,
       "stake": 5.0,
       "potential_return": 10.11,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.092618",
+      "pnl": 5.11
     },
     {
       "id": "1fa3b40b-1867-4abb-b9a3-6caa5331c51e",
@@ -18339,8 +18339,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18359,8 +18359,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18379,16 +18379,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.625,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         }
       ],
       "combined_odds": 3.013,
       "stake": 5.0,
       "potential_return": 15.06,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.092624",
+      "pnl": 10.06
     },
     {
       "id": "f0876034-0107-4096-b008-c536c3e07534",
@@ -18416,8 +18416,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18436,8 +18436,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18456,8 +18456,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.625,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18476,16 +18476,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 5.045,
       "stake": 5.0,
       "potential_return": 25.23,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.092630",
+      "pnl": -5.0
     },
     {
       "id": "7793e6fc-98df-4084-80cb-67b051b10796",
@@ -18513,8 +18513,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 15.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18533,8 +18533,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18553,8 +18553,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18573,8 +18573,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 26.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18593,8 +18593,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18613,8 +18613,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.625,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "623c67ea943712bd04fcf89861655a63",
@@ -18633,16 +18633,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "St Kilda",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 10.04,
       "stake": 5.0,
       "potential_return": 50.2,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.092640",
+      "pnl": -5.0
     },
     {
       "id": "14fbe3dd-ec24-42ec-8cbf-826e09e8be2c",
@@ -18670,8 +18670,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18690,8 +18690,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18710,8 +18710,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18730,8 +18730,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18750,16 +18750,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 2.249,
       "stake": 5.0,
       "potential_return": 11.25,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204202",
+      "pnl": -5.0
     },
     {
       "id": "8c15c132-d3ba-4aea-a6f2-6335d5b90c5a",
@@ -18787,8 +18787,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18807,8 +18807,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18827,8 +18827,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18847,8 +18847,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18867,8 +18867,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18887,8 +18887,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18907,16 +18907,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 34.0
         }
       ],
       "combined_odds": 5.583,
       "stake": 5.0,
       "potential_return": 27.91,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204215",
+      "pnl": -5.0
     },
     {
       "id": "7bc550ba-f028-458d-8a6e-97cfacb6f382",
@@ -18944,8 +18944,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18964,8 +18964,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -18984,8 +18984,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19004,8 +19004,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 34.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19024,8 +19024,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 30.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19044,16 +19044,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         }
       ],
       "combined_odds": 15.689,
       "stake": 5.0,
       "potential_return": 78.44,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204224",
+      "pnl": -5.0
     },
     {
       "id": "569e8c4a-5756-45bd-96a8-00a0f609148f",
@@ -19081,8 +19081,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19101,8 +19101,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19121,16 +19121,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 1.972,
       "stake": 5.0,
       "potential_return": 9.86,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.204231",
+      "pnl": 4.86
     },
     {
       "id": "15e0a298-ef71-46cb-ac7e-478792e0d4aa",
@@ -19158,8 +19158,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19178,16 +19178,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 3.069,
       "stake": 5.0,
       "potential_return": 15.34,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204234",
+      "pnl": -5.0
     },
     {
       "id": "b78d4fb8-0584-42f8-abb0-5ab263de7007",
@@ -19215,8 +19215,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19235,16 +19235,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 5.042,
       "stake": 5.0,
       "potential_return": 25.21,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204238",
+      "pnl": -5.0
     },
     {
       "id": "897d457e-6578-4d9a-8ef6-4c037c52be15",
@@ -19272,8 +19272,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19292,8 +19292,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19312,16 +19312,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.4,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 10.01,
       "stake": 5.0,
       "potential_return": 50.05,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204242",
+      "pnl": -5.0
     },
     {
       "id": "e07f7591-1d3b-4546-83f2-b5ed3b33b966",
@@ -19349,8 +19349,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19369,8 +19369,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19389,16 +19389,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 1.972,
       "stake": 5.0,
       "potential_return": 9.86,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.204248",
+      "pnl": 4.86
     },
     {
       "id": "e6d9af25-9abb-482f-a478-dd77996652ae",
@@ -19426,8 +19426,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19446,8 +19446,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19466,16 +19466,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         }
       ],
       "combined_odds": 2.994,
       "stake": 5.0,
       "potential_return": 14.97,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204252",
+      "pnl": -5.0
     },
     {
       "id": "6bd2a7dd-a265-4cb1-a25c-e1bf7ddd4fa7",
@@ -19503,8 +19503,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19523,8 +19523,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19543,8 +19543,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19563,16 +19563,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         }
       ],
       "combined_odds": 4.863,
       "stake": 5.0,
       "potential_return": 24.32,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204258",
+      "pnl": -5.0
     },
     {
       "id": "b3dd4488-5cb4-4849-878c-7bdae0d1c6ac",
@@ -19600,8 +19600,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19620,8 +19620,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 32.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19640,8 +19640,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19660,8 +19660,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19680,8 +19680,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "f6d3d763bb1dcde33192abc47f1859b3",
@@ -19700,16 +19700,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "GWS",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 36.0
         }
       ],
       "combined_odds": 9.731,
       "stake": 5.0,
       "potential_return": 48.66,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.204267",
+      "pnl": -5.0
     },
     {
       "id": "f281dcf2-b650-40a4-a43d-281662104bab",
@@ -19737,8 +19737,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19757,8 +19757,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19777,8 +19777,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19797,8 +19797,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19817,16 +19817,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 2.345,
       "stake": 5.0,
       "potential_return": 11.73,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.339969",
+      "pnl": -5.0
     },
     {
       "id": "9c426613-2471-4288-b4c0-e2d29433d40e",
@@ -19854,8 +19854,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19874,8 +19874,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19894,8 +19894,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19914,8 +19914,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19934,8 +19934,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 20.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19954,8 +19954,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -19974,16 +19974,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 11.0
         }
       ],
       "combined_odds": 5.666,
       "stake": 5.0,
       "potential_return": 28.33,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.339984",
+      "pnl": -5.0
     },
     {
       "id": "6f947df9-153d-4618-8aaf-46ce9973712f",
@@ -20011,8 +20011,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20031,8 +20031,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20051,8 +20051,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20071,8 +20071,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 20.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20091,8 +20091,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20111,16 +20111,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 17.489,
       "stake": 5.0,
       "potential_return": 87.45,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.339992",
+      "pnl": -5.0
     },
     {
       "id": "c615ee74-4d42-4faa-8dd9-e03d95a99a02",
@@ -20148,8 +20148,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20168,16 +20168,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         }
       ],
       "combined_odds": 1.988,
       "stake": 5.0,
       "potential_return": 9.94,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.339996",
+      "pnl": -5.0
     },
     {
       "id": "f7e2cea0-8307-472c-b5d2-3993bf3cb406",
@@ -20205,8 +20205,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20225,8 +20225,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20245,16 +20245,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         }
       ],
       "combined_odds": 2.949,
       "stake": 5.0,
       "potential_return": 14.74,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340000",
+      "pnl": -5.0
     },
     {
       "id": "29b18a03-621b-4f69-91b5-5fedc7dbf27c",
@@ -20282,8 +20282,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20302,8 +20302,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20322,16 +20322,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.4,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         }
       ],
       "combined_odds": 4.929,
       "stake": 5.0,
       "potential_return": 24.65,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340005",
+      "pnl": -5.0
     },
     {
       "id": "8df5beb4-d6d5-4f1c-a3a5-64e84dd39320",
@@ -20359,8 +20359,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20379,8 +20379,8 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.4,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20399,16 +20399,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.4,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         }
       ],
       "combined_odds": 10.205,
       "stake": 5.0,
       "potential_return": 51.02,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340009",
+      "pnl": -5.0
     },
     {
       "id": "db270c71-95af-475b-bfaf-feb5e27b3114",
@@ -20436,8 +20436,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20456,8 +20456,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20476,16 +20476,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         }
       ],
       "combined_odds": 1.992,
       "stake": 5.0,
       "potential_return": 9.96,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340014",
+      "pnl": -5.0
     },
     {
       "id": "c1ce65d0-a420-4dcc-abf5-d8d2ec4d413a",
@@ -20513,8 +20513,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20533,8 +20533,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20553,16 +20553,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 2.983,
       "stake": 5.0,
       "potential_return": 14.92,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340018",
+      "pnl": -5.0
     },
     {
       "id": "9c830fe0-d2be-4a70-ba94-a2fd1d38070e",
@@ -20590,8 +20590,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20610,8 +20610,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20630,8 +20630,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20650,8 +20650,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20670,16 +20670,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 4.96,
       "stake": 5.0,
       "potential_return": 24.8,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340025",
+      "pnl": -5.0
     },
     {
       "id": "e2e6ea98-eef1-4ea3-a6ad-c33821499b0d",
@@ -20707,8 +20707,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 11.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20727,8 +20727,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20747,8 +20747,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20767,8 +20767,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20787,8 +20787,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 18.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20807,8 +20807,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20827,8 +20827,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "6db04f1bce8d12056071015cd4d48cd9",
@@ -20847,16 +20847,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Carlton",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 20.0
         }
       ],
       "combined_odds": 10.008,
       "stake": 5.0,
       "potential_return": 50.04,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.340036",
+      "pnl": -5.0
     },
     {
       "id": "5e8a45e1-c09c-41e4-ae2d-a01244435b18",
@@ -20884,7 +20884,7 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8888888888888888,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -20904,8 +20904,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -20924,8 +20924,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -20944,8 +20944,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -20964,16 +20964,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 2.365,
       "stake": 5.0,
       "potential_return": 11.83,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373806",
+      "pnl": -5.0
     },
     {
       "id": "78a49542-c109-4867-900f-bc7368ccb9cd",
@@ -21001,7 +21001,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21021,8 +21021,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21041,8 +21041,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21061,8 +21061,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21081,8 +21081,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21101,8 +21101,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21121,16 +21121,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 5.535,
       "stake": 5.0,
       "potential_return": 27.68,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373813",
+      "pnl": -5.0
     },
     {
       "id": "95c865ba-8a78-4ad0-9dff-45c41c0239db",
@@ -21158,8 +21158,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21178,8 +21178,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21198,7 +21198,7 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21218,8 +21218,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21238,7 +21238,7 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6666666666666666,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21258,16 +21258,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 16.553,
       "stake": 5.0,
       "potential_return": 82.77,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373816",
+      "pnl": -5.0
     },
     {
       "id": "23bcc5d7-399e-490c-acd0-752f16e49582",
@@ -21295,7 +21295,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21315,16 +21315,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         }
       ],
       "combined_odds": 2.01,
       "stake": 5.0,
       "potential_return": 10.05,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373818",
+      "pnl": -5.0
     },
     {
       "id": "af406008-6b99-41be-a663-68a9d5851d90",
@@ -21352,8 +21352,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21372,16 +21372,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 15.0
         }
       ],
       "combined_odds": 2.983,
       "stake": 5.0,
       "potential_return": 14.92,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.559610",
+      "pnl": -5.0
     },
     {
       "id": "cd039f87-40e8-40f3-8a97-b907b1765bfe",
@@ -21409,7 +21409,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21429,8 +21429,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21449,16 +21449,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         }
       ],
       "combined_odds": 4.961,
       "stake": 5.0,
       "potential_return": 24.8,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373821",
+      "pnl": -5.0
     },
     {
       "id": "afc3976f-690b-4e45-8657-65cea10b216e",
@@ -21486,7 +21486,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21506,8 +21506,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21526,8 +21526,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21546,16 +21546,16 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.3,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 9.939,
       "stake": 5.0,
       "potential_return": 49.7,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373823",
+      "pnl": -5.0
     },
     {
       "id": "6d16ef50-4c64-4319-ad70-f4521035b0df",
@@ -21583,8 +21583,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21603,7 +21603,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21623,16 +21623,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 15.0
         }
       ],
       "combined_odds": 2.012,
       "stake": 5.0,
       "potential_return": 10.06,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373825",
+      "pnl": -5.0
     },
     {
       "id": "2362cbe6-9c9d-4fff-8dca-07dfe1a7f491",
@@ -21660,7 +21660,7 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21680,7 +21680,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21700,8 +21700,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21720,16 +21720,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 2.999,
       "stake": 5.0,
       "potential_return": 15.0,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373828",
+      "pnl": -5.0
     },
     {
       "id": "917bdc06-ba34-4f7f-9b2e-1b72b7b79eab",
@@ -21757,7 +21757,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21777,8 +21777,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21797,8 +21797,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21817,8 +21817,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21837,16 +21837,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 4.969,
       "stake": 5.0,
       "potential_return": 24.85,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373830",
+      "pnl": -5.0
     },
     {
       "id": "56348363-c86b-428e-a758-5228c0f0fdc9",
@@ -21874,7 +21874,7 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21894,7 +21894,7 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Adelaide",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -21914,8 +21914,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21934,8 +21934,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 21.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21954,8 +21954,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21974,8 +21974,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 15.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -21994,8 +21994,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "24f75fcd633532ddb6245098fde3db79",
@@ -22014,16 +22014,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Adelaide",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 9.882,
       "stake": 5.0,
       "potential_return": 49.41,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.373834",
+      "pnl": -5.0
     },
     {
       "id": "e1766d17-2510-4155-8d00-926feb49c856",
@@ -22051,8 +22051,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22071,7 +22071,7 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22091,8 +22091,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22111,8 +22111,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 13.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22131,16 +22131,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 11.0
         }
       ],
       "combined_odds": 2.345,
       "stake": 5.0,
       "potential_return": 11.73,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755718",
+      "pnl": -5.0
     },
     {
       "id": "ff1aad04-71f3-4574-9a32-a0bb10d19129",
@@ -22168,8 +22168,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22188,7 +22188,7 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22208,8 +22208,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22228,8 +22228,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22248,8 +22248,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 13.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22268,8 +22268,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 28.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22288,16 +22288,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 11.0
         }
       ],
       "combined_odds": 5.366,
       "stake": 5.0,
       "potential_return": 26.83,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755737",
+      "pnl": -5.0
     },
     {
       "id": "ad339986-58e8-4601-9be9-11ce2cb8d75e",
@@ -22325,8 +22325,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22345,7 +22345,7 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22365,8 +22365,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22385,8 +22385,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 7.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22405,8 +22405,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22425,16 +22425,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         }
       ],
       "combined_odds": 14.406,
       "stake": 5.0,
       "potential_return": 72.03,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755747",
+      "pnl": -5.0
     },
     {
       "id": "4d31bcd1-007c-4dd0-884c-8796e42d3574",
@@ -22462,7 +22462,7 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22482,16 +22482,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         }
       ],
       "combined_odds": 2.023,
       "stake": 5.0,
       "potential_return": 10.12,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755750",
+      "pnl": -5.0
     },
     {
       "id": "db230733-b783-4807-b478-548f27340e8a",
@@ -22519,7 +22519,7 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22539,16 +22539,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         }
       ],
       "combined_odds": 3.034,
       "stake": 5.0,
       "potential_return": 15.17,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755754",
+      "pnl": -5.0
     },
     {
       "id": "e3cc0377-1122-4bb4-97d5-492e9e6a4e94",
@@ -22576,7 +22576,7 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22596,16 +22596,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 29.0
         }
       ],
       "combined_odds": 5.094,
       "stake": 5.0,
       "potential_return": 25.47,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755757",
+      "pnl": -5.0
     },
     {
       "id": "7e49daa9-92c7-407d-a6e4-c34b4d1e2bfb",
@@ -22633,8 +22633,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22653,8 +22653,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22673,16 +22673,16 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.4,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         }
       ],
       "combined_odds": 9.909,
       "stake": 5.0,
       "potential_return": 49.55,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755762",
+      "pnl": -5.0
     },
     {
       "id": "1b6dfa24-476a-473a-8edd-2ddc22fcff29",
@@ -22710,7 +22710,7 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22730,16 +22730,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         }
       ],
       "combined_odds": 2.023,
       "stake": 5.0,
       "potential_return": 10.12,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755765",
+      "pnl": -5.0
     },
     {
       "id": "dd690cce-d907-440b-b3af-fde58be9e4da",
@@ -22767,8 +22767,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22787,7 +22787,7 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22807,16 +22807,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         }
       ],
       "combined_odds": 3.054,
       "stake": 5.0,
       "potential_return": 15.27,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755770",
+      "pnl": -5.0
     },
     {
       "id": "e0e2c0a4-b4ab-466d-b729-2782c8339a97",
@@ -22844,8 +22844,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22864,8 +22864,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22884,7 +22884,7 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -22904,16 +22904,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         }
       ],
       "combined_odds": 4.956,
       "stake": 5.0,
       "potential_return": 24.78,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755776",
+      "pnl": -5.0
     },
     {
       "id": "fb8ab215-116f-4364-8df1-dcc61a54a90d",
@@ -22941,8 +22941,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 7.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22961,8 +22961,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 20.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -22981,7 +22981,7 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
+          "result": false,
           "actual_value": null
         },
         {
@@ -23001,8 +23001,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -23021,8 +23021,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 25.0
         },
         {
           "event_id": "c2a8fb6181bea95d76d92bce47eabea1",
@@ -23041,16 +23041,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Western Bulldogs",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         }
       ],
       "combined_odds": 10.006,
       "stake": 5.0,
       "potential_return": 50.03,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:21:42.755785",
+      "pnl": -5.0
     },
     {
       "id": "a3795232-e1b1-445d-bc29-e6e9e94d2970",
@@ -23078,8 +23078,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23098,8 +23098,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23118,8 +23118,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23138,8 +23138,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23158,16 +23158,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 2.424,
       "stake": 5.0,
       "potential_return": 12.12,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809590",
+      "pnl": -5.0
     },
     {
       "id": "530754eb-c738-4cca-a07e-06ced62981e3",
@@ -23195,8 +23195,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23215,8 +23215,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23235,8 +23235,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23255,8 +23255,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23275,8 +23275,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23295,8 +23295,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23315,16 +23315,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         }
       ],
       "combined_odds": 5.972,
       "stake": 5.0,
       "potential_return": 29.86,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809603",
+      "pnl": -5.0
     },
     {
       "id": "fab872ab-cdad-46c9-8ad6-dab9ec026fd9",
@@ -23352,8 +23352,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23372,8 +23372,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23392,8 +23392,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 9.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23412,8 +23412,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23432,8 +23432,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23452,16 +23452,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.3,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         }
       ],
       "combined_odds": 16.65,
       "stake": 5.0,
       "potential_return": 83.25,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809612",
+      "pnl": -5.0
     },
     {
       "id": "3f1d6a2f-f8cb-49f0-9c89-9252e8ec869b",
@@ -23489,8 +23489,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23509,16 +23509,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         }
       ],
       "combined_odds": 1.989,
       "stake": 5.0,
       "potential_return": 9.95,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.809618",
+      "pnl": 4.95
     },
     {
       "id": "e7073e27-ba55-4f15-a018-4a49fe812e10",
@@ -23546,8 +23546,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23566,8 +23566,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23586,16 +23586,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 2.975,
       "stake": 5.0,
       "potential_return": 14.88,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809623",
+      "pnl": -5.0
     },
     {
       "id": "abc25b54-c8af-4cd5-8726-83305aabdb60",
@@ -23623,8 +23623,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23643,8 +23643,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23663,16 +23663,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 4.915,
       "stake": 5.0,
       "potential_return": 24.57,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809627",
+      "pnl": -5.0
     },
     {
       "id": "722923d3-5979-41f2-a4dd-fa6c23be30d7",
@@ -23700,8 +23700,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23720,8 +23720,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23740,8 +23740,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23760,16 +23760,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.4,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 9.787,
       "stake": 5.0,
       "potential_return": 48.94,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809633",
+      "pnl": -5.0
     },
     {
       "id": "a6a8dda2-d85a-4a43-8e2a-e5076072a1dc",
@@ -23797,8 +23797,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23817,16 +23817,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         }
       ],
       "combined_odds": 1.989,
       "stake": 5.0,
       "potential_return": 9.95,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "won",
+      "result_checked_at": "2026-07-16T13:11:57.809637",
+      "pnl": 4.95
     },
     {
       "id": "774deb48-d41b-40b0-9708-ad1bbf74d473",
@@ -23854,8 +23854,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23874,8 +23874,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23894,16 +23894,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 2.975,
       "stake": 5.0,
       "potential_return": 14.88,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809641",
+      "pnl": -5.0
     },
     {
       "id": "79f2643b-314b-4e0b-927e-5bb5749cad92",
@@ -23931,8 +23931,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 9.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23951,8 +23951,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23971,8 +23971,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -23991,16 +23991,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 4.907,
       "stake": 5.0,
       "potential_return": 24.54,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809647",
+      "pnl": -5.0
     },
     {
       "id": "b880096e-9860-4b61-9acf-b363ddb20374",
@@ -24028,8 +24028,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 9.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -24048,8 +24048,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -24068,8 +24068,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 27.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -24088,8 +24088,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.4,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -24108,8 +24108,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 24.0
         },
         {
           "event_id": "8fb7f76d9cf01948d2f7da59fec30559",
@@ -24128,16 +24128,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Melbourne",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 9.886,
       "stake": 5.0,
       "potential_return": 49.43,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:57.809656",
+      "pnl": -5.0
     },
     {
       "id": "7bcff36e-577a-450c-b9bd-9cbef731b9f7",
@@ -24165,8 +24165,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24185,8 +24185,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 13.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24205,8 +24205,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24225,8 +24225,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24245,16 +24245,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 2.467,
       "stake": 5.0,
       "potential_return": 12.34,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191807",
+      "pnl": -5.0
     },
     {
       "id": "c8610a1e-9444-4532-a4b4-d171fba86063",
@@ -24282,8 +24282,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24302,8 +24302,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24322,8 +24322,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24342,8 +24342,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24362,8 +24362,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24382,8 +24382,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 19.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24402,16 +24402,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 11.0
         }
       ],
       "combined_odds": 5.751,
       "stake": 5.0,
       "potential_return": 28.76,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191822",
+      "pnl": -5.0
     },
     {
       "id": "ed6ecffb-6e16-45a0-9927-0c7c0c1c6bd4",
@@ -24439,8 +24439,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24459,8 +24459,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24479,8 +24479,8 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.4,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24499,8 +24499,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24519,8 +24519,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24539,16 +24539,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.5,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 13.323,
       "stake": 5.0,
       "potential_return": 66.62,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191832",
+      "pnl": -5.0
     },
     {
       "id": "2f36e6b4-ed6d-4f40-8564-e9a54dd24cbf",
@@ -24576,8 +24576,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24596,16 +24596,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 1.998,
       "stake": 5.0,
       "potential_return": 9.99,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191835",
+      "pnl": -5.0
     },
     {
       "id": "5a655027-24b9-4a41-b5c1-172609b5aab9",
@@ -24633,8 +24633,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24653,16 +24653,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 3.002,
       "stake": 5.0,
       "potential_return": 15.01,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191839",
+      "pnl": -5.0
     },
     {
       "id": "2bef0d97-44f8-4f7c-a31e-55b06188a63a",
@@ -24690,8 +24690,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24710,16 +24710,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         }
       ],
       "combined_odds": 5.004,
       "stake": 5.0,
       "potential_return": 25.02,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191843",
+      "pnl": -5.0
     },
     {
       "id": "badf3855-5dc4-4d76-a71c-c4de92f0d813",
@@ -24747,8 +24747,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24767,8 +24767,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24787,16 +24787,16 @@
           "hit_last_5": 0.2,
           "hit_last_10": 0.3,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         }
       ],
       "combined_odds": 9.9,
       "stake": 5.0,
       "potential_return": 49.5,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191848",
+      "pnl": -5.0
     },
     {
       "id": "f0c52cbc-d229-43c5-b031-20bc95dab126",
@@ -24824,8 +24824,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24844,16 +24844,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         }
       ],
       "combined_odds": 1.984,
       "stake": 5.0,
       "potential_return": 9.92,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191851",
+      "pnl": -5.0
     },
     {
       "id": "9df7ab3f-84a6-4dae-b539-7f1ef7174fe2",
@@ -24881,8 +24881,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24901,8 +24901,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24921,16 +24921,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 3.055,
       "stake": 5.0,
       "potential_return": 15.28,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191856",
+      "pnl": -5.0
     },
     {
       "id": "4c047e21-010c-4ec2-9bdf-db4a753900b4",
@@ -24958,8 +24958,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24978,8 +24978,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -24998,8 +24998,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25018,8 +25018,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25038,16 +25038,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         }
       ],
       "combined_odds": 5.0,
       "stake": 5.0,
       "potential_return": 25.0,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191864",
+      "pnl": -5.0
     },
     {
       "id": "fc1881e0-7f23-461b-8cac-e177800500aa",
@@ -25075,8 +25075,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 23.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25095,8 +25095,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.5,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25115,8 +25115,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 40.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25135,8 +25135,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 17.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25155,8 +25155,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 13.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25175,8 +25175,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 18.0
         },
         {
           "event_id": "b84ae87285f4c99364899798456d3cb1",
@@ -25195,16 +25195,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Brisbane Lions",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 19.0
         }
       ],
       "combined_odds": 9.915,
       "stake": 5.0,
       "potential_return": 49.57,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:58.191874",
+      "pnl": -5.0
     },
     {
       "id": "480a8217-94ab-4e05-96f5-31046bbb0749",
@@ -25236,8 +25236,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25260,8 +25260,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8888888888888888,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25284,8 +25284,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 29.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25308,8 +25308,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25332,16 +25332,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 2.384,
       "stake": 5.0,
       "potential_return": 11.92,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710208",
+      "pnl": -5.0
     },
     {
       "id": "154b2405-bc29-4cc9-812c-c0b5de7c791e",
@@ -25373,8 +25373,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25397,8 +25397,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.8,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25421,8 +25421,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8888888888888888,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25445,8 +25445,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25469,8 +25469,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25493,8 +25493,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.75,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 16.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25517,16 +25517,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 5.759,
       "stake": 5.0,
       "potential_return": 28.8,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710242",
+      "pnl": -5.0
     },
     {
       "id": "0941769b-f44b-4b79-a0aa-77e113a144af",
@@ -25558,8 +25558,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.9,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25582,8 +25582,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25606,8 +25606,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25630,8 +25630,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25654,8 +25654,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 26.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25678,16 +25678,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         }
       ],
       "combined_odds": 13.576,
       "stake": 5.0,
       "potential_return": 67.88,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710269",
+      "pnl": -5.0
     },
     {
       "id": "f4933d10-6e96-47c9-ac61-c048a3357768",
@@ -25719,8 +25719,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8888888888888888,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25743,16 +25743,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 2.028,
       "stake": 5.0,
       "potential_return": 10.14,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710278",
+      "pnl": -5.0
     },
     {
       "id": "0e52d44f-b609-4c3f-984c-227e02980dfe",
@@ -25784,8 +25784,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25808,16 +25808,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 3.043,
       "stake": 5.0,
       "potential_return": 15.21,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710288",
+      "pnl": -5.0
     },
     {
       "id": "e559943a-8aea-4dbb-bb39-e2185b8d1eab",
@@ -25849,8 +25849,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25873,8 +25873,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25897,8 +25897,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25921,16 +25921,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 5.061,
       "stake": 5.0,
       "potential_return": 25.3,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710303",
+      "pnl": -5.0
     },
     {
       "id": "0160df79-60dd-4453-a7d2-bd338f5a162e",
@@ -25962,8 +25962,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 1.0,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -25986,8 +25986,8 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26010,8 +26010,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 26.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26034,8 +26034,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26058,8 +26058,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26082,16 +26082,16 @@
           "hit_last_5": 0.4,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 14.0
         }
       ],
       "combined_odds": 10.06,
       "stake": 5.0,
       "potential_return": 50.3,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710326",
+      "pnl": -5.0
     },
     {
       "id": "b4519bdd-c9e2-4316-bdb4-108e9466204b",
@@ -26123,8 +26123,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.8888888888888888,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26147,16 +26147,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 2.028,
       "stake": 5.0,
       "potential_return": 10.14,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710336",
+      "pnl": -5.0
     },
     {
       "id": "dbdbb5c8-f6f3-47c4-8c94-83e757e4bf3f",
@@ -26188,8 +26188,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26212,16 +26212,16 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         }
       ],
       "combined_odds": 3.043,
       "stake": 5.0,
       "potential_return": 15.21,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710345",
+      "pnl": -5.0
     },
     {
       "id": "d1d720e1-94dc-48ea-b447-3e5e45d044f0",
@@ -26253,8 +26253,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26277,8 +26277,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26301,8 +26301,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26325,16 +26325,16 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         }
       ],
       "combined_odds": 5.061,
       "stake": 5.0,
       "potential_return": 25.3,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710361",
+      "pnl": -5.0
     },
     {
       "id": "d5f63b29-99aa-451d-9bb4-bcab9aea5ed0",
@@ -26366,8 +26366,8 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.9,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 12.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26390,8 +26390,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 14.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26414,8 +26414,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.7777777777777778,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26438,8 +26438,8 @@
           "hit_last_5": 1.0,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 21.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26462,8 +26462,8 @@
           "hit_last_5": 0.6,
           "hit_last_10": 0.6,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": false,
+          "actual_value": 23.0
         },
         {
           "event_id": "5965b2f60e8d07c7b2b501fdbb9ff7c2",
@@ -26486,16 +26486,16 @@
           "hit_last_5": 0.8,
           "hit_last_10": 0.7,
           "opponent": "Geelong",
-          "result": null,
-          "actual_value": null
+          "result": true,
+          "actual_value": 22.0
         }
       ],
       "combined_odds": 10.121,
       "stake": 5.0,
       "potential_return": 50.61,
-      "status": "pending",
-      "result_checked_at": null,
-      "pnl": null
+      "status": "lost",
+      "result_checked_at": "2026-07-16T13:11:56.710386",
+      "pnl": -5.0
     },
     {
       "id": "143c2777-b37d-4731-b6b4-4f3ee77fae2f",

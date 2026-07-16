@@ -8,9 +8,10 @@ import {
   useAutoPlace,
   useCheckResults,
   useLiveGames,
+  useTrackerLiveProgress,
 } from "@/lib/queries";
 import { TEAM_LOGOS, TEAM_CODE_BY_NAME, TEAM_COLORS, type TeamCode } from "@/lib/afl-data";
-import type { TrackerBet, CurrentGame, TrackerLeg, MultiType, LiveGame } from "@/lib/api";
+import type { TrackerBet, CurrentGame, TrackerLeg, MultiType, LiveGame, LiveProgress } from "@/lib/api";
 
 export const Route = createFileRoute("/multi-tracker")({
   head: () => ({
@@ -274,10 +275,15 @@ function OverallSummary({ bets }: { bets: TrackerBet[] }) {
 
 // ── History: leg detail row ────────────────────────────────────────────────
 
-function LegRow({ leg, gameLive }: { leg: TrackerLeg; gameLive?: boolean }) {
+function LegRow({ leg, gameLive, liveLeg }: {
+  leg: TrackerLeg; gameLive?: boolean;
+  liveLeg?: { current: number | null; hit: boolean };
+}) {
   const hasResult = leg.result !== null && leg.result !== undefined;
   const dotCls = !hasResult
-    ? gameLive ? "bg-accent/60 animate-pulse" : "bg-ink/15"
+    ? liveLeg
+      ? liveLeg.hit ? "bg-green-500 animate-pulse" : "bg-amber-500 animate-pulse"
+      : gameLive ? "bg-accent/60 animate-pulse" : "bg-ink/15"
     : leg.result ? "bg-green-600" : "bg-red-500";
 
   return (
@@ -293,7 +299,12 @@ function LegRow({ leg, gameLive }: { leg: TrackerLeg; gameLive?: boolean }) {
           {leg.actual_value}
         </span>
       )}
-      {!hasResult && gameLive && (
+      {!hasResult && liveLeg && liveLeg.current != null && (
+        <span className={`font-bold w-8 text-right ${liveLeg.hit ? "text-green-700" : "text-amber-600"}`}>
+          {liveLeg.current}
+        </span>
+      )}
+      {!hasResult && !liveLeg && gameLive && (
         <span className="w-8 text-right font-bold text-accent text-[9px] uppercase">live</span>
       )}
     </div>
@@ -302,7 +313,10 @@ function LegRow({ leg, gameLive }: { leg: TrackerLeg; gameLive?: boolean }) {
 
 // ── History: expandable bet row ────────────────────────────────────────────
 
-function BetRow({ bet, liveGames }: { bet: TrackerBet; liveGames: LiveGame[] }) {
+function BetRow({ bet, liveGames, progress }: {
+  bet: TrackerBet; liveGames: LiveGame[];
+  progress?: LiveProgress[string];
+}) {
   const [open, setOpen] = useState(false);
   const mm = MULTI_META[bet.multi_type] ?? MULTI_META.risk_high;
   const pnl = bet.pnl ?? (bet.status === "lost" ? -bet.stake : null);
@@ -331,7 +345,11 @@ function BetRow({ bet, liveGames }: { bet: TrackerBet; liveGames: LiveGame[] }) 
         <td className="p-3">
           <span className={`px-1.5 py-0.5 font-mono text-[9px] font-bold ${mm.badgeCls}`}>{mm.short}</span>
         </td>
-        <td className="p-3 font-mono text-xs text-center">{bet.legs.length}</td>
+        <td className="p-3 font-mono text-xs text-center">
+          {progress
+            ? <span className="font-bold text-accent">{progress.legs_hit}/{bet.legs.length}</span>
+            : bet.legs.length}
+        </td>
         <td className="p-3 font-mono text-xs text-right font-bold">{bet.combined_odds.toFixed(2)}×</td>
         <td className="p-3 font-mono text-xs text-right">${bet.stake.toFixed(0)}</td>
         <td className="p-3 font-mono text-xs text-right text-muted-foreground">${bet.potential_return.toFixed(2)}</td>
@@ -352,7 +370,12 @@ function BetRow({ bet, liveGames }: { bet: TrackerBet; liveGames: LiveGame[] }) 
               </div>
             )}
             <div className="space-y-0.5">
-              {bet.legs.map((leg, i) => <LegRow key={i} leg={leg} gameLive={!!isLiveNow} />)}
+              {bet.legs.map((leg, i) => (
+                <LegRow key={i} leg={leg} gameLive={!!isLiveNow}
+                        liveLeg={progress?.legs?.[i]
+                          ? { current: progress.legs[i].current, hit: progress.legs[i].hit }
+                          : undefined} />
+              ))}
             </div>
             {bet.result_checked_at && (
               <div className="mt-2 font-mono text-[9px] text-muted-foreground">
@@ -485,6 +508,7 @@ function MultiTrackerPage() {
   const { data: trackerData, isLoading: betsLoading, isError } = useTrackerBets();
   const { data: currentGames, isLoading: currentLoading } = useCurrentMultis();
   const { data: liveData } = useLiveGames();
+  const { data: liveProgress } = useTrackerLiveProgress();
   const autoPlace = useAutoPlace();
   const checkMutation = useCheckResults();
   const [tab, setTab] = useState<"upcoming" | "history">("upcoming");
@@ -623,7 +647,7 @@ function MultiTrackerPage() {
                 </thead>
                 <tbody>
                   {sortedBets.map((bet) => (
-                    <BetRow key={bet.id} bet={bet} liveGames={liveGames} />
+                    <BetRow key={bet.id} bet={bet} liveGames={liveGames} progress={liveProgress?.[bet.id]} />
                   ))}
                 </tbody>
               </table>

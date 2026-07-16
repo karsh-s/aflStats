@@ -27,12 +27,18 @@ import math
 
 import numpy as np
 
-# Measured on 2026 data (see module docstring). Cross-team measured slightly
-# negative (-0.013); clamped to 0 — indistinguishable from noise at n=106
-# games, and a negative shared loading is not representable in this factor
-# form.
+# Measured on 2026 data (3,944 player-games):
+#   * same-team residual correlation:            +0.040
+#   * cross-team residual correlation:           -0.013
+#   * corr(disposal residual, team margin):      +0.124  (goals: +0.119)
+# The margin factor is the richer structure: a signed game-dominance shock
+# (winners' players lift together, their opponents sink together). Its
+# loading lambda=0.124 implies cross-team correlation of -lambda^2 = -0.015,
+# which matches the directly-measured -0.013 — one factor explains both.
+# The residual same-team factor carries what margin doesn't:
+# rho_team - lambda^2 = 0.040 - 0.015 = 0.025.
+LAMBDA_MARGIN = 0.124
 RHO_TEAM = 0.04
-RHO_GAME = 0.0
 
 N_SIMS = 10_000
 SEED = 42
@@ -76,17 +82,22 @@ def simulate_game(players: list[dict], *, n_sims: int = N_SIMS,
         return {}
     rng = np.random.default_rng(seed)
     teams = sorted({str(p["team"]) for p in players})
-    z_game = rng.standard_normal(n_sims)
+    # Signed game-dominance shock: +1 for the first team, -1 for the second.
+    # Winners' players rise together while their opponents fall — this single
+    # factor reproduces the measured negative cross-team correlation.
+    sign = {t: (1.0 if i == 0 else -1.0) for i, t in enumerate(teams)}
+    z_margin = rng.standard_normal(n_sims)
     z_team = {t: rng.standard_normal(n_sims) for t in teams}
 
-    a_game = math.sqrt(max(RHO_GAME, 0.0))
-    a_team = math.sqrt(max(RHO_TEAM - RHO_GAME, 0.0))
+    a_margin = LAMBDA_MARGIN
+    a_team = math.sqrt(max(RHO_TEAM - LAMBDA_MARGIN ** 2, 0.0))
     a_idio = math.sqrt(max(1.0 - RHO_TEAM, 0.0))
 
     out: dict[str, np.ndarray] = {}
     for p in players:
-        w = (a_game * z_game
-             + a_team * z_team[str(p["team"])]
+        t = str(p["team"])
+        w = (a_margin * sign[t] * z_margin
+             + a_team * z_team[t]
              + a_idio * rng.standard_normal(n_sims))
         u = _norm_cdf(w)
         mean, sd = float(p["mean"]), float(p.get("sd") or max(1.0, p["mean"] ** 0.5))
