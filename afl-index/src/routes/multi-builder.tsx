@@ -408,8 +408,10 @@ function MultiPage() {
   const eventId = selectedGame || (events?.[0]?.id ?? null);
   const [safeMode, setSafeMode] = useState(false);
   const { data: legs, isLoading: legsLoading } = useGameSGM(eventId);
+  // Post-mortem R18: legs under 70% model probability hit far below their
+  // claimed rate — 0.70 is now the default floor; the toggle goes to 0.80.
   const { data: targetMultis, isLoading: multisLoading } = useGameTargetMultis(
-    eventId, safeMode ? 0.7 : 0.3,
+    eventId, safeMode ? 0.8 : 0.7,
   );
 
   // Each tier targets a different odds range and probability floor.
@@ -490,7 +492,7 @@ function MultiPage() {
                   : "border-border text-muted-foreground hover:border-ink hover:text-ink"
               }`}
             >
-              {safeMode ? "✓ " : ""}Safe legs only (every leg ≥70%)
+              {safeMode ? "✓ " : ""}Ultra-safe (every leg ≥80%)
             </button>
             {multisLoading && <ApiLoading label="Optimising safest multis…" />}
             {targetMultis?.map((tm) => (

@@ -421,12 +421,15 @@ def _multi_reasons(legs: list[dict], home: str, away: str,
         if r not in seen:
             out.append(r)
             seen.add(r)
-    return out[:5]
+    out = out[:5]
+    out.append("Hit P estimated from 10,000 correlated game simulations "
+               "(measured within-game correlation, exact player distributions)")
+    return out
 
 
 @app.get("/api/game/{event_id}/multis")
 def game_target_multis(event_id: str, targets: str = "2,3,5,10",
-                       floor: float = 0.30):
+                       floor: float = 0.70):
     """Safest multi per target multiplier — exact DP, unlimited legs, all
     stat lines. Maximises joint probability (per-leg risk-discounted) subject
     to combined odds >= target; with odds pinned at the target this is also
@@ -473,6 +476,8 @@ def game_target_multis(event_id: str, targets: str = "2,3,5,10",
                 "legs": [_row(l) for l in res["legs"]],
                 "combined_odds": round(res["combined_odds"], 3),
                 "joint_prob": round(res["joint_prob"], 4),
+                "joint_prob_indep": round(res.get("joint_prob_indep",
+                                                  res["joint_prob"]), 4),
                 "implied_prob": round(res["implied_prob"], 4),
                 "edge": round(res["edge"], 4),
                 "n_legs": res["n_legs"],
@@ -949,16 +954,19 @@ _MULTI_SPECS = [
     ("risk_low",  "LOW Risk ~2.5×",  lambda legs: _build_by_risk_py(legs, 0.68, 2.5,  1.15, 5,  0.60)),
     ("risk_med",  "MED Risk ~5×",    lambda legs: _build_by_risk_py(legs, 0.53, 5.0,  1.25, 7,  0.40)),
     ("risk_high", "HIGH Risk ~12×",  lambda legs: _build_by_risk_py(legs, 0.30, 12.0, 1.50, 10, 0.20)),
-    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40)),
-    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40)),
-    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40)),
-    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.20)),
-    # SAFE variants: every leg >= 70% model probability — high-edge players on
-    # their safer lines, multiplier built from more legs.
-    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.20, prob_floor=0.70)),
+    # R18 post-mortem: legs priced 40-69% hit only 35-38% while legs >= 70%
+    # tracked their claimed rates — so ALL target multis now require every leg
+    # >= 70% model probability. SAFE variants additionally demand an
+    # empirical streak (line hit in >= 3 of the player's last 5 games),
+    # the bets.com.au-style anchor-leg rule.
+    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.40, prob_floor=0.70)),
+    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.60, prob_floor=0.70)),
+    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.60, prob_floor=0.70)),
+    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.60, prob_floor=0.70)),
+    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.60, prob_floor=0.70)),
 ]
 
 
