@@ -257,6 +257,18 @@ export interface PositionConcession {
   positions?: string[];
 }
 
+export interface LiveProgress {
+  [betId: string]: {
+    game: string;
+    status: string;
+    updated: string;
+    legs: { player: string; stat: string; milestone: string; line: number;
+            current: number | null; hit: boolean }[];
+    legs_hit: number;
+    legs_total: number;
+  };
+}
+
 export interface RoleLeakTeam {
   team: string;
   roles: { role: string; avg_disposals: number; vs_league: number; n_player_games: number }[];
@@ -304,5 +316,6 @@ export const api = {
       post<{ placed: number }>("/api/tracker/place", { bets }),
     autoPlace: () => post<{ auto_placed: number; bets: TrackerBet[] }>("/api/tracker/auto-place"),
     check: () => post<{ updated: number; bets: TrackerBet[] }>("/api/tracker/check"),
+    liveProgress: () => get<LiveProgress>("/api/tracker/live-progress"),
   },
 };

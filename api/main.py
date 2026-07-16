@@ -139,6 +139,9 @@ def startup_event():
     _live.set_on_games_finished(_on_live_games_finished)
     _live.start()
     threading.Thread(target=_auto_check_loop, daemon=True, name="auto-check").start()
+    # AFL official API: live per-leg disposal tracking + automatic settlement
+    from api import afl_live as _afl_live
+    _afl_live.start()
 
 
 # ---------------------------------------------------------------------------
@@ -421,12 +424,15 @@ def _multi_reasons(legs: list[dict], home: str, away: str,
         if r not in seen:
             out.append(r)
             seen.add(r)
-    return out[:5]
+    out = out[:5]
+    out.append("Hit P estimated from 10,000 correlated game simulations "
+               "(measured within-game correlation, exact player distributions)")
+    return out
 
 
 @app.get("/api/game/{event_id}/multis")
 def game_target_multis(event_id: str, targets: str = "2,3,5,10",
-                       floor: float = 0.30):
+                       floor: float = 0.70):
     """Safest multi per target multiplier — exact DP, unlimited legs, all
     stat lines. Maximises joint probability (per-leg risk-discounted) subject
     to combined odds >= target; with odds pinned at the target this is also
@@ -473,6 +479,8 @@ def game_target_multis(event_id: str, targets: str = "2,3,5,10",
                 "legs": [_row(l) for l in res["legs"]],
                 "combined_odds": round(res["combined_odds"], 3),
                 "joint_prob": round(res["joint_prob"], 4),
+                "joint_prob_indep": round(res.get("joint_prob_indep",
+                                                  res["joint_prob"]), 4),
                 "implied_prob": round(res["implied_prob"], 4),
                 "edge": round(res["edge"], 4),
                 "n_legs": res["n_legs"],
@@ -949,16 +957,19 @@ _MULTI_SPECS = [
     ("risk_low",  "LOW Risk ~2.5×",  lambda legs: _build_by_risk_py(legs, 0.68, 2.5,  1.15, 5,  0.60)),
     ("risk_med",  "MED Risk ~5×",    lambda legs: _build_by_risk_py(legs, 0.53, 5.0,  1.25, 7,  0.40)),
     ("risk_high", "HIGH Risk ~12×",  lambda legs: _build_by_risk_py(legs, 0.30, 12.0, 1.50, 10, 0.20)),
-    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40)),
-    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40)),
-    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40)),
-    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.20)),
-    # SAFE variants: every leg >= 70% model probability — high-edge players on
-    # their safer lines, multiplier built from more legs.
-    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.20, prob_floor=0.70)),
+    # R18 post-mortem: legs priced 40-69% hit only 35-38% while legs >= 70%
+    # tracked their claimed rates — so ALL target multis now require every leg
+    # >= 70% model probability. SAFE variants additionally demand an
+    # empirical streak (line hit in >= 3 of the player's last 5 games),
+    # the bets.com.au-style anchor-leg rule.
+    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
+    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.40, prob_floor=0.70)),
+    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.60, prob_floor=0.70)),
+    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.60, prob_floor=0.70)),
+    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.60, prob_floor=0.70)),
+    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.60, prob_floor=0.70)),
 ]
 
 
@@ -1152,6 +1163,60 @@ def _run_check_results() -> dict:
 def check_results():
     """Check results for all pending bets where game_date < now."""
     return _run_check_results()
+
+
+@app.get("/api/tracker/live-progress")
+def tracker_live_progress():
+    """Per-leg live values for pending bets in games currently being played.
+
+    Sourced from the AFL official API poller (api.afl_live). Returns
+    {bet_id: {"game": ..., "status": ..., "legs": [{player, stat, line,
+    current, hit}], "legs_hit": n, "legs_total": m}}.
+    """
+    from api import afl_live as _afl_live
+    import json as _json
+    if not _afl_live.LIVE_STATS_FILE.exists():
+        return {}
+    try:
+        live = _json.loads(_afl_live.LIVE_STATS_FILE.read_text())
+    except Exception:
+        return {}
+    if not live:
+        return {}
+    by_pair = {frozenset((v["home"], v["away"])): v for v in live.values()}
+    data = _load_tracker()
+    out = {}
+    for bet in data.get("bets", []):
+        if bet.get("status") != "pending":
+            continue
+        try:
+            pair = frozenset(s.strip() for s in bet["game"].split(" v "))
+        except Exception:
+            continue
+        snap = by_pair.get(pair)
+        if snap is None:
+            continue
+        legs_out, hit_n = [], 0
+        for leg in bet.get("legs", []):
+            key = canonical_name(leg.get("player_scraped") or leg.get("player", ""))
+            cur = (snap["players"].get(key) or {}).get(leg.get("stat"))
+            hit = cur is not None and float(cur) > float(leg.get("line", 0))
+            hit_n += bool(hit)
+            legs_out.append({"player": leg.get("player"), "stat": leg.get("stat"),
+                             "milestone": leg.get("milestone"),
+                             "line": leg.get("line"), "current": cur,
+                             "hit": bool(hit)})
+        out[bet["id"]] = {"game": bet["game"], "status": snap.get("status"),
+                          "updated": snap.get("updated"), "legs": legs_out,
+                          "legs_hit": hit_n, "legs_total": len(legs_out)}
+    return out
+
+
+@app.post("/api/tracker/afl-sync")
+def tracker_afl_sync():
+    """Manually trigger one AFL API poll/settlement cycle."""
+    from api import afl_live as _afl_live
+    return _afl_live.run_once()
 
 
 # ---------------------------------------------------------------------------

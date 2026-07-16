@@ -100,7 +100,11 @@ def attach_model_probs(legs: pd.DataFrame, player_stats: pd.DataFrame, elos: dic
         proj = cache[key]
         out.append({**o.to_dict(), "player_scraped": scraped,
                     "prob": float(proj.prob_over(o["line"])),
-                    "odds": float(o["price"])})
+                    "odds": float(o["price"]),
+                    # Projection parameters for Monte Carlo game simulation
+                    "proj_mean": float(proj.mean), "proj_sd": float(proj.sd),
+                    "proj_dist": proj.dist,
+                    "sim_team": home if is_home else away})
     return pd.DataFrame(out)
 
 
@@ -192,16 +196,40 @@ def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int | None = No
         return None
     _, llist = reached
     odds = float(np.prod([leg["odds"] for leg in llist]))
-    joint = float(np.prod([leg["prob"] for leg in llist]))   # true, undiscounted
+    joint_indep = float(np.prod([leg["prob"] for leg in llist]))
+    # Correlation-aware joint probability from 10,000 simulated games
+    # (Gaussian copula, measured within-game correlations; falls back to the
+    # independence product when projection parameters are unavailable).
+    joint = _simulated_joint(llist)
+    if joint is None:
+        joint = joint_indep
     return {
         "target": target,
         "legs": sorted(llist, key=lambda leg: leg["prob"], reverse=True),
         "combined_odds": odds,
         "joint_prob": joint,
+        "joint_prob_indep": joint_indep,
         "implied_prob": 1.0 / odds,
         "edge": joint - 1.0 / odds,
         "n_legs": len(llist),
     }
+
+
+def _simulated_joint(legs: list[dict]) -> float | None:
+    """Joint P(all legs hit) from Monte Carlo game simulation, or None."""
+    needed = {"proj_mean", "proj_sd", "proj_dist", "sim_team", "line"}
+    if not legs or any(not needed <= set(l.keys()) or l.get("proj_mean") is None
+                       for l in legs):
+        return None
+    from ..model import simulate
+    players = [{"key": f"{l['player_scraped']}|{l['stat']}",
+                "mean": l["proj_mean"], "sd": l["proj_sd"],
+                "dist": l["proj_dist"], "team": l["sim_team"]}
+               for l in legs]
+    sims = simulate.simulate_game(players)
+    return simulate.joint_probability(
+        sims, [{"key": f"{l['player_scraped']}|{l['stat']}",
+                "line": l["line"]} for l in legs])
 
 
 def build_for_targets(legs_with_probs: pd.DataFrame,
