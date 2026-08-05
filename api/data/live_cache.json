@@ -492,10 +492,27 @@
       "home_behinds": 0,
       "away_goals": 0,
       "away_behinds": 0
+    },
+    {
+      "id": 3533,
+      "date": "2026-08-06",
+      "time_utc": "2026-08-06T09:30:00+00:00",
+      "venue": "Marvel Stadium",
+      "week": 22,
+      "status": "NS",
+      "status_long": "Not Started",
+      "home": "Western Bulldogs",
+      "away": "North Melbourne",
+      "home_score": 0,
+      "away_score": 0,
+      "home_goals": 0,
+      "home_behinds": 0,
+      "away_goals": 0,
+      "away_behinds": 0
     }
   ],
-  "daily_used": 78,
-  "reset_date": "2026-07-17",
-  "last_updated": "2026-07-17T05:45:22.465497",
-  "last_fetch_ok": "2026-07-17T05:45:22.465497"
+  "daily_used": 10,
+  "reset_date": "2026-08-05",
+  "last_updated": "2026-08-05T06:44:00.829229",
+  "last_fetch_ok": "2026-08-05T06:44:00.829229"
 }

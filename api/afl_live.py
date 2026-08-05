@@ -30,6 +30,7 @@ TRACKER_LOCK = threading.Lock()
 
 POLL_LIVE = 90        # seconds between polls while a tracked game is live
 POLL_IDLE = 900       # seconds between checks otherwise
+LOOKBACK_ROUNDS = 6   # rounds scanned for concluded games needing settlement
 
 _stop = threading.Event()
 _thread: threading.Thread | None = None
@@ -139,11 +140,13 @@ def _cycle() -> bool:
     season = afl_api.current_season()
     if not season:
         return False
-    matches = afl_api.round_matches(season["id"], season.get("currentRoundNumber"))
-    # Pending games may span two rounds around the turnover.
-    if season.get("currentRoundNumber", 1) > 1:
-        matches += afl_api.round_matches(season["id"],
-                                         season["currentRoundNumber"] - 1)
+    # Scan the current round plus several prior ones. Pending bets can be more
+    # than one round old if the poller was down when those games concluded —
+    # without the wider window those bets would hang unsettled forever.
+    cur = int(season.get("currentRoundNumber") or 1)
+    matches = []
+    for rnd in range(cur, max(0, cur - LOOKBACK_ROUNDS), -1):
+        matches += afl_api.round_matches(season["id"], rnd)
 
     any_live = False
     live_out: dict = {}
