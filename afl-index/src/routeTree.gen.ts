@@ -15,7 +15,6 @@ import { Route as ProjectionsRouteImport } from './routes/projections'
 import { Route as PremiershipWindowRouteImport } from './routes/premiership-window'
 import { Route as MultiBuilderRouteImport } from './routes/multi-builder'
 import { Route as LadderRouteImport } from './routes/ladder'
-import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GameEventIdRouteImport } from './routes/game.$eventId'
@@ -50,11 +49,6 @@ const LadderRoute = LadderRouteImport.update({
   path: '/ladder',
   getParentRoute: () => rootRouteImport,
 } as any)
-const InsightsRoute = InsightsRouteImport.update({
-  id: '/insights',
-  path: '/insights',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AnalysisRoute = AnalysisRouteImport.update({
   id: '/analysis',
   path: '/analysis',
@@ -74,7 +68,6 @@ const GameEventIdRoute = GameEventIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
-  '/insights': typeof InsightsRoute
   '/ladder': typeof LadderRoute
   '/multi-builder': typeof MultiBuilderRoute
   '/premiership-window': typeof PremiershipWindowRoute
@@ -86,7 +79,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
-  '/insights': typeof InsightsRoute
   '/ladder': typeof LadderRoute
   '/multi-builder': typeof MultiBuilderRoute
   '/premiership-window': typeof PremiershipWindowRoute
@@ -99,7 +91,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
-  '/insights': typeof InsightsRoute
   '/ladder': typeof LadderRoute
   '/multi-builder': typeof MultiBuilderRoute
   '/premiership-window': typeof PremiershipWindowRoute
@@ -113,7 +104,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/analysis'
-    | '/insights'
     | '/ladder'
     | '/multi-builder'
     | '/premiership-window'
@@ -125,7 +115,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/analysis'
-    | '/insights'
     | '/ladder'
     | '/multi-builder'
     | '/premiership-window'
@@ -137,7 +126,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/analysis'
-    | '/insights'
     | '/ladder'
     | '/multi-builder'
     | '/premiership-window'
@@ -150,7 +138,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalysisRoute: typeof AnalysisRoute
-  InsightsRoute: typeof InsightsRoute
   LadderRoute: typeof LadderRoute
   MultiBuilderRoute: typeof MultiBuilderRoute
   PremiershipWindowRoute: typeof PremiershipWindowRoute
@@ -204,13 +191,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LadderRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/insights': {
-      id: '/insights'
-      path: '/insights'
-      fullPath: '/insights'
-      preLoaderRoute: typeof InsightsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/analysis': {
       id: '/analysis'
       path: '/analysis'
@@ -238,7 +218,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalysisRoute: AnalysisRoute,
-  InsightsRoute: InsightsRoute,
   LadderRoute: LadderRoute,
   MultiBuilderRoute: MultiBuilderRoute,
   PremiershipWindowRoute: PremiershipWindowRoute,

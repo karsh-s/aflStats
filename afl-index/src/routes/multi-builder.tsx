@@ -260,154 +260,13 @@ function RiskMultiCard({
   );
 }
 
-// ── Manual builder ─────────────────────────────────────────────────────────
-
-function ManualBuilder({ legs }: { legs: APISGMLeg[] }) {
-  const [selected, setSelected] = useState<string[]>([]);
-  const pool = useMemo(() => {
-    const seen = new Set<string>();
-    return legs.filter((l) => {
-      const key = `${l.player}|${l.stat}|${l.milestone}`;
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
-  }, [legs]);
-
-  const chosenLegs = pool.filter((l) =>
-    selected.includes(`${l.player}|${l.stat}|${l.milestone}`),
-  );
-  const combinedOdds = chosenLegs.reduce((acc, l) => acc * l.odds, 1);
-  const jointProb = chosenLegs.reduce((acc, l) => acc * l.prob, 1);
-  const hasSamePlayer = chosenLegs.some(
-    (l) => chosenLegs.filter((m) => m.player_scraped === l.player_scraped).length > 1,
-  );
-  const risk = riskLevel(chosenLegs);
-  const rm = chosenLegs.length >= 2 ? RISK_META[risk] : null;
-
-  function toggle(key: string) {
-    setSelected((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key],
-    );
-  }
-
-  return (
-    <div className="space-y-4">
-      {chosenLegs.length >= 2 && (
-        <div className="border border-border bg-card">
-          <div className="flex items-center justify-between border-b border-border bg-ink/5 px-4 py-2">
-            <div className="flex items-center gap-2">
-              <span className="font-mono text-[11px] font-bold uppercase">
-                Your multi · {chosenLegs.length} legs
-              </span>
-              {rm && (
-                <span className={`px-1.5 py-0.5 font-mono text-[9px] font-bold ${rm.cls}`}>
-                  {rm.label}
-                </span>
-              )}
-            </div>
-            <div className="flex gap-4 font-mono text-xs">
-              <span>
-                <span className="text-muted-foreground">Odds </span>
-                <span className="font-bold">{combinedOdds.toFixed(2)}×</span>
-              </span>
-              <span>
-                <span className="text-muted-foreground">Hit P </span>
-                <span className={`font-bold ${jointProb >= 0.5 ? "text-accent" : ""}`}>
-                  {(jointProb * 100).toFixed(1)}%
-                </span>
-              </span>
-            </div>
-          </div>
-          {hasSamePlayer && (
-            <div className="border-b border-border px-4 py-2 text-[10px] text-accent">
-              ⚠ Same player selected twice — SportsBet typically blocks correlated same-player legs.
-            </div>
-          )}
-          <table className="w-full text-left">
-            <tbody className="font-mono text-xs">
-              {chosenLegs.map((l) => {
-                const key = `${l.player}|${l.stat}|${l.milestone}`;
-                return (
-                  <tr key={key} className="border-b border-border last:border-0">
-                    <td className="p-3 font-sans font-bold">{l.player}</td>
-                    <td className="p-3 capitalize text-muted-foreground">
-                      {l.stat} <span className="font-bold text-ink">{l.milestone}</span>
-                    </td>
-                    <td className="p-3 text-right font-bold">{l.odds.toFixed(2)}</td>
-                    <td className="p-3 text-right text-accent">{(l.prob * 100).toFixed(0)}%</td>
-                    <td className="p-3 text-right">
-                      <button
-                        onClick={() => toggle(key)}
-                        className="font-mono text-[10px] text-muted-foreground hover:text-accent"
-                      >
-                        ✕
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      <div className="border border-border bg-card">
-        <div className="border-b border-border bg-ink/5 px-4 py-2">
-          <span className="font-mono text-[11px] font-bold uppercase">All available legs</span>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b border-border text-[10px] font-bold uppercase text-muted-foreground">
-                <th className="p-3" />
-                <th className="p-3">Player</th>
-                <th className="p-3">Stat · Line</th>
-                <th className="p-3 text-right">Odds</th>
-                <th className="p-3 text-right">Model P</th>
-              </tr>
-            </thead>
-            <tbody className="font-mono text-xs">
-              {pool.map((l) => {
-                const key = `${l.player}|${l.stat}|${l.milestone}`;
-                const picked = selected.includes(key);
-                return (
-                  <tr
-                    key={key}
-                    onClick={() => toggle(key)}
-                    className={`cursor-pointer border-b border-border last:border-0 transition-colors ${picked ? "bg-accent/10 hover:bg-accent/15" : "hover:bg-ink/5"}`}
-                  >
-                    <td className="p-3">
-                      <span
-                        className={`inline-block size-4 border font-bold text-center font-mono text-[10px] leading-4 ${picked ? "border-ink bg-ink text-paper" : "border-border"}`}
-                      >
-                        {picked ? "✓" : ""}
-                      </span>
-                    </td>
-                    <td className="p-3 font-sans font-bold">{l.player}</td>
-                    <td className="p-3 capitalize text-muted-foreground">
-                      {l.stat} <span className="font-bold text-ink">{l.milestone}</span>
-                    </td>
-                    <td className="p-3 text-right font-bold">{l.odds.toFixed(2)}</td>
-                    <td className="p-3 text-right text-accent">{(l.prob * 100).toFixed(0)}%</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ── Page ───────────────────────────────────────────────────────────────────
 
 
 function MultiPage() {
   const { data: events, isLoading: evLoading, isError: evError } = useEvents();
   const [selectedGame, setSelectedGame] = useState<string>("");
-  const [mode, setMode] = useState<"risk" | "target" | "manual">("risk");
+  const [mode, setMode] = useState<"risk" | "target">("risk");
 
   const eventId = selectedGame || (events?.[0]?.id ?? null);
   const [safeMode, setSafeMode] = useState(false);
@@ -454,7 +313,7 @@ function MultiPage() {
 
         {/* Mode tabs */}
         <div className="flex gap-0 border-b border-border">
-          {(["risk", "target", "manual"] as const).map((m) => (
+          {(["risk", "target"] as const).map((m) => (
             <button
               key={m}
               onClick={() => setMode(m)}
@@ -464,7 +323,7 @@ function MultiPage() {
                   : "border-transparent text-muted-foreground hover:text-ink"
               }`}
             >
-              {m === "risk" ? "⚡ By risk level" : m === "target" ? "🎯 By target odds" : "🛠 Build your own"}
+              {m === "risk" ? "⚡ By risk level" : "🎯 By target odds"}
             </button>
           ))}
         </div>
@@ -502,16 +361,6 @@ function MultiPage() {
             {targetMultis?.map((tm) => (
               <MultiCard key={tm.target} target={tm.target} result={tm.result} />
             ))}
-          </div>
-        )}
-
-        {/* Manual builder */}
-        {legs && legs.length > 0 && mode === "manual" && (
-          <div>
-            <p className="text-xs text-muted-foreground mb-4">
-              Click any row to add/remove a leg. Combined odds and hit probability update live.
-            </p>
-            <ManualBuilder legs={legs} />
           </div>
         )}
 
