@@ -40,6 +40,7 @@ import pandas as pd
 from ..model import player_props
 from ..model import position_adjustment as _pos_adj
 from ..model import tactical as _tactical
+from ..model import leg_calibration as _leg_cal
 
 # ---------------------------------------------------------------------------
 # Volatility guard — players with high game-to-game variance hurt parlays.
@@ -98,9 +99,16 @@ def attach_model_probs(legs: pd.DataFrame, player_stats: pd.DataFrame, elos: dic
                 elo=elos.get(o["stat"]), venue=venue, forecast=forecast,
                 position_table=pos_table, tactical=tact_ctx)
         proj = cache[key]
+        raw_p = float(proj.prob_over(o["line"]))
+        price = float(o["price"])
+        # Empirically calibrated hit probability (see model.leg_calibration):
+        # the raw model is overconfident on the legs it selects, so `prob` —
+        # used for selection, display and joint probabilities — is corrected
+        # against settled results before anything consumes it.
         out.append({**o.to_dict(), "player_scraped": scraped,
-                    "prob": float(proj.prob_over(o["line"])),
-                    "odds": float(o["price"]),
+                    "prob": _leg_cal.calibrate(raw_p, price),
+                    "prob_raw": raw_p,
+                    "odds": price,
                     # Projection parameters for Monte Carlo game simulation
                     "proj_mean": float(proj.mean), "proj_sd": float(proj.sd),
                     "proj_dist": proj.dist,
@@ -114,19 +122,18 @@ def attach_model_probs(legs: pd.DataFrame, player_stats: pd.DataFrame, elos: dic
 # model error compounds, and any player can miss through injury/role surprise.
 # An extra leg must therefore improve the true joint probability by more than
 # ~1.5% to be worth adding — this is the cost/benefit weight on leg count.
-LEG_RISK_DISCOUNT = 0.985
+# Raised from 0.985 after the R19 post-mortem: settled multis under-performed
+# their claimed joint probability at every leg count (actual/claimed ratio
+# 0.35-0.83), i.e. per-leg errors compound worse than independence implies.
+# Most of that is now handled by leg_calibration; this keeps a residual
+# penalty so an extra leg must add ~3% to earn its place.
+LEG_RISK_DISCOUNT = 0.97
 
-# Market-blend shrinkage, also ranking-only. The model's probability is partly
-# opinion; the book's implied probability is partly information. The bigger
-# the model-vs-book gap on a leg, the more likely some of that gap is model
-# error — so legs are RANKED by a geometric blend of the two. This stops the
-# optimiser betting the whole multi on one bold model call when a diversified
-# combo with milder claims scores nearly the same true joint probability.
-# 0.0 = trust the model fully, 1.0 = trust the book fully.
-# 0.50 = consensus probability: maximise the chance of the multi succeeding
-# under the best available estimate (model + market equally), rather than
-# chasing the lines where the model most disagrees with the book (edge).
-MARKET_BLEND = 0.50
+# Market-blend shrinkage, ranking-only. NOW 0.0 BY DESIGN: leg ``prob`` is
+# already the calibrated probability from model.leg_calibration, which folds
+# in the market logit (~0.53 weight) and the overconfidence correction.
+# Blending again here would double-count the book.
+MARKET_BLEND = 0.0
 
 
 def _rank_logp(leg: dict) -> float:
@@ -227,9 +234,24 @@ def _simulated_joint(legs: list[dict]) -> float | None:
                 "dist": l["proj_dist"], "team": l["sim_team"]}
                for l in legs]
     sims = simulate.simulate_game(players)
-    return simulate.joint_probability(
+    joint_sim = simulate.joint_probability(
         sims, [{"key": f"{l['player_scraped']}|{l['stat']}",
                 "line": l["line"]} for l in legs])
+    if joint_sim is None:
+        return None
+    # The simulation's marginals are the RAW model distributions, but the legs
+    # carry empirically calibrated probabilities. Keep the correlation
+    # structure the sim measured and re-base it on the calibrated marginals:
+    #   correlation factor = joint_sim / prod(raw_p)
+    #   calibrated joint   = correlation factor * prod(calibrated_p)
+    raw_prod = 1.0
+    cal_prod = 1.0
+    for l in legs:
+        raw_prod *= float(l.get("prob_raw") or l["prob"])
+        cal_prod *= float(l["prob"])
+    if raw_prod <= 0:
+        return joint_sim
+    return float(min(1.0, (joint_sim / raw_prod) * cal_prod))
 
 
 def build_for_targets(legs_with_probs: pd.DataFrame,

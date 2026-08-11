@@ -432,7 +432,7 @@ def _multi_reasons(legs: list[dict], home: str, away: str,
 
 @app.get("/api/game/{event_id}/multis")
 def game_target_multis(event_id: str, targets: str = "2,3,5,10",
-                       floor: float = 0.70):
+                       floor: float = 0.60):
     """Safest multi per target multiplier — exact DP, unlimited legs, all
     stat lines. Maximises joint probability (per-leg risk-discounted) subject
     to combined odds >= target; with odds pinned at the target this is also
@@ -469,7 +469,8 @@ def game_target_multis(event_id: str, targets: str = "2,3,5,10",
             target = float(t)
         except ValueError:
             continue
-        res = _sgm.safest_multi(legs, target, prob_floor=floor)
+        res = _sgm.safest_multi(legs, target, prob_floor=floor,
+                                max_legs=MAX_TARGET_LEGS)
         if res is None:
             out.append({"target": target, "result": None})
             continue
@@ -919,9 +920,18 @@ def _build_by_risk_py(legs: list[dict], min_prob: float, target: float,
     return _build_multi_py(filtered, target, max_legs, min_odds, min_hit5)
 
 
+# Leg-count caps. Post-mortem R19: with calibrated (honest) leg probabilities
+# the optimiser will happily stack 13 near-certainties to reach 10x, but every
+# extra leg is another player who can be a late out, get tagged, or have a
+# quiet day — risks the independence maths never sees.
+MAX_TARGET_LEGS = 6
+MAX_SAFE_LEGS = 5
+
+
 def _safest_multi_py(legs: list[dict], target: float,
                      min_hit5: float = 0.0,
-                     prob_floor: float = 0.30) -> dict | None:
+                     prob_floor: float = 0.30,
+                     max_legs: int | None = None) -> dict | None:
     """Exact safest multi for a target multiplier (no leg cap).
 
     Wraps sgm.safest_multi: maximise joint probability (with the per-leg risk
@@ -938,7 +948,8 @@ def _safest_multi_py(legs: list[dict], target: float,
     df = pd.DataFrame(legs)
     if "player_scraped" not in df.columns:
         df["player_scraped"] = df["player"]
-    res = _sgm.safest_multi(df, float(target), prob_floor=prob_floor)
+    res = _sgm.safest_multi(df, float(target), prob_floor=prob_floor,
+                            max_legs=max_legs)
     if res is None:
         return None
     return {"legs": res["legs"],
@@ -962,14 +973,16 @@ _MULTI_SPECS = [
     # >= 70% model probability. SAFE variants additionally demand an
     # empirical streak (line hit in >= 3 of the player's last 5 games),
     # the bets.com.au-style anchor-leg rule.
-    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.40, prob_floor=0.70)),
-    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.60, prob_floor=0.70)),
-    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.60, prob_floor=0.70)),
-    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.60, prob_floor=0.70)),
-    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.60, prob_floor=0.70)),
+    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.60, max_legs=MAX_TARGET_LEGS)),
+    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.60, max_legs=MAX_TARGET_LEGS)),
+    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.60, max_legs=MAX_TARGET_LEGS)),
+    # 10x is inherently a long shot: no combination of >=60% legs reaches it
+    # within the leg cap, so this tier keeps a lower floor by design.
+    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.40, prob_floor=0.50, max_legs=7)),
+    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.60, prob_floor=0.68, max_legs=MAX_SAFE_LEGS)),
+    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.60, prob_floor=0.68, max_legs=MAX_SAFE_LEGS)),
+    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.60, prob_floor=0.68, max_legs=MAX_SAFE_LEGS)),
+    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.60, prob_floor=0.58, max_legs=6)),
 ]
 
 
