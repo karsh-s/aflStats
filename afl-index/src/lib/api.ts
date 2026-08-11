@@ -5,6 +5,32 @@
 
 export const API_BASE = "http://localhost:8001";
 
+/**
+ * Static-data mode (GitHub Pages).
+ *
+ * Pages has no Python backend, so a build with VITE_STATIC_DATA=1 reads the
+ * JSON snapshot written by scripts/export_static.py instead of calling the
+ * API. `staticUrl` must produce exactly the slugs that script writes.
+ */
+export const STATIC_DATA = import.meta.env.VITE_STATIC_DATA === "1";
+
+function staticUrl(path: string): string {
+  const base = import.meta.env.BASE_URL || "/";
+  let p = path.startsWith("/api/") ? path.slice(5) : path.replace(/^\//, "");
+  let file: string;
+  if (p.includes("?")) {
+    const [head, query] = p.split("?");
+    file = `${head.replace(/\//g, "_")}__${query.replace(/[=&]/g, "_")}.json`;
+  } else {
+    file = `${p.replace(/\//g, "_")}.json`;
+  }
+  return `${base}data/${file}`.replace(/\/{2,}/g, "/");
+}
+
+function resolveUrl(path: string): string {
+  return STATIC_DATA ? staticUrl(path) : `${API_BASE}${path}`;
+}
+
 export interface APIEvent {
   id: string;
   home: string;
@@ -81,12 +107,14 @@ export interface APIValueBet {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`);
+  const res = await fetch(resolveUrl(path));
   if (!res.ok) throw new Error(`API ${path} → ${res.status}`);
   return res.json() as Promise<T>;
 }
 
 async function post<T>(path: string, body?: unknown): Promise<T> {
+  // Static builds are read-only: there is no server to POST to.
+  if (STATIC_DATA) throw new Error("read-only static build");
   const res = await fetch(`${API_BASE}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
