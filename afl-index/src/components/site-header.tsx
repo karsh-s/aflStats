@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 const NAV = [
   { to: "/", label: "Live Terminal" },
   { to: "/multi-builder", label: "Multi-Builder" },
-  { to: "/multi-tracker", label: "Multi Tracker" },
   { to: "/ladder", label: "Ladder" },
   { to: "/stats", label: "Stats" },
   { to: "/premiership-window", label: "Premiership Window" },

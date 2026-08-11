@@ -225,7 +225,14 @@ def safest_multi(legs: pd.DataFrame, target: float, *, max_legs: int | None = No
 def _simulated_joint(legs: list[dict]) -> float | None:
     """Joint P(all legs hit) from Monte Carlo game simulation, or None."""
     needed = {"proj_mean", "proj_sd", "proj_dist", "sim_team", "line"}
-    if not legs or any(not needed <= set(l.keys()) or l.get("proj_mean") is None
+
+    def _missing(v) -> bool:
+        # pandas turns None into NaN when a frame gains a float column, so a
+        # plain `is None` check silently lets NaN projections into the sim.
+        return v is None or (isinstance(v, float) and math.isnan(v))
+
+    if not legs or any(not needed <= set(l.keys()) or _missing(l.get("proj_mean"))
+                       or _missing(l.get("proj_sd")) or not l.get("proj_dist")
                        for l in legs):
         return None
     from ..model import simulate

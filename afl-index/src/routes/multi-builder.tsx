@@ -133,7 +133,9 @@ function MultiCard({ target, result }: { target: number; result: APITargetMulti[
             <tr key={i} className="border-b border-border last:border-0 hover:bg-accent/5">
               <td className="p-3 font-sans font-bold">{l.player}</td>
               <td className="p-3 capitalize text-muted-foreground">
-                {l.stat} <span className="font-bold text-ink">{l.milestone}</span>
+                {l.stat === "team"
+                  ? <span className="font-bold text-ink">match winner</span>
+                  : <>{l.stat} <span className="font-bold text-ink">{l.milestone}</span></>}
               </td>
               <td className="p-3 text-right font-bold">{l.odds.toFixed(2)}</td>
               <td className="p-3 text-right text-accent">{(l.prob * 100).toFixed(0)}%</td>
@@ -236,7 +238,9 @@ function RiskMultiCard({
             <tr key={i} className="border-b border-border last:border-0 hover:bg-accent/5">
               <td className="p-3 font-sans font-bold">{l.player}</td>
               <td className="p-3 capitalize text-muted-foreground">
-                {l.stat} <span className="font-bold text-ink">{l.milestone}</span>
+                {l.stat === "team"
+                  ? <span className="font-bold text-ink">match winner</span>
+                  : <>{l.stat} <span className="font-bold text-ink">{l.milestone}</span></>}
               </td>
               <td className="p-3 text-right font-bold">{l.odds.toFixed(2)}</td>
               <td className="p-3 text-right text-accent">{(l.prob * 100).toFixed(0)}%</td>

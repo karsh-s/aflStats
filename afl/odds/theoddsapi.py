@@ -24,8 +24,8 @@ BASE = "https://api.the-odds-api.com/v4"
 SPORT = "aussierules_afl"
 
 # Player-prop market keys supported by The Odds API for AFL.
-# NB: there is no AFL "player_marks" market on the API (returns INVALID_MARKET),
-# so marks are projectable by hand but never appear in the live odds scan.
+# NB: "player_marks" is INVALID, but "player_marks_over" IS valid and gives
+# the marks milestone ladder (see OVER_MARKETS below).
 PLAYER_MARKETS = [
     "player_disposals",
     "player_goals",
@@ -44,19 +44,27 @@ MARKET_TO_STAT = {
 # "X+" milestone ladders used for Same Game Multis. ``player_disposals_over``
 # gives every integer disposal line (16+, 17+, ...); the *_alternate markets give
 # goal/tackle milestones where SportsBet posts them.
+# Verified against the live API (Aug 2026): *_over markets carry the full
+# milestone ladders for disposals, MARKS and TACKLES. The older
+# *_alternate keys return zero outcomes and are kept only so goal
+# milestones are picked up if/when SportsBet posts them (goal markets
+# usually appear closer to bounce).
 OVER_MARKETS = [
     "player_disposals_over",
+    "player_marks_over",
+    "player_tackles_over",
     "player_goals_alternate",
-    "player_tackles_alternate",
     "player_goal_scorer_anytime",
 ]
 OVER_MARKET_TO_STAT = {
     "player_disposals_over": "disposals",
+    "player_marks_over": "marks",
+    "player_tackles_over": "tackles",
     "player_goals_alternate": "goals",
-    "player_tackles_alternate": "tackles",
     "player_goal_scorer_anytime": "goals",
 }
-_STAT_ABBR = {"disposals": "disp", "goals": "goals", "tackles": "tack"}
+_STAT_ABBR = {"disposals": "disp", "goals": "goals", "tackles": "tack",
+              "marks": "marks"}
 
 
 class OddsAPIError(RuntimeError):
@@ -87,6 +95,21 @@ def list_events() -> pd.DataFrame:
         df["home_team"] = df["home_team"].map(normalise_team)
         df["away_team"] = df["away_team"].map(normalise_team)
     return df
+
+
+def event_h2h(event_id: str, *, bookmaker: str = "sportsbet") -> dict:
+    """Head-to-head prices for one fixture: {team_name: decimal_odds}."""
+    data = _event_odds(event_id, ["h2h"])
+    out: dict[str, float] = {}
+    for bk in data.get("bookmakers", []):
+        if bookmaker and bk.get("key") != bookmaker:
+            continue
+        for mk in bk.get("markets", []):
+            if mk.get("key") != "h2h":
+                continue
+            for oc in mk.get("outcomes", []):
+                out[normalise_team(oc["name"])] = float(oc["price"])
+    return out
 
 
 def h2h_odds(markets: str = "h2h,totals") -> pd.DataFrame:

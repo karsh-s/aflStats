@@ -288,7 +288,7 @@ export const api = {
   gameProps: (id: string) => get<APIProp[]>(`/api/game/${id}/props`),
   gameBestLines: (id: string) => get<APIBestLine[]>(`/api/game/${id}/best-lines`),
   gameSGM: (id: string) => get<APISGMLeg[]>(`/api/game/${id}/sgm`),
-  gameTargetMultis: (id: string, floor = 0.3) =>
+  gameTargetMultis: (id: string, floor = 0.6) =>
     get<APITargetMulti[]>(`/api/game/${id}/multis?floor=${floor}`),
   value: (minEdge = 0.04) => get<APIValueBet[]>(`/api/value?min_edge=${minEdge}`),
   health: () => get<{ status: string }>("/api/health"),

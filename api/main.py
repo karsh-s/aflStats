@@ -431,7 +431,8 @@ def _multi_reasons(legs: list[dict], home: str, away: str,
 
 
 @app.get("/api/game/{event_id}/multis")
-def game_target_multis(event_id: str, targets: str = "2,3,5,10",
+def game_target_multis(event_id: str,
+                       targets: str = "1.5,2,2.5,3,4,5,7.5,10,15,20",
                        floor: float = 0.60):
     """Safest multi per target multiplier — exact DP, unlimited legs, all
     stat lines. Maximises joint probability (per-leg risk-discounted) subject
@@ -469,8 +470,11 @@ def game_target_multis(event_id: str, targets: str = "2,3,5,10",
             target = float(t)
         except ValueError:
             continue
-        res = _sgm.safest_multi(legs, target, prob_floor=floor,
-                                max_legs=MAX_TARGET_LEGS)
+        # Long-shot targets need a lower floor and more legs to be reachable.
+        f = floor if target <= 5 else (floor - 0.05 if target <= 10 else floor - 0.12)
+        cap = MAX_TARGET_LEGS if target <= 5 else (7 if target <= 10 else 8)
+        res = _sgm.safest_multi(legs, target, prob_floor=max(0.40, f),
+                                max_legs=cap, max_per_stat=MAX_PER_STAT)
         if res is None:
             out.append({"target": target, "result": None})
             continue
@@ -928,10 +932,17 @@ MAX_TARGET_LEGS = 6
 MAX_SAFE_LEGS = 5
 
 
+# Cap on legs sharing one stat. Multis made entirely of disposal lines all
+# move with the same thing (game tempo), so a slow game sinks every leg at
+# once; mixing disposals/marks/tackles/goals/team spreads that risk.
+MAX_PER_STAT = 3
+
+
 def _safest_multi_py(legs: list[dict], target: float,
                      min_hit5: float = 0.0,
                      prob_floor: float = 0.30,
-                     max_legs: int | None = None) -> dict | None:
+                     max_legs: int | None = None,
+                     max_per_stat: int | None = MAX_PER_STAT) -> dict | None:
     """Exact safest multi for a target multiplier (no leg cap).
 
     Wraps sgm.safest_multi: maximise joint probability (with the per-leg risk
@@ -949,7 +960,7 @@ def _safest_multi_py(legs: list[dict], target: float,
     if "player_scraped" not in df.columns:
         df["player_scraped"] = df["player"]
     res = _sgm.safest_multi(df, float(target), prob_floor=prob_floor,
-                            max_legs=max_legs)
+                            max_legs=max_legs, max_per_stat=max_per_stat)
     if res is None:
         return None
     return {"legs": res["legs"],
