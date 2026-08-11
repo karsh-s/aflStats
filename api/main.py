@@ -1380,6 +1380,136 @@ def health():
 # Analysis endpoints — team styles, matchup win rates, position concession
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Live ladder & season stats (computed from data, not hardcoded)
+# ---------------------------------------------------------------------------
+
+_TEAM_CODE = {
+    "Adelaide": "ADE", "Brisbane Lions": "BRL", "Brisbane": "BRL",
+    "Carlton": "CAR", "Collingwood": "COL", "Essendon": "ESS",
+    "Fremantle": "FRE", "Geelong": "GEE", "Geelong Cats": "GEE",
+    "Gold Coast": "GCS", "GWS": "GWS", "Greater Western Sydney": "GWS",
+    "Hawthorn": "HAW", "Melbourne": "MEL", "North Melbourne": "NTH",
+    "Port Adelaide": "PTA", "Richmond": "RIC", "St Kilda": "STK",
+    "Sydney": "SYD", "West Coast": "WCE", "Western Bulldogs": "WBD",
+}
+
+
+def _code(name: str) -> str | None:
+    return _TEAM_CODE.get(str(name))
+
+
+def _season_table(year: int = 2026) -> list[dict]:
+    """Ladder rows computed from completed games."""
+    games = sh.history(year)
+    g = games[(games["year"] == year) & (games["complete"] == 100)]
+    acc: dict[str, dict] = {}
+    for _, r in g.iterrows():
+        hs, as_ = float(r["hscore"]), float(r["ascore"])
+        for team, own, opp in ((r["hteam"], hs, as_), (r["ateam"], as_, hs)):
+            c = _code(team)
+            if c is None:
+                continue
+            a = acc.setdefault(c, {"team": c, "played": 0, "wins": 0, "losses": 0,
+                                   "draws": 0, "for": 0.0, "against": 0.0})
+            a["played"] += 1
+            a["for"] += own
+            a["against"] += opp
+            if own > opp:
+                a["wins"] += 1
+            elif own < opp:
+                a["losses"] += 1
+            else:
+                a["draws"] += 1
+    rows = []
+    for a in acc.values():
+        pct = (a["for"] / a["against"] * 100.0) if a["against"] else 0.0
+        rows.append({**a, "for": int(a["for"]), "against": int(a["against"]),
+                     "pct": round(pct, 1),
+                     "points": a["wins"] * 4 + a["draws"] * 2})
+    rows.sort(key=lambda x: (-x["points"], -x["pct"]))
+    for i, r in enumerate(rows, 1):
+        r["pos"] = i
+    return rows
+
+
+@app.get("/api/ladder")
+def api_ladder(year: int = 2026):
+    """Live ladder — recomputed from completed games each request."""
+    return _season_table(year)
+
+
+@app.get("/api/stats/teams")
+def api_team_stats(year: int = 2026):
+    """Per-team season scoring stats for the stats + premiership pages."""
+    out = []
+    for r in _season_table(year):
+        p = max(r["played"], 1)
+        out.append({
+            "team": r["team"], "played": r["played"],
+            "for": r["for"], "against": r["against"],
+            "forAvg": round(r["for"] / p, 1),
+            "againstAvg": round(r["against"] / p, 1),
+            "pct": r["pct"], "points": r["points"],
+        })
+    return out
+
+
+_STAT_COLS = {
+    "ki": "kicks", "mk": "marks", "hb": "handballs", "di": "disposals",
+    "gl": "goals", "bh": "behinds", "ho": "hitouts", "tk": "tackles",
+    "rb": "rebounds", "if_": "inside50s", "cl": "clearances",
+    "cp": "contested_poss",
+}
+
+
+@app.get("/api/stats/players")
+def api_player_stats(year: int = 2026, min_games: int = 1, limit: int = 400):
+    """Season player totals/averages, computed live from the box scores."""
+    ps = sh.player_stats()
+    ps = ps[pd.to_datetime(ps["date"]).dt.year == year]
+    if ps.empty:
+        return []
+    rows = []
+    for (player, team), grp in ps.groupby(["player", "team"], sort=False):
+        c = _code(team)
+        if c is None or len(grp) < min_games:
+            continue
+        # "Neale, Lachie" -> "L. Neale" to match the UI's display style
+        parts = str(player).split(", ")
+        disp = (f"{parts[1][0]}. {parts[0]}" if len(parts) == 2 and parts[1]
+                else str(player))
+        rec = {"player": disp, "team": c, "gm": int(len(grp))}
+        for short, col in _STAT_COLS.items():
+            if col in grp.columns:
+                tot = float(grp[col].sum(skipna=True))
+                rec[short] = int(round(tot))
+                rec[f"{short.rstrip('_')}Avg"] = round(tot / len(grp), 2)
+            else:
+                rec[short] = 0
+                rec[f"{short.rstrip('_')}Avg"] = 0.0
+        rows.append(rec)
+    rows.sort(key=lambda r: -r.get("di", 0))
+    return rows[:limit]
+
+
+@app.get("/api/season/current-round")
+def api_current_round(year: int = 2026):
+    """Round label for the site header — the first round with an unplayed game.
+
+    Computed from the same games frame the ladder uses so the header can
+    never disagree with the table underneath it.
+    """
+    try:
+        games = sh.history(year)
+        g = games[games["year"] == year]
+        inc = g[g["complete"] != 100]
+        rnd = int(inc["round"].min()) if not inc.empty else int(g["round"].max())
+    except Exception:
+        rnd = None
+    return {"year": year, "round": rnd}
+
+
 @app.get("/api/analysis/team-styles")
 def analysis_team_styles():
     if "team_styles" not in _analysis_cache:

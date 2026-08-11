@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useCurrentRound } from "@/lib/queries";
 
 const NAV = [
   { to: "/", label: "Live Terminal" },
@@ -11,6 +12,9 @@ const NAV = [
 ] as const;
 
 export function SiteHeader() {
+  // Round label follows the fixture data instead of being hardcoded.
+  const { data: cr } = useCurrentRound();
+  const roundLabel = cr?.round ? `Round ${cr.round}` : "Live";
   return (
     <nav className="sticky top-0 z-50 border-b border-ink/10 bg-paper/90 backdrop-blur-md">
       <div className="mx-auto flex h-12 max-w-[1440px] items-center justify-between px-4">
@@ -38,7 +42,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <span className="size-2 animate-pulse rounded-full bg-accent" />
           <span className="font-mono text-[10px] font-medium uppercase">
-            Round 17 · Live Model
+            {roundLabel} · Live Model
           </span>
         </div>
       </div>

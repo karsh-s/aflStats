@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, SectionHeading } from "@/components/page-shell";
 import { LadderTable } from "@/components/ladder-table";
+import { useLadder } from "@/lib/queries";
 
 export const Route = createFileRoute("/ladder")({
   head: () => ({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/ladder")({
       { property: "og:title", content: "AFL Ladder · AFL.Index" },
       {
         property: "og:description",
-        content: "Live AFL ladder snapshot for the 2025 season.",
+        content: "Live AFL ladder, updated automatically as results land.",
       },
     ],
   }),
@@ -22,10 +23,13 @@ export const Route = createFileRoute("/ladder")({
 });
 
 function LadderPage() {
+  const { data: ladder } = useLadder();
+  const played = ladder?.length ? Math.max(...ladder.map((r) => r.played)) : null;
+  const ladderMeta = played ? `After Round ${played}` : "Live";
   return (
     <PageShell>
       <div className="mx-auto max-w-3xl space-y-6">
-        <SectionHeading title="AFL Ladder" meta="After Round 20" />
+        <SectionHeading title="AFL Ladder" meta={ladderMeta} />
         <LadderTable />
       </div>
     </PageShell>

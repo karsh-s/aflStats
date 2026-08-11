@@ -269,6 +269,21 @@ export interface LiveProgress {
   };
 }
 
+export interface APILadderRow {
+  pos: number; team: string; played: number; wins: number; losses: number;
+  draws: number; pct: number; points: number; for: number; against: number;
+}
+
+export interface APITeamStat {
+  team: string; played: number; for: number; against: number;
+  forAvg: number; againstAvg: number; pct: number; points: number;
+}
+
+export interface APIPlayerStat {
+  player: string; team: string; gm: number;
+  [key: string]: string | number;
+}
+
 export interface RoleLeakTeam {
   team: string;
   roles: { role: string; avg_disposals: number; vs_league: number; n_player_games: number }[];
@@ -290,6 +305,11 @@ export const api = {
   gameSGM: (id: string) => get<APISGMLeg[]>(`/api/game/${id}/sgm`),
   gameTargetMultis: (id: string, floor = 0.6) =>
     get<APITargetMulti[]>(`/api/game/${id}/multis?floor=${floor}`),
+  ladder: (year = 2026) => get<APILadderRow[]>(`/api/ladder?year=${year}`),
+  teamStats: (year = 2026) => get<APITeamStat[]>(`/api/stats/teams?year=${year}`),
+  playerStats: (minGames = 1) =>
+    get<APIPlayerStat[]>(`/api/stats/players?min_games=${minGames}`),
+  currentRound: () => get<{ year: number; round: number | null }>("/api/season/current-round"),
   value: (minEdge = 0.04) => get<APIValueBet[]>(`/api/value?min_edge=${minEdge}`),
   health: () => get<{ status: string }>("/api/health"),
   live: {
