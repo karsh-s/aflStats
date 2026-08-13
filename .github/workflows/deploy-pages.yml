@@ -34,7 +34,7 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: afl-index/package-lock.json
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - name: Build static site
         env:
           VITE_STATIC_DATA: "1"
