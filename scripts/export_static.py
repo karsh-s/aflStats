@@ -79,6 +79,7 @@ def main() -> None:
         "/api/live/status",
         "/api/historical/rounds",
         "/api/value?min_edge=0.04",
+        "/api/value?min_edge=0.03",
     ]
     print("Season endpoints:")
     events = None

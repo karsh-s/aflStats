@@ -588,7 +588,7 @@ function ValuePanel({ bets, loading }: { bets: APIValueBet[] | undefined; loadin
       )}
       {bets?.length === 0 && !loading && (
         <div className="border border-border p-4 text-xs text-muted-foreground">
-          No lines with ≥3% edge found right now.
+          No lines with ≥4% edge found right now.
         </div>
       )}
     </div>
@@ -599,7 +599,7 @@ function ValuePanel({ bets, loading }: { bets: APIValueBet[] | undefined; loadin
 
 function Index() {
   const { data: events, isLoading: evLoading, isError: evError } = useEvents();
-  const { data: valueBets, isLoading: valLoading } = useValueBets(0.03);
+  const { data: valueBets, isLoading: valLoading } = useValueBets(0.04);
   const { data: historicalRounds } = useHistoricalRounds();
   const liveGames = useLiveGames().data?.games ?? [];
   const refreshLive = useLiveRefresh();

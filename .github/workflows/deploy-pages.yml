@@ -35,6 +35,9 @@ jobs:
           cache: npm
           cache-dependency-path: afl-index/package-lock.json
       - run: npm install --no-audit --no-fund
+      - name: Verify snapshot covers every frontend request
+        run: python3 scripts/check_static_coverage.py
+        working-directory: ${{ github.workspace }}
       - name: Build static site
         env:
           VITE_STATIC_DATA: "1"
