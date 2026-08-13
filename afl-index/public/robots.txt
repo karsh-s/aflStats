@@ -1,2 +1,3 @@
+# Unlisted build — link-only, not for indexing.
 User-agent: *
-Allow: /
+Disallow: /

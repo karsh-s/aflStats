@@ -1,0 +1,134 @@
+name: Refresh data and deploy
+
+# Rebuilds the static snapshot roughly every 36 hours.
+#
+# GitHub cron cannot express "every 36 hours" (it is calendar-based), so this
+# wakes every 12 hours and exits immediately unless 36 hours have passed since
+# the last snapshot. That keeps the cadence exact and, more importantly, keeps
+# us inside The Odds API's 500-requests-per-month free tier — each refresh
+# spends roughly 20-35 requests, so ~20 runs/month is the ceiling.
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Refresh even if <36h since the last snapshot"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  # Served behind a Netlify proxy at karshinsachdeva.com/statsfl
+  BASE_PATH: /statsfl/
+  MIN_HOURS_BETWEEN_REFRESH: "36"
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    outputs:
+      refreshed: ${{ steps.gate.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Should we refresh?
+        id: gate
+        run: |
+          MANIFEST=afl-index/public/data/manifest.json
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            echo "run=true" >> $GITHUB_OUTPUT; echo "Forced refresh."; exit 0
+          fi
+          if [ ! -f "$MANIFEST" ]; then
+            echo "run=true" >> $GITHUB_OUTPUT; echo "No snapshot yet."; exit 0
+          fi
+          LAST=$(python3 -c "import json;print(json.load(open('$MANIFEST'))['generated'])")
+          AGE_H=$(python3 -c "
+          import datetime
+          last = datetime.datetime.fromisoformat('$LAST')
+          print((datetime.datetime.utcnow() - last).total_seconds() / 3600)
+          ")
+          echo "Snapshot age: ${AGE_H}h (threshold ${MIN_HOURS_BETWEEN_REFRESH}h)"
+          if python3 -c "import sys; sys.exit(0 if $AGE_H >= $MIN_HOURS_BETWEEN_REFRESH else 1)"; then
+            echo "run=true" >> $GITHUB_OUTPUT
+          else
+            echo "run=false" >> $GITHUB_OUTPUT; echo "Too soon — skipping."
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python deps
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt uvicorn fastapi
+
+      - name: Fetch latest results
+        if: steps.gate.outputs.run == 'true'
+        run: python scripts/fetch_data.py --start 2026 --end 2026 --players --refresh
+
+      - name: Export static snapshot
+        if: steps.gate.outputs.run == 'true'
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          ODDS_API_REGION: au
+        run: |
+          uvicorn api.main:app --host 127.0.0.1 --port 8001 &
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:8001/api/health && break || sleep 5
+          done
+          python scripts/export_static.py
+
+      - name: Commit snapshot
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add afl-index/public/data
+          git diff --staged --quiet || git commit -m "Refresh data snapshot [skip ci]"
+          git push
+
+  build-deploy:
+    needs: refresh
+    if: needs.refresh.outputs.refreshed == 'true'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - run: git pull --rebase || true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: afl-index/package-lock.json
+      - run: npm ci
+        working-directory: afl-index
+      - name: Build static site
+        working-directory: afl-index
+        env:
+          VITE_STATIC_DATA: "1"
+        run: npm run build
+      - name: Add Pages entry files
+        working-directory: afl-index
+        run: |
+          cp dist/client/_shell.html dist/client/index.html
+          cp dist/client/_shell.html dist/client/404.html
+          touch dist/client/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: afl-index/dist/client
+      - id: deployment
+        uses: actions/deploy-pages@v4

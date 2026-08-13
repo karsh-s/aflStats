@@ -38,7 +38,8 @@ jobs:
       - name: Build static site
         env:
           VITE_STATIC_DATA: "1"
-          BASE_PATH: /${{ github.event.repository.name }}/
+          # Served behind a Netlify proxy at karshinsachdeva.com/statsfl
+          BASE_PATH: /statsfl/
         run: npm run build
       - name: Add Pages entry files
         # TanStack Start SPA emits _shell.html; Pages needs index.html and a

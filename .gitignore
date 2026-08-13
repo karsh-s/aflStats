@@ -4,8 +4,12 @@ __pycache__/
 .env
 data/cache/
 data/raw/
+!data/raw/player_positions.csv
 data/processed/
 data/models/
+# ...but CI needs these small artefacts to build the static site:
+!data/models/win_model.pkl
+!data/models/online_state.json
 .DS_Store
 .claude/settings.local.json
 afl-index/.workspace/
