@@ -82,13 +82,23 @@ def main() -> None:
     ]
     print("Season endpoints:")
     events = None
+    failed: list[str] = []
     for path in simple:
         data = fetch(path)
         if data is None:
+            failed.append(path)
             continue
         write(path, data)
         if path == "/api/events":
             events = data
+
+    # /api/events failing means every per-fixture file below is skipped and the
+    # previous (stale) odds stay deployed. That used to pass silently — a bad
+    # ODDS_API_KEY would quietly ship week-old multis — so it is fatal now.
+    if not events:
+        sys.exit("FATAL: /api/events returned nothing — odds data could not be "
+                 "refreshed (check ODDS_API_KEY). Refusing to deploy a snapshot "
+                 "with stale fixtures/odds.")
 
     # --- per-fixture endpoints ------------------------------------------
     if events:
@@ -118,6 +128,9 @@ def main() -> None:
             data = fetch(path)
             if data is not None:
                 write(path, data)
+
+    if failed:
+        print(f"\nWARNING: {len(failed)} endpoint(s) failed: {failed}")
 
     manifest = {"generated": __import__("datetime").datetime.utcnow().isoformat(),
                 "files": sorted(p.name for p in OUT.glob("*.json"))}
