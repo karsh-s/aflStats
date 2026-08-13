@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import time
 from pathlib import Path
 from typing import Any, Optional
@@ -15,6 +16,16 @@ from typing import Any, Optional
 import requests
 
 from . import config
+
+# Some sources (afltables.com) publish an AAAA record, but CI runners such as
+# GitHub Actions have no working IPv6 route — Python then picks the IPv6
+# address and every request dies with "Network is unreachable". Forcing the
+# resolver to IPv4 avoids that. Opt-in so local/dual-stack setups are
+# untouched: CI=true is set by GitHub Actions.
+if os.environ.get("AFL_FORCE_IPV4") == "1" or os.environ.get("CI") == "true":
+    import socket
+    import urllib3.util.connection as _u3conn
+    _u3conn.allowed_gai_family = lambda: socket.AF_INET
 
 _session = requests.Session()
 _session.headers.update({"User-Agent": config.USER_AGENT})
