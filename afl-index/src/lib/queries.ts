@@ -128,6 +128,30 @@ export function useTeamStyles() {
 export function useStyleMatchups() {
   return useQuery({ queryKey: ["analysis-style-matchups"], queryFn: api.analysis.styleMatchups, staleTime: Infinity });
 }
+// Season data recomputed server-side each request; refresh periodically so
+// the ladder/stats pages follow results without a redeploy.
+const SEASON_STALE = 5 * 60 * 1000;
+
+export function useLadder(year = 2026) {
+  return useQuery({ queryKey: ["ladder", year], queryFn: () => api.ladder(year),
+                    staleTime: SEASON_STALE, refetchInterval: SEASON_STALE, retry: 1 });
+}
+
+export function useTeamStats(year = 2026) {
+  return useQuery({ queryKey: ["team-stats", year], queryFn: () => api.teamStats(year),
+                    staleTime: SEASON_STALE, refetchInterval: SEASON_STALE, retry: 1 });
+}
+
+export function usePlayerStats(minGames = 1) {
+  return useQuery({ queryKey: ["player-stats", minGames], queryFn: () => api.playerStats(minGames),
+                    staleTime: SEASON_STALE, refetchInterval: SEASON_STALE, retry: 1 });
+}
+
+export function useCurrentRound() {
+  return useQuery({ queryKey: ["current-round"], queryFn: api.currentRound,
+                    staleTime: SEASON_STALE, refetchInterval: SEASON_STALE, retry: 1 });
+}
+
 export function useRoleLeaks() {
   return useQuery({ queryKey: ["analysis-role-leaks"], queryFn: api.analysis.roleLeaks, staleTime: 5 * 60 * 1000 });
 }

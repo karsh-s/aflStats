@@ -8,7 +8,6 @@ const ENTRIES = [
   { path: "/projections", changefreq: "hourly", priority: "0.9" },
   { path: "/multi-builder", changefreq: "hourly", priority: "0.9" },
   { path: "/ladder", changefreq: "daily", priority: "0.8" },
-  { path: "/insights", changefreq: "daily", priority: "0.8" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({

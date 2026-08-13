@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+# The site is a STATIC snapshot: GitHub Pages runs no Python, so the JSON in
+# afl-index/public/data (written by scripts/export_static.py against a local
+# API) is what the deployed app reads. Refresh that snapshot and commit it to
+# update the live site.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "afl-index/**"
+      - ".github/workflows/deploy-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: afl-index
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: afl-index/package-lock.json
+      - run: npm ci
+      - name: Build static site
+        env:
+          VITE_STATIC_DATA: "1"
+          # Served behind a Netlify proxy at karshinsachdeva.com/statsfl
+          BASE_PATH: /statsfl/
+        run: npm run build
+      - name: Add Pages entry files
+        # TanStack Start SPA emits _shell.html; Pages needs index.html and a
+        # 404.html fallback so client-side routes resolve on deep links.
+        run: |
+          cp dist/client/_shell.html dist/client/index.html
+          cp dist/client/_shell.html dist/client/404.html
+          touch dist/client/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: afl-index/dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

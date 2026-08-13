@@ -285,9 +285,66 @@ def priced_legs(event_id: str, home: str, away: str, venue: str,
     if legs.empty:
         return legs
     exp_margin = _expected_margin(home, away, venue, when)
-    return sgm.attach_model_probs(legs, ps, el, venue=venue, forecast=forecast,
-                                  home=home, away=away, min_games=min_games,
-                                  exp_margin=exp_margin)
+    priced = sgm.attach_model_probs(legs, ps, el, venue=venue, forecast=forecast,
+                                    home=home, away=away, min_games=min_games,
+                                    exp_margin=exp_margin)
+    team_leg = _team_win_leg(event_id, home, away)
+    if team_leg is not None:
+        priced = pd.concat([priced, pd.DataFrame([team_leg])], ignore_index=True)
+    return priced
+
+
+# Only offer a team-winner leg when the model is meaningfully confident —
+# a coin-flip H2H adds variance to a multi without adding information.
+TEAM_LEG_MIN_PROB = 0.60
+
+
+def _team_win_leg(event_id: str, home: str, away: str) -> dict | None:
+    """Head-to-head winner as an SGM leg, when one side is a clear favourite."""
+    try:
+        prices = theoddsapi.event_h2h(event_id)
+    except Exception:
+        return None
+    if not prices:
+        return None
+    try:
+        year = 2026
+        nr = next_round(year)
+        preds = round_predictions(year, int(nr) if nr else 1)
+        m = preds[(preds["home"] == home) & (preds["away"] == away)]
+        if m.empty:
+            return None
+        p_home = float(m.iloc[0]["p_home"])
+    except Exception:
+        return None
+
+    team, p_model = (home, p_home) if p_home >= 0.5 else (away, 1.0 - p_home)
+    other = away if team == home else home
+    odds = prices.get(team)
+    if not odds or odds <= 1.0:
+        return None
+    # Head-to-head markets are far more efficient than player props, so the
+    # player-leg calibration does not apply here. Use the DE-VIGGED market
+    # probability (strip the book's overround) blended evenly with the model.
+    o_other = prices.get(other)
+    if o_other and o_other > 1.0:
+        inv, inv_o = 1.0 / odds, 1.0 / o_other
+        p_market = inv / (inv + inv_o)
+    else:
+        p_market = 1.0 / odds
+    p_cal = 0.5 * p_model + 0.5 * p_market
+    if p_cal < TEAM_LEG_MIN_PROB:
+        return None
+    return {
+        "event_id": event_id, "home": home, "away": away,
+        "bookmaker": "SportsBet", "market": "h2h", "stat": "team",
+        "player": f"{team} to win", "player_scraped": f"TEAM::{team}",
+        "line": 0.5, "milestone": "win",
+        "price": float(odds), "odds": float(odds),
+        "prob": p_cal, "prob_raw": p_model,
+        "proj_mean": None, "proj_sd": None, "proj_dist": None,
+        "sim_team": team,
+    }
 
 
 @st.cache_data(ttl=1800)

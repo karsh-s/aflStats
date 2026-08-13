@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo } from "react";
 import {
   ScatterChart,
   Scatter,
@@ -12,6 +13,7 @@ import {
 } from "recharts";
 import { PageShell } from "@/components/page-shell";
 import { TEAM_STATS, TEAM_NAMES, TEAM_COLORS, TEAM_LOGOS, type TeamCode } from "@/lib/afl-data";
+import { useTeamStats } from "@/lib/queries";
 
 export const Route = createFileRoute("/premiership-window")({
   head: () => ({
@@ -33,31 +35,41 @@ export const Route = createFileRoute("/premiership-window")({
 // Transform: x = 19 - scoringRank   → rank 1 → x=18 (RIGHT with domain [0.5,18.5])
 //            y = 19 - defendingRank  → rank 1 → y=18 (TOP  with domain [0.5,18.5])
 
-const sortedByFor = [...TEAM_STATS].sort((a, b) => b.forAvg - a.forAvg);
-const sortedByAgainst = [...TEAM_STATS].sort((a, b) => a.againstAvg - b.againstAvg);
+// Built from whatever team stats are supplied — live from the API when
+// available, the bundled snapshot otherwise.
+function buildChartData(stats: typeof TEAM_STATS) {
+  const sortedByFor = [...stats].sort((a, b) => b.forAvg - a.forAvg);
+  const sortedByAgainst = [...stats].sort((a, b) => a.againstAvg - b.againstAvg);
+  const scoringRankMap = Object.fromEntries(sortedByFor.map((t, i) => [t.team, i + 1]));
+  const defendingRankMap = Object.fromEntries(sortedByAgainst.map((t, i) => [t.team, i + 1]));
+  return stats.map((t) => ({
+    team: t.team,
+    x: 19 - scoringRankMap[t.team],    // rank 1 → 18 (right)
+    y: 19 - defendingRankMap[t.team],  // rank 1 → 18 (top)
+    name: TEAM_NAMES[t.team as TeamCode],
+    color: TEAM_COLORS[t.team as TeamCode],
+    logo: TEAM_LOGOS[t.team as TeamCode],
+    pct: t.pct,
+    points: t.points,
+    forAvg: t.forAvg,
+    againstAvg: t.againstAvg,
+    scoringRank: scoringRankMap[t.team],
+    defendingRank: defendingRankMap[t.team],
+  }));
+}
 
-const scoringRankMap = Object.fromEntries(sortedByFor.map((t, i) => [t.team, i + 1]));
-const defendingRankMap = Object.fromEntries(sortedByAgainst.map((t, i) => [t.team, i + 1]));
+type ChartPoint = ReturnType<typeof buildChartData>[number];
 
-const chartData = TEAM_STATS.map((t) => ({
-  team: t.team,
-  x: 19 - scoringRankMap[t.team],    // rank 1 → 18 (right)
-  y: 19 - defendingRankMap[t.team],  // rank 1 → 18 (top)
-  name: TEAM_NAMES[t.team as TeamCode],
-  color: TEAM_COLORS[t.team as TeamCode],
-  logo: TEAM_LOGOS[t.team as TeamCode],
-  pct: t.pct,
-  points: t.points,
-  forAvg: t.forAvg,
-  againstAvg: t.againstAvg,
-  scoringRank: scoringRankMap[t.team],
-  defendingRank: defendingRankMap[t.team],
-}));
+// Window = top 6 in BOTH scoring and defending.
+function windowSet(data: ChartPoint[]) {
+  return new Set(
+    data.filter((d) => d.scoringRank <= 6 && d.defendingRank <= 6).map((d) => d.team),
+  );
+}
 
-// Window = top 6 in BOTH → transformed x ≥ 13 AND y ≥ 13
-const inWindowSet = new Set(
-  chartData.filter((d) => d.scoringRank <= 6 && d.defendingRank <= 6).map((d) => d.team),
-);
+// Module-level fallbacks so the pure presentational helpers below keep working.
+const chartData = buildChartData(TEAM_STATS);
+const inWindowSet = windowSet(chartData);
 
 // ── Team crest dot ─────────────────────────────────────────────────────────
 
@@ -168,6 +180,13 @@ function CustomTooltip({
 // ── Page ───────────────────────────────────────────────────────────────────
 
 function PremiershipWindowPage() {
+  const { data: liveTeams } = useTeamStats();
+  const stats = (liveTeams && liveTeams.length
+    ? (liveTeams as unknown as typeof TEAM_STATS)
+    : TEAM_STATS);
+  const chartData = useMemo(() => buildChartData(stats), [stats]);
+  const roundsPlayed = stats.length ? Math.max(...stats.map((t) => t.played)) : null;
+  const inWindowSet = useMemo(() => windowSet(chartData), [chartData]);
   const inWindow = chartData
     .filter((d) => inWindowSet.has(d.team))
     .sort((a, b) => a.scoringRank + a.defendingRank - (b.scoringRank + b.defendingRank));
@@ -181,7 +200,7 @@ function PremiershipWindowPage() {
             Premiership Window
           </h2>
           <span className="mb-1 font-mono text-[10px] text-muted-foreground">
-            2026 · After Round 15
+            2026 · After Round {roundsPlayed ?? "—"}
           </span>
         </div>
 

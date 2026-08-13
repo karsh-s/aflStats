@@ -431,8 +431,9 @@ def _multi_reasons(legs: list[dict], home: str, away: str,
 
 
 @app.get("/api/game/{event_id}/multis")
-def game_target_multis(event_id: str, targets: str = "2,3,5,10",
-                       floor: float = 0.70):
+def game_target_multis(event_id: str,
+                       targets: str = "1.5,2,2.5,3,4,5,7.5,10,15,20",
+                       floor: float = 0.60):
     """Safest multi per target multiplier — exact DP, unlimited legs, all
     stat lines. Maximises joint probability (per-leg risk-discounted) subject
     to combined odds >= target; with odds pinned at the target this is also
@@ -469,7 +470,11 @@ def game_target_multis(event_id: str, targets: str = "2,3,5,10",
             target = float(t)
         except ValueError:
             continue
-        res = _sgm.safest_multi(legs, target, prob_floor=floor)
+        # Long-shot targets need a lower floor and more legs to be reachable.
+        f = floor if target <= 5 else (floor - 0.05 if target <= 10 else floor - 0.12)
+        cap = MAX_TARGET_LEGS if target <= 5 else (7 if target <= 10 else 8)
+        res = _sgm.safest_multi(legs, target, prob_floor=max(0.40, f),
+                                max_legs=cap, max_per_stat=MAX_PER_STAT)
         if res is None:
             out.append({"target": target, "result": None})
             continue
@@ -919,9 +924,25 @@ def _build_by_risk_py(legs: list[dict], min_prob: float, target: float,
     return _build_multi_py(filtered, target, max_legs, min_odds, min_hit5)
 
 
+# Leg-count caps. Post-mortem R19: with calibrated (honest) leg probabilities
+# the optimiser will happily stack 13 near-certainties to reach 10x, but every
+# extra leg is another player who can be a late out, get tagged, or have a
+# quiet day — risks the independence maths never sees.
+MAX_TARGET_LEGS = 6
+MAX_SAFE_LEGS = 5
+
+
+# Cap on legs sharing one stat. Multis made entirely of disposal lines all
+# move with the same thing (game tempo), so a slow game sinks every leg at
+# once; mixing disposals/marks/tackles/goals/team spreads that risk.
+MAX_PER_STAT = 3
+
+
 def _safest_multi_py(legs: list[dict], target: float,
                      min_hit5: float = 0.0,
-                     prob_floor: float = 0.30) -> dict | None:
+                     prob_floor: float = 0.30,
+                     max_legs: int | None = None,
+                     max_per_stat: int | None = MAX_PER_STAT) -> dict | None:
     """Exact safest multi for a target multiplier (no leg cap).
 
     Wraps sgm.safest_multi: maximise joint probability (with the per-leg risk
@@ -938,7 +959,8 @@ def _safest_multi_py(legs: list[dict], target: float,
     df = pd.DataFrame(legs)
     if "player_scraped" not in df.columns:
         df["player_scraped"] = df["player"]
-    res = _sgm.safest_multi(df, float(target), prob_floor=prob_floor)
+    res = _sgm.safest_multi(df, float(target), prob_floor=prob_floor,
+                            max_legs=max_legs, max_per_stat=max_per_stat)
     if res is None:
         return None
     return {"legs": res["legs"],
@@ -962,14 +984,16 @@ _MULTI_SPECS = [
     # >= 70% model probability. SAFE variants additionally demand an
     # empirical streak (line hit in >= 3 of the player's last 5 games),
     # the bets.com.au-style anchor-leg rule.
-    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.70)),
-    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.40, prob_floor=0.70)),
-    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.60, prob_floor=0.70)),
-    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.60, prob_floor=0.70)),
-    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.60, prob_floor=0.70)),
-    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.60, prob_floor=0.70)),
+    ("target_2",  "Target ~2×",      lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.40, prob_floor=0.60, max_legs=MAX_TARGET_LEGS)),
+    ("target_3",  "Target ~3×",      lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.40, prob_floor=0.60, max_legs=MAX_TARGET_LEGS)),
+    ("target_5",  "Target ~5×",      lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.40, prob_floor=0.60, max_legs=MAX_TARGET_LEGS)),
+    # 10x is inherently a long shot: no combination of >=60% legs reaches it
+    # within the leg cap, so this tier keeps a lower floor by design.
+    ("target_10", "Target ~10×",     lambda legs: _safest_multi_py(legs, 10, min_hit5=0.40, prob_floor=0.50, max_legs=7)),
+    ("target_2_safe",  "Target ~2× SAFE",  lambda legs: _safest_multi_py(legs, 2,  min_hit5=0.60, prob_floor=0.68, max_legs=MAX_SAFE_LEGS)),
+    ("target_3_safe",  "Target ~3× SAFE",  lambda legs: _safest_multi_py(legs, 3,  min_hit5=0.60, prob_floor=0.68, max_legs=MAX_SAFE_LEGS)),
+    ("target_5_safe",  "Target ~5× SAFE",  lambda legs: _safest_multi_py(legs, 5,  min_hit5=0.60, prob_floor=0.68, max_legs=MAX_SAFE_LEGS)),
+    ("target_10_safe", "Target ~10× SAFE", lambda legs: _safest_multi_py(legs, 10, min_hit5=0.60, prob_floor=0.58, max_legs=6)),
 ]
 
 
@@ -1355,6 +1379,136 @@ def health():
 # ---------------------------------------------------------------------------
 # Analysis endpoints — team styles, matchup win rates, position concession
 # ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Live ladder & season stats (computed from data, not hardcoded)
+# ---------------------------------------------------------------------------
+
+_TEAM_CODE = {
+    "Adelaide": "ADE", "Brisbane Lions": "BRL", "Brisbane": "BRL",
+    "Carlton": "CAR", "Collingwood": "COL", "Essendon": "ESS",
+    "Fremantle": "FRE", "Geelong": "GEE", "Geelong Cats": "GEE",
+    "Gold Coast": "GCS", "GWS": "GWS", "Greater Western Sydney": "GWS",
+    "Hawthorn": "HAW", "Melbourne": "MEL", "North Melbourne": "NTH",
+    "Port Adelaide": "PTA", "Richmond": "RIC", "St Kilda": "STK",
+    "Sydney": "SYD", "West Coast": "WCE", "Western Bulldogs": "WBD",
+}
+
+
+def _code(name: str) -> str | None:
+    return _TEAM_CODE.get(str(name))
+
+
+def _season_table(year: int = 2026) -> list[dict]:
+    """Ladder rows computed from completed games."""
+    games = sh.history(year)
+    g = games[(games["year"] == year) & (games["complete"] == 100)]
+    acc: dict[str, dict] = {}
+    for _, r in g.iterrows():
+        hs, as_ = float(r["hscore"]), float(r["ascore"])
+        for team, own, opp in ((r["hteam"], hs, as_), (r["ateam"], as_, hs)):
+            c = _code(team)
+            if c is None:
+                continue
+            a = acc.setdefault(c, {"team": c, "played": 0, "wins": 0, "losses": 0,
+                                   "draws": 0, "for": 0.0, "against": 0.0})
+            a["played"] += 1
+            a["for"] += own
+            a["against"] += opp
+            if own > opp:
+                a["wins"] += 1
+            elif own < opp:
+                a["losses"] += 1
+            else:
+                a["draws"] += 1
+    rows = []
+    for a in acc.values():
+        pct = (a["for"] / a["against"] * 100.0) if a["against"] else 0.0
+        rows.append({**a, "for": int(a["for"]), "against": int(a["against"]),
+                     "pct": round(pct, 1),
+                     "points": a["wins"] * 4 + a["draws"] * 2})
+    rows.sort(key=lambda x: (-x["points"], -x["pct"]))
+    for i, r in enumerate(rows, 1):
+        r["pos"] = i
+    return rows
+
+
+@app.get("/api/ladder")
+def api_ladder(year: int = 2026):
+    """Live ladder — recomputed from completed games each request."""
+    return _season_table(year)
+
+
+@app.get("/api/stats/teams")
+def api_team_stats(year: int = 2026):
+    """Per-team season scoring stats for the stats + premiership pages."""
+    out = []
+    for r in _season_table(year):
+        p = max(r["played"], 1)
+        out.append({
+            "team": r["team"], "played": r["played"],
+            "for": r["for"], "against": r["against"],
+            "forAvg": round(r["for"] / p, 1),
+            "againstAvg": round(r["against"] / p, 1),
+            "pct": r["pct"], "points": r["points"],
+        })
+    return out
+
+
+_STAT_COLS = {
+    "ki": "kicks", "mk": "marks", "hb": "handballs", "di": "disposals",
+    "gl": "goals", "bh": "behinds", "ho": "hitouts", "tk": "tackles",
+    "rb": "rebounds", "if_": "inside50s", "cl": "clearances",
+    "cp": "contested_poss",
+}
+
+
+@app.get("/api/stats/players")
+def api_player_stats(year: int = 2026, min_games: int = 1, limit: int = 400):
+    """Season player totals/averages, computed live from the box scores."""
+    ps = sh.player_stats()
+    ps = ps[pd.to_datetime(ps["date"]).dt.year == year]
+    if ps.empty:
+        return []
+    rows = []
+    for (player, team), grp in ps.groupby(["player", "team"], sort=False):
+        c = _code(team)
+        if c is None or len(grp) < min_games:
+            continue
+        # "Neale, Lachie" -> "L. Neale" to match the UI's display style
+        parts = str(player).split(", ")
+        disp = (f"{parts[1][0]}. {parts[0]}" if len(parts) == 2 and parts[1]
+                else str(player))
+        rec = {"player": disp, "team": c, "gm": int(len(grp))}
+        for short, col in _STAT_COLS.items():
+            if col in grp.columns:
+                tot = float(grp[col].sum(skipna=True))
+                rec[short] = int(round(tot))
+                rec[f"{short.rstrip('_')}Avg"] = round(tot / len(grp), 2)
+            else:
+                rec[short] = 0
+                rec[f"{short.rstrip('_')}Avg"] = 0.0
+        rows.append(rec)
+    rows.sort(key=lambda r: -r.get("di", 0))
+    return rows[:limit]
+
+
+@app.get("/api/season/current-round")
+def api_current_round(year: int = 2026):
+    """Round label for the site header — the first round with an unplayed game.
+
+    Computed from the same games frame the ladder uses so the header can
+    never disagree with the table underneath it.
+    """
+    try:
+        games = sh.history(year)
+        g = games[games["year"] == year]
+        inc = g[g["complete"] != 100]
+        rnd = int(inc["round"].min()) if not inc.empty else int(g["round"].max())
+    except Exception:
+        rnd = None
+    return {"year": year, "round": rnd}
+
 
 @app.get("/api/analysis/team-styles")
 def analysis_team_styles():

@@ -13,10 +13,8 @@ import { Route as StatsRouteImport } from './routes/stats'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ProjectionsRouteImport } from './routes/projections'
 import { Route as PremiershipWindowRouteImport } from './routes/premiership-window'
-import { Route as MultiTrackerRouteImport } from './routes/multi-tracker'
 import { Route as MultiBuilderRouteImport } from './routes/multi-builder'
 import { Route as LadderRouteImport } from './routes/ladder'
-import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as AnalysisRouteImport } from './routes/analysis'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GameEventIdRouteImport } from './routes/game.$eventId'
@@ -41,11 +39,6 @@ const PremiershipWindowRoute = PremiershipWindowRouteImport.update({
   path: '/premiership-window',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MultiTrackerRoute = MultiTrackerRouteImport.update({
-  id: '/multi-tracker',
-  path: '/multi-tracker',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MultiBuilderRoute = MultiBuilderRouteImport.update({
   id: '/multi-builder',
   path: '/multi-builder',
@@ -54,11 +47,6 @@ const MultiBuilderRoute = MultiBuilderRouteImport.update({
 const LadderRoute = LadderRouteImport.update({
   id: '/ladder',
   path: '/ladder',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InsightsRoute = InsightsRouteImport.update({
-  id: '/insights',
-  path: '/insights',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalysisRoute = AnalysisRouteImport.update({
@@ -80,10 +68,8 @@ const GameEventIdRoute = GameEventIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
-  '/insights': typeof InsightsRoute
   '/ladder': typeof LadderRoute
   '/multi-builder': typeof MultiBuilderRoute
-  '/multi-tracker': typeof MultiTrackerRoute
   '/premiership-window': typeof PremiershipWindowRoute
   '/projections': typeof ProjectionsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -93,10 +79,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
-  '/insights': typeof InsightsRoute
   '/ladder': typeof LadderRoute
   '/multi-builder': typeof MultiBuilderRoute
-  '/multi-tracker': typeof MultiTrackerRoute
   '/premiership-window': typeof PremiershipWindowRoute
   '/projections': typeof ProjectionsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -107,10 +91,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/analysis': typeof AnalysisRoute
-  '/insights': typeof InsightsRoute
   '/ladder': typeof LadderRoute
   '/multi-builder': typeof MultiBuilderRoute
-  '/multi-tracker': typeof MultiTrackerRoute
   '/premiership-window': typeof PremiershipWindowRoute
   '/projections': typeof ProjectionsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -122,10 +104,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/analysis'
-    | '/insights'
     | '/ladder'
     | '/multi-builder'
-    | '/multi-tracker'
     | '/premiership-window'
     | '/projections'
     | '/sitemap.xml'
@@ -135,10 +115,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/analysis'
-    | '/insights'
     | '/ladder'
     | '/multi-builder'
-    | '/multi-tracker'
     | '/premiership-window'
     | '/projections'
     | '/sitemap.xml'
@@ -148,10 +126,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/analysis'
-    | '/insights'
     | '/ladder'
     | '/multi-builder'
-    | '/multi-tracker'
     | '/premiership-window'
     | '/projections'
     | '/sitemap.xml'
@@ -162,10 +138,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AnalysisRoute: typeof AnalysisRoute
-  InsightsRoute: typeof InsightsRoute
   LadderRoute: typeof LadderRoute
   MultiBuilderRoute: typeof MultiBuilderRoute
-  MultiTrackerRoute: typeof MultiTrackerRoute
   PremiershipWindowRoute: typeof PremiershipWindowRoute
   ProjectionsRoute: typeof ProjectionsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -203,13 +177,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PremiershipWindowRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/multi-tracker': {
-      id: '/multi-tracker'
-      path: '/multi-tracker'
-      fullPath: '/multi-tracker'
-      preLoaderRoute: typeof MultiTrackerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/multi-builder': {
       id: '/multi-builder'
       path: '/multi-builder'
@@ -222,13 +189,6 @@ declare module '@tanstack/react-router' {
       path: '/ladder'
       fullPath: '/ladder'
       preLoaderRoute: typeof LadderRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/insights': {
-      id: '/insights'
-      path: '/insights'
-      fullPath: '/insights'
-      preLoaderRoute: typeof InsightsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analysis': {
@@ -258,10 +218,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AnalysisRoute: AnalysisRoute,
-  InsightsRoute: InsightsRoute,
   LadderRoute: LadderRoute,
   MultiBuilderRoute: MultiBuilderRoute,
-  MultiTrackerRoute: MultiTrackerRoute,
   PremiershipWindowRoute: PremiershipWindowRoute,
   ProjectionsRoute: ProjectionsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

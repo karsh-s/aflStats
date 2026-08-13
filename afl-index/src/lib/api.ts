@@ -5,6 +5,32 @@
 
 export const API_BASE = "http://localhost:8001";
 
+/**
+ * Static-data mode (GitHub Pages).
+ *
+ * Pages has no Python backend, so a build with VITE_STATIC_DATA=1 reads the
+ * JSON snapshot written by scripts/export_static.py instead of calling the
+ * API. `staticUrl` must produce exactly the slugs that script writes.
+ */
+export const STATIC_DATA = import.meta.env.VITE_STATIC_DATA === "1";
+
+function staticUrl(path: string): string {
+  const base = import.meta.env.BASE_URL || "/";
+  let p = path.startsWith("/api/") ? path.slice(5) : path.replace(/^\//, "");
+  let file: string;
+  if (p.includes("?")) {
+    const [head, query] = p.split("?");
+    file = `${head.replace(/\//g, "_")}__${query.replace(/[=&]/g, "_")}.json`;
+  } else {
+    file = `${p.replace(/\//g, "_")}.json`;
+  }
+  return `${base}data/${file}`.replace(/\/{2,}/g, "/");
+}
+
+function resolveUrl(path: string): string {
+  return STATIC_DATA ? staticUrl(path) : `${API_BASE}${path}`;
+}
+
 export interface APIEvent {
   id: string;
   home: string;
@@ -81,12 +107,14 @@ export interface APIValueBet {
 }
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`);
+  const res = await fetch(resolveUrl(path));
   if (!res.ok) throw new Error(`API ${path} → ${res.status}`);
   return res.json() as Promise<T>;
 }
 
 async function post<T>(path: string, body?: unknown): Promise<T> {
+  // Static builds are read-only: there is no server to POST to.
+  if (STATIC_DATA) throw new Error("read-only static build");
   const res = await fetch(`${API_BASE}${path}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -269,6 +297,21 @@ export interface LiveProgress {
   };
 }
 
+export interface APILadderRow {
+  pos: number; team: string; played: number; wins: number; losses: number;
+  draws: number; pct: number; points: number; for: number; against: number;
+}
+
+export interface APITeamStat {
+  team: string; played: number; for: number; against: number;
+  forAvg: number; againstAvg: number; pct: number; points: number;
+}
+
+export interface APIPlayerStat {
+  player: string; team: string; gm: number;
+  [key: string]: string | number;
+}
+
 export interface RoleLeakTeam {
   team: string;
   roles: { role: string; avg_disposals: number; vs_league: number; n_player_games: number }[];
@@ -288,8 +331,13 @@ export const api = {
   gameProps: (id: string) => get<APIProp[]>(`/api/game/${id}/props`),
   gameBestLines: (id: string) => get<APIBestLine[]>(`/api/game/${id}/best-lines`),
   gameSGM: (id: string) => get<APISGMLeg[]>(`/api/game/${id}/sgm`),
-  gameTargetMultis: (id: string, floor = 0.3) =>
+  gameTargetMultis: (id: string, floor = 0.6) =>
     get<APITargetMulti[]>(`/api/game/${id}/multis?floor=${floor}`),
+  ladder: (year = 2026) => get<APILadderRow[]>(`/api/ladder?year=${year}`),
+  teamStats: (year = 2026) => get<APITeamStat[]>(`/api/stats/teams?year=${year}`),
+  playerStats: (minGames = 1) =>
+    get<APIPlayerStat[]>(`/api/stats/players?min_games=${minGames}`),
+  currentRound: () => get<{ year: number; round: number | null }>("/api/season/current-round"),
   value: (minEdge = 0.04) => get<APIValueBet[]>(`/api/value?min_edge=${minEdge}`),
   health: () => get<{ status: string }>("/api/health"),
   live: {

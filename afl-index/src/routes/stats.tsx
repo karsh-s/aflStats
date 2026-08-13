@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
 import { PageShell, SectionHeading } from "@/components/page-shell";
 import { PLAYER_STATS, TEAM_STATS, TEAM_NAMES, TEAM_COLORS, type TeamCode } from "@/lib/afl-data";
+import { usePlayerStats, useTeamStats } from "@/lib/queries";
 
 export const Route = createFileRoute("/stats")({
   head: () => ({
@@ -46,9 +47,13 @@ function PlayerLeaders() {
   const [activeStat, setActiveStat] = useState<StatConfig>(STAT_CONFIGS[0]);
   const [sortBy, setSortBy] = useState<"total" | "avg">("total");
   const [minGames, setMinGames] = useState(5);
+  const { data: livePlayers } = usePlayerStats(1);
+  const playerRows = (livePlayers && livePlayers.length
+    ? (livePlayers as unknown as typeof PLAYER_STATS)
+    : PLAYER_STATS);
 
   const sorted = useMemo(() => {
-    return [...PLAYER_STATS]
+    return [...playerRows]
       .filter((p) => p.gm >= minGames)
       .sort((a, b) =>
         sortBy === "total"
@@ -56,7 +61,7 @@ function PlayerLeaders() {
           : (b[activeStat.avgKey] as number) - (a[activeStat.avgKey] as number),
       )
       .slice(0, 50);
-  }, [activeStat, sortBy, minGames]);
+  }, [playerRows, activeStat, sortBy, minGames]);
 
   const maxVal = sorted.length > 0 ? (sorted[0][sortBy === "total" ? activeStat.key : activeStat.avgKey] as number) : 1;
 
@@ -179,11 +184,15 @@ function PlayerLeaders() {
 }
 
 function TeamLeaders() {
+  const { data: liveTeams } = useTeamStats();
+  const teamRows = (liveTeams && liveTeams.length
+    ? (liveTeams as unknown as typeof TEAM_STATS)
+    : TEAM_STATS);
   const [sortKey, setSortKey] = useState<keyof typeof TEAM_STATS[0]>("forAvg");
 
   const sorted = useMemo(
     () =>
-      [...TEAM_STATS].sort((a, b) => {
+      [...teamRows].sort((a, b) => {
         const av = a[sortKey] as number;
         const bv = b[sortKey] as number;
         // For "against" stats, lower is better so sort ascending
@@ -191,7 +200,7 @@ function TeamLeaders() {
           ? av - bv
           : bv - av;
       }),
-    [sortKey],
+    [teamRows, sortKey],
   );
 
   type ColConfig = { key: keyof typeof TEAM_STATS[0]; label: string; suffix?: string };
@@ -205,8 +214,8 @@ function TeamLeaders() {
     { key: "points", label: "Ladder Pts" },
   ];
 
-  const maxFor = Math.max(...TEAM_STATS.map((t) => t.forAvg));
-  const maxAgainst = Math.max(...TEAM_STATS.map((t) => t.againstAvg));
+  const maxFor = Math.max(...teamRows.map((t) => t.forAvg));
+  const maxAgainst = Math.max(...teamRows.map((t) => t.againstAvg));
 
   return (
     <div className="space-y-4">

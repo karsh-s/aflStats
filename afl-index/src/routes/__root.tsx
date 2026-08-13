@@ -90,6 +90,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Predictions, expected disposals, same-game multi probabilities and stadium form for every AFL match." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      // Unlisted deployment: reachable by link, kept out of search indexes.
+      { name: "robots", content: "noindex, nofollow" },
     ],
     links: [
       {

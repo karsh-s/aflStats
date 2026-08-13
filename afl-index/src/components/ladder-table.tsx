@@ -1,7 +1,14 @@
-import { LADDER, TEAM_COLORS, TEAM_NAMES } from "@/lib/afl-data";
+import { LADDER, TEAM_COLORS, TEAM_NAMES, type TeamCode } from "@/lib/afl-data";
+import { useLadder } from "@/lib/queries";
 
 export function LadderTable({ snapshot }: { snapshot?: boolean }) {
-  const rows = snapshot ? LADDER.slice(0, 8) : LADDER;
+  // Live ladder recomputed from completed games; the bundled snapshot is only
+  // a fallback for when the API is unreachable.
+  const { data: live } = useLadder();
+  const source = live && live.length
+    ? live.map((r) => ({ ...r, team: r.team as TeamCode }))
+    : LADDER;
+  const rows = snapshot ? source.slice(0, 8) : source;
   return (
     <div className="space-y-1">
       <div className="flex px-1 pb-1 text-[10px] font-bold uppercase text-muted-foreground">
