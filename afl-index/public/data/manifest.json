@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-11T06:58:44.119208",
+ "generated": "2026-08-13T16:21:57.192037",
  "files": [
   "analysis_position-concession.json",
   "analysis_role-leaks.json",
@@ -111,6 +111,7 @@
   "historical_round__season_2026_rnd_20.json",
   "historical_round__season_2026_rnd_21.json",
   "historical_round__season_2026_rnd_22.json",
+  "historical_round__season_2026_rnd_23.json",
   "historical_round__season_2026_rnd_3.json",
   "historical_round__season_2026_rnd_4.json",
   "historical_round__season_2026_rnd_5.json",
@@ -122,6 +123,7 @@
   "ladder__year_2026.json",
   "live_games.json",
   "live_status.json",
+  "manifest.json",
   "season_current-round.json",
   "stats_players__min_games_1.json",
   "stats_teams__year_2026.json",
