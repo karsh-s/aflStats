@@ -8,7 +8,7 @@ import type { APIEvent, APISGMLeg, APITargetMulti } from "@/lib/api";
 export const Route = createFileRoute("/multi-builder")({
   head: () => ({
     meta: [
-      { title: "SGM Builder · AFL.Index" },
+      { title: "SGM Builder · statsfl" },
       { name: "description", content: "Build SportsBet same-game multis with calibrated model hit probabilities." },
     ],
   }),
@@ -274,7 +274,9 @@ function MultiPage() {
   // Post-mortem R18: legs under 70% model probability hit far below their
   // claimed rate — 0.70 is now the default floor; the toggle goes to 0.80.
   const { data: targetMultis, isLoading: multisLoading } = useGameTargetMultis(
-    eventId, safeMode ? 0.8 : 0.7,
+    // Must match the floors scripts/export_static.py snapshots (0.6 / 0.8),
+    // otherwise the static build requests a file that was never written.
+    eventId, safeMode ? 0.8 : 0.6,
   );
 
   // Each tier targets a different odds range and probability floor.
@@ -333,11 +335,6 @@ function MultiPage() {
         {/* By risk level */}
         {legs && legs.length > 0 && mode === "risk" && (
           <div className="space-y-4">
-            <p className="text-xs text-muted-foreground max-w-prose">
-              Three multis built from the highest-probability legs available, grouped by risk.
-              Low risk uses only legs where the model is highly confident (≥68%). Medium includes
-              slight favourites (≥52%). High includes any available leg.
-            </p>
             <RiskMultiCard risk="low" result={lowResult} />
             <RiskMultiCard risk="medium" result={medResult} />
             <RiskMultiCard risk="high" result={highResult} />
@@ -369,12 +366,6 @@ function MultiPage() {
             No SportsBet player markets available for this game yet.
           </div>
         )}
-
-        <p className="text-[10px] text-muted-foreground max-w-prose">
-          Combined odds = product of legs. SportsBet's actual SGM price includes correlation
-          adjustments and is usually shorter. Goal and disposal legs are sourced from the Odds API
-          — marks are model-only (no Odds API market available). Gamble responsibly — 18+.
-        </p>
       </div>
     </PageShell>
   );

@@ -12,7 +12,7 @@ import type { TeamStyle, NotableFinding } from "@/lib/api";
 
 export const Route = createFileRoute("/analysis")({
   head: () => ({
-    meta: [{ title: "AFL.Index — Tactical Analysis" }],
+    meta: [{ title: "statsfl — Tactical Analysis" }],
   }),
   component: Analysis,
 });

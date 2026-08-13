@@ -6,13 +6,13 @@ import { PROP_LADDER } from "@/lib/afl-data";
 export const Route = createFileRoute("/projections")({
   head: () => ({
     meta: [
-      { title: "Player Projections · AFL.Index" },
+      { title: "Player Projections · statsfl" },
       {
         name: "description",
         content:
           "Expected disposals, goals, marks and clearances per AFL player with confidence bands from 4+ to 45+.",
       },
-      { property: "og:title", content: "Player Projections · AFL.Index" },
+      { property: "og:title", content: "Player Projections · statsfl" },
       {
         property: "og:description",
         content:

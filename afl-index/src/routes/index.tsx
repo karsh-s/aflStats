@@ -23,7 +23,7 @@ function getTeamLogo(name: string): string | null {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "AFL.Index — Live Terminal · Predictions & Value" },
+      { title: "statsfl — Live Terminal · Predictions & Value" },
       { name: "description", content: "Live AFL model: win probabilities, player props, value bets and same-game multis." },
     ],
   }),
@@ -353,7 +353,7 @@ function RoundNav({
 
   const currentLabel = selected
     ? `${selected.season} · ${roundLabel(selected.round)}`
-    : "Current Round";
+    : "2026 · Current Round";
 
   // Index in the full list for prev/next — null = "current" (newest)
   const allEntries = useMemo(() => [null, ...rounds].reverse(), [rounds]); // newest first: current, 2026R16, R15, ...
@@ -397,8 +397,7 @@ function RoundNav({
             }}
             className="border border-border bg-card px-2 py-1 font-mono text-[11px] font-bold text-ink focus:outline-none focus:border-ink cursor-pointer"
           >
-            <option value="current">2026 · Live</option>
-            {seasons.map((s) => (
+                        {seasons.map((s) => (
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
@@ -527,7 +526,7 @@ function ValuePanel({ bets, loading }: { bets: APIValueBet[] | undefined; loadin
 
   return (
     <div className="space-y-4">
-      <SectionHeading title="Best SportsBet Lines" meta="One line per player · Model edge" />
+      <SectionHeading title="Best Lines" meta="One line per player" />
       {teams.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
           <button
@@ -592,14 +591,6 @@ function ValuePanel({ bets, loading }: { bets: APIValueBet[] | undefined; loadin
           No lines with ≥3% edge found right now.
         </div>
       )}
-      <div className="border border-border p-4 text-[11px] text-muted-foreground space-y-1">
-        <div className="font-bold uppercase text-ink/70 text-[10px]">How tiers work</div>
-        <p>
-          <strong>Lock</strong> = hit line in all last 5 games AND all games vs this opponent (≥3 meetings).{" "}
-          <strong>Strong</strong> = 4+ of last 5 games. <strong>Value</strong> = positive model edge only.
-        </p>
-        <p className="mt-1">Edge = Model P − de-vigged implied P. Kelly = 25% fractional stake. Calibrated on 44,850 player-games 2015–2026.</p>
-      </div>
     </div>
   );
 }

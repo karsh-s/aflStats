@@ -1,4 +1,4 @@
-// Static demo data for the AFL.Index analytical ledger.
+// Static demo data for the statsfl analytical ledger.
 // Numbers are illustrative model outputs, not live odds.
 
 export type TeamCode =

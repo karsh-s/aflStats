@@ -18,7 +18,7 @@ import { useTeamStats } from "@/lib/queries";
 export const Route = createFileRoute("/premiership-window")({
   head: () => ({
     meta: [
-      { title: "Premiership Window · AFL.Index" },
+      { title: "Premiership Window · statsfl" },
       {
         name: "description",
         content: "AFL 2026 Premiership Window: scoring rank vs defending rank for every team.",

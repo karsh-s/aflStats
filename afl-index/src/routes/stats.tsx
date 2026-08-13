@@ -7,7 +7,7 @@ import { usePlayerStats, useTeamStats } from "@/lib/queries";
 export const Route = createFileRoute("/stats")({
   head: () => ({
     meta: [
-      { title: "Stats Leaders · AFL.Index" },
+      { title: "Stats Leaders · statsfl" },
       {
         name: "description",
         content:

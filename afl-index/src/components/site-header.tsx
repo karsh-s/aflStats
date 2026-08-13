@@ -22,7 +22,7 @@ export function SiteHeader() {
             to="/"
             className="font-display text-xl font-extrabold uppercase tracking-tighter text-ink"
           >
-            AFL.Index
+            statsfl
           </Link>
           <div className="hidden gap-4 text-[11px] font-bold uppercase tracking-widest md:flex">
             {NAV.map((item) => (

@@ -84,9 +84,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "AFL.Index — Analytical Ledger for Australian Rules Football" },
+      { title: "statsfl — Analytical Ledger for Australian Rules Football" },
       { name: "description", content: "Predictions, expected disposals, same-game multi probabilities and stadium form for every AFL match." },
-      { property: "og:title", content: "AFL.Index — Analytical Ledger" },
+      { property: "og:title", content: "statsfl — Analytical Ledger" },
       { property: "og:description", content: "Predictions, expected disposals, same-game multi probabilities and stadium form for every AFL match." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

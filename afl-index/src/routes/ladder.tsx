@@ -6,13 +6,13 @@ import { useLadder } from "@/lib/queries";
 export const Route = createFileRoute("/ladder")({
   head: () => ({
     meta: [
-      { title: "AFL Ladder · AFL.Index" },
+      { title: "AFL Ladder · statsfl" },
       {
         name: "description",
         content:
           "Full AFL ladder with played, wins, losses, points and percentage for every team.",
       },
-      { property: "og:title", content: "AFL Ladder · AFL.Index" },
+      { property: "og:title", content: "AFL Ladder · statsfl" },
       {
         property: "og:description",
         content: "Live AFL ladder, updated automatically as results land.",
