@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-29T16:21:04.688376",
+ "generated": "2026-08-31T18:55:01.330618",
  "files": [
   "analysis_position-concession.json",
   "analysis_role-leaks.json",
@@ -166,6 +166,7 @@
   "historical_round__season_2026_rnd_7.json",
   "historical_round__season_2026_rnd_8.json",
   "historical_round__season_2026_rnd_9.json",
+  "historical_round__season_2026_rnd_Wild%20Card.json",
   "historical_rounds.json",
   "ladder__year_2026.json",
   "live_games.json",
