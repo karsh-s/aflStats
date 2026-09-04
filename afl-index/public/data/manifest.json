@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-02T16:07:32.526781",
+ "generated": "2026-09-04T15:54:54.231550",
  "files": [
   "analysis_position-concession.json",
   "analysis_role-leaks.json",
@@ -131,6 +131,11 @@
   "game_dda8e0778e24833f05b2a5e28a1318d3_multis__floor_0.8.json",
   "game_dda8e0778e24833f05b2a5e28a1318d3_props.json",
   "game_dda8e0778e24833f05b2a5e28a1318d3_sgm.json",
+  "game_e7e06a821e70efe5c91cd38371d33977_best-lines.json",
+  "game_e7e06a821e70efe5c91cd38371d33977_multis__floor_0.6.json",
+  "game_e7e06a821e70efe5c91cd38371d33977_multis__floor_0.8.json",
+  "game_e7e06a821e70efe5c91cd38371d33977_props.json",
+  "game_e7e06a821e70efe5c91cd38371d33977_sgm.json",
   "game_ef9116c39c399fb81e8a17c5ad010f77_best-lines.json",
   "game_ef9116c39c399fb81e8a17c5ad010f77_multis__floor_0.6.json",
   "game_ef9116c39c399fb81e8a17c5ad010f77_multis__floor_0.8.json",
