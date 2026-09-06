@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-04T15:54:54.231550",
+ "generated": "2026-09-06T15:04:07.700814",
  "files": [
   "analysis_position-concession.json",
   "analysis_role-leaks.json",
@@ -126,6 +126,11 @@
   "game_d43f68caa861e2d07ecc277879f9b3ec_multis__floor_0.8.json",
   "game_d43f68caa861e2d07ecc277879f9b3ec_props.json",
   "game_d43f68caa861e2d07ecc277879f9b3ec_sgm.json",
+  "game_d6423c4e7b6a9968552efdff870c5e2e_best-lines.json",
+  "game_d6423c4e7b6a9968552efdff870c5e2e_multis__floor_0.6.json",
+  "game_d6423c4e7b6a9968552efdff870c5e2e_multis__floor_0.8.json",
+  "game_d6423c4e7b6a9968552efdff870c5e2e_props.json",
+  "game_d6423c4e7b6a9968552efdff870c5e2e_sgm.json",
   "game_dda8e0778e24833f05b2a5e28a1318d3_best-lines.json",
   "game_dda8e0778e24833f05b2a5e28a1318d3_multis__floor_0.6.json",
   "game_dda8e0778e24833f05b2a5e28a1318d3_multis__floor_0.8.json",
@@ -171,6 +176,8 @@
   "historical_round__season_2026_rnd_7.json",
   "historical_round__season_2026_rnd_8.json",
   "historical_round__season_2026_rnd_9.json",
+  "historical_round__season_2026_rnd_Elimination%20Final.json",
+  "historical_round__season_2026_rnd_Qualifying%20Final.json",
   "historical_round__season_2026_rnd_Wild%20Card.json",
   "historical_round__season_2026_rnd_Wildcard%20Final.json",
   "historical_rounds.json",
